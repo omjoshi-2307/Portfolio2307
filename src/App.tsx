@@ -19,7 +19,17 @@ export default function App() {
     return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   });
 
+  const [isHeroRevealed, setIsHeroRevealed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return true;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
+  const handleHeroReveal = useCallback(() => {
+    setIsHeroRevealed(true);
+  }, []);
+
   const handleIntroComplete = useCallback(() => {
+    setIsHeroRevealed(true);
     setIsIntroActive(false);
   }, []);
 
@@ -30,7 +40,10 @@ export default function App() {
     >
       {/* Cinematic Gothic Intro Overlay - mounts over the homepage */}
       {isIntroActive && (
-        <CinematicIntro onComplete={handleIntroComplete} />
+        <CinematicIntro
+          onReveal={handleHeroReveal}
+          onComplete={handleIntroComplete}
+        />
       )}
 
       {/* Shared SwarmCursor wrapping the entire portfolio content */}
@@ -59,7 +72,7 @@ export default function App() {
         <div className="relative z-0 bg-transparent">
           <Header />
           <main>
-            <Hero />
+            <Hero introFinished={isHeroRevealed} />
             <About />
             <Skills />
             <Projects />

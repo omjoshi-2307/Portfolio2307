@@ -1,51 +1,264 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { Menu, X } from 'lucide-react';
+
+interface NavItem {
+  id: string;
+  label: string;
+  href: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { id: 'hero', label: 'Home', href: '#home' },
+  { id: 'about', label: 'About', href: '#about' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
+  { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'experience', label: 'Achievements', href: '#achievements' },
+  { id: 'contact', label: 'Contact', href: '#contact' },
+];
+
 export function Header() {
-  const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Certifications', href: '#certifications' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
+  const isManualScrollingRef = useRef<boolean>(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Scroll spy & background glass intensity tracker
+  const handleScroll = useCallback(() => {
+    const scrollY = window.scrollY;
+
+    // Track scrolled state for dynamic glassmorphic intensity
+    setIsScrolled(scrollY > 20);
+
+    if (isManualScrollingRef.current) return;
+
+    // 1. Top of page -> Home
+    if (scrollY < 80) {
+      setActiveIndex(0);
+      return;
+    }
+
+    // 2. Near bottom of page -> Contact
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = window.innerHeight;
+    if (scrollY + clientHeight >= scrollHeight - 60) {
+      setActiveIndex(NAV_ITEMS.length - 1);
+      return;
+    }
+
+    // 3. Find section currently intersecting the reading line (~140px from top)
+    const probeY = 140;
+    for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+      const sectionId = NAV_ITEMS[i].id;
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= probeY && rect.bottom > probeY) {
+          setActiveIndex(i);
+          return;
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    let rafId: number | null = null;
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Defer initial check to avoid synchronous setState inside effect body
+    rafId = requestAnimationFrame(handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
+  }, [handleScroll]);
+
+  // Close mobile menu on click outside or Escape
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
+  // Navigation click handler
+  const handleNavClick = (
+    index: number,
+    targetId: string,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+
+    // Instant active indicator update
+    setActiveIndex(index);
+    setIsMobileMenuOpen(false);
+
+    // Suppress scroll-spy updates during smooth scroll
+    isManualScrollingRef.current = true;
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 850);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+    if (targetId === 'hero' || targetId === 'home') {
+      window.scrollTo({ top: 0, behavior });
+    } else {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior });
+      }
+    }
+  };
+
+  // Brand click: scroll to top
+  const handleBrandClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setActiveIndex(0);
+    setIsMobileMenuOpen(false);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#292929] bg-black/85 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between gap-4">
-        {/* Brand Name & Title */}
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ease-out select-none ${
+        isScrolled
+          ? 'bg-black/75 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.6)]'
+          : 'bg-black/40 backdrop-blur-md border-b border-white/[0.05]'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-14 sm:h-16 flex items-center justify-between gap-4">
+        {/* Left: OM JOSHI Wordmark */}
         <div className="flex items-center gap-3 shrink-0">
           <a
-            href="#"
-            className="flex items-center gap-1.5 font-heading text-lg sm:text-xl font-bold tracking-tight text-white hover:text-white transition-colors select-none"
+            href="#home"
+            onClick={handleBrandClick}
+            className="group flex items-center gap-1.5 font-heading text-lg sm:text-xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
             aria-label="Om Joshi Portfolio Home"
           >
-            <span>OM</span>
-            <span className="text-[#737373] font-mono text-base font-normal">/</span>
-            <span>JOSHI</span>
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white ml-0.5" />
+            <span>OM JOSHI</span>
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white ml-0.5 transition-transform duration-200 group-hover:scale-125" />
           </a>
         </div>
 
-        {/* Desktop Editorial Navigation Links */}
+        {/* Right: Desktop Minimal Glassmorphism Navigation */}
         <nav
           aria-label="Main Portfolio Navigation"
-          className="hidden md:flex items-center gap-6 lg:gap-8 font-mono text-xs uppercase tracking-wider text-[#A3A3A3]"
+          className="hidden md:flex items-center"
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="hover:text-white transition-colors duration-150 py-1"
-            >
-              {link.label}
-            </a>
-          ))}
+          <div className="flex items-center gap-1 p-1 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
+            {NAV_ITEMS.map((item, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(index, item.id, e)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-200 ${
+                    isActive
+                      ? 'text-white font-semibold bg-white/[0.12] border border-white/20 shadow-[0_1px_10px_rgba(255,255,255,0.06)]'
+                      : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05] border border-transparent'
+                  }`}
+                >
+                  <span className="flex items-center gap-1.5">
+                    {isActive && (
+                      <span
+                        className="inline-block w-1 h-1 rounded-full bg-white"
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span>{item.label}</span>
+                  </span>
+                </a>
+              );
+            })}
+          </div>
         </nav>
 
-        {/* Minimalist Technical Right Marker */}
-        <div className="font-mono text-xs text-[#737373] tracking-widest uppercase shrink-0">
-          // IT &amp; DEV
+        {/* Mobile Navigation Toggle Button */}
+        <div className="flex items-center md:hidden" ref={mobileMenuRef}>
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] active:bg-white/[0.12] transition-colors focus:outline-none focus:ring-1 focus:ring-white/30"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-5 h-5 text-white" aria-hidden="true" />
+            ) : (
+              <Menu className="w-5 h-5 text-white" aria-hidden="true" />
+            )}
+          </button>
+
+          {/* Mobile Glassmorphic Dropdown Panel */}
+          {isMobileMenuOpen && (
+            <div
+              className="absolute top-full left-4 right-4 mt-2 p-3 rounded-2xl bg-black/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col gap-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+            >
+              <div className="px-3 py-1.5 text-[10px] font-mono uppercase text-[#737373] tracking-widest border-b border-white/[0.06] mb-1">
+                // NAVIGATION
+              </div>
+              {NAV_ITEMS.map((item, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(index, item.id, e)}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-colors ${
+                      isActive
+                        ? 'text-white font-semibold bg-white/[0.12] border border-white/20'
+                        : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05]'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </header>
   );
 }
+
+export default Header;

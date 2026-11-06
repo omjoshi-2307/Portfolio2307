@@ -33,8 +33,11 @@ export function Experience() {
     <section
       id="experience"
       aria-label="Experience and Achievements"
-      className="scroll-mt-20 py-20 sm:py-28 px-6 sm:px-8 lg:px-12 border-t border-[#292929]/70 bg-transparent"
+      className="relative scroll-mt-20 py-20 sm:py-28 px-6 sm:px-8 lg:px-12 border-t border-[#292929]/70 bg-transparent"
     >
+      {/* Anchor alias for #achievements */}
+      <div id="achievements" className="absolute -top-20 pointer-events-none" aria-hidden="true" />
+
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="space-y-2">

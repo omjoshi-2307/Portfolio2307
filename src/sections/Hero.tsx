@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, type Variants } from 'motion/react';
 import { ArrowUpRight, Terminal } from 'lucide-react';
 import grayscalePortrait from '@/assets/photo-grayscale.jpeg';
@@ -8,6 +8,12 @@ interface HeroProps {
   introFinished?: boolean;
   imageSrc?: string;
 }
+
+// Coordinated animation timing scale
+const DURATION_HEADING = 0.85;
+const DURATION_SUPPORT = 0.55;
+const DURATION_LANYARD = 0.85;
+const EASE_EDITORIAL = [0.16, 1, 0.3, 1] as const;
 
 function GithubIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -117,28 +123,159 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
     }
   };
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.04,
-        delayChildren: prefersReducedMotion ? 0 : 0.08,
-      },
-    },
-  };
+  // Latch reveal state so Hero entrance animation triggers once and remains permanently visible
+  const [isRevealed, setIsRevealed] = useState<boolean>(() => introFinished || prefersReducedMotion);
 
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: prefersReducedMotion ? 0 : 0.4,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
+  if (introFinished && !isRevealed) {
+    setIsRevealed(true);
+  }
+
+  // Coordinated animation variants memoized to prevent variant churn on clock ticks
+  const variants = useMemo(() => {
+    return {
+      name: {
+        hidden: {
+          opacity: 0,
+          scale: prefersReducedMotion ? 1 : 0.85,
+        },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_HEADING,
+            delay: 0,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      topMetadata: {
+        hidden: {
+          opacity: 0,
+          y: 0,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: 0,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      role: {
+        hidden: {
+          opacity: 0,
+          y: prefersReducedMotion ? 0 : 12,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: prefersReducedMotion ? 0 : 0.12,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      tagline: {
+        hidden: {
+          opacity: 0,
+          y: prefersReducedMotion ? 0 : 12,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: prefersReducedMotion ? 0 : 0.20,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      intro: {
+        hidden: {
+          opacity: 0,
+          y: prefersReducedMotion ? 0 : 12,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: prefersReducedMotion ? 0 : 0.28,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      cta: {
+        hidden: {
+          opacity: 0,
+          y: prefersReducedMotion ? 0 : 12,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: prefersReducedMotion ? 0 : 0.36,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      social: {
+        hidden: {
+          opacity: 0,
+          y: prefersReducedMotion ? 0 : 12,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: prefersReducedMotion ? 0 : 0.44,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      bottomMetadata: {
+        hidden: {
+          opacity: 0,
+          y: prefersReducedMotion ? 0 : 12,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_SUPPORT,
+            delay: prefersReducedMotion ? 0 : 0.48,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+
+      lanyard: {
+        hidden: {
+          opacity: 0,
+        },
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: prefersReducedMotion ? 0 : DURATION_LANYARD,
+            delay: 0,
+            ease: EASE_EDITORIAL,
+          },
+        },
+      } as Variants,
+    };
+  }, [prefersReducedMotion]);
 
   return (
     <section
@@ -146,6 +283,9 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
       aria-label="Hero Introduction"
       className="relative min-h-[calc(100vh-4rem)] lg:h-[calc(100svh-4rem)] lg:min-h-0 flex flex-col justify-between px-6 sm:px-8 lg:px-12 py-3 sm:py-5 lg:py-4 overflow-hidden bg-transparent"
     >
+      {/* Anchor alias for #home */}
+      <div id="home" className="absolute -top-20 pointer-events-none" aria-hidden="true" />
+
       {/* Background Ambience & Precision Monochrome Grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-20"
@@ -162,46 +302,49 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
       {/* Full-Viewport Lanyard 3D Scene (Desktop: expands across full available 100vw x 100svh Hero viewport) */}
       {isDesktop && (
-        <div
+        <motion.div
+          variants={variants.lanyard}
+          initial="hidden"
+          animate={isRevealed ? 'visible' : 'hidden'}
           className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none"
           aria-hidden="true"
         >
           <div className="w-full h-full pointer-events-auto">
-            <Lanyard
-              frontImage={imageSrc}
-              backImage={imageSrc}
-              imageFit="cover"
-              cardColor="#111111"
-              orientation="portrait"
-              finish="matte"
-              cornerRadius={0.12}
-              size={0.42}
-              anchor={0.80}
-              strapLength={0.44}
-              strapColor="#FFFFFF"
-              strapWidth={0.65}
-              metal="graphite"
-              gravity={1}
-              damping={0.55}
-              elasticity={0.5}
-              breeze={prefersReducedMotion ? 0 : 0.15}
-              interactive={true}
-              intro={!prefersReducedMotion}
-              className="w-full h-full"
-            />
+            {isRevealed && (
+              <Lanyard
+                key="desktop-lanyard"
+                frontImage={imageSrc}
+                backImage={imageSrc}
+                imageFit="cover"
+                cardColor="#111111"
+                orientation="portrait"
+                finish="matte"
+                cornerRadius={0.12}
+                size={0.42}
+                anchor={0.80}
+                strapLength={0.44}
+                strapColor="#FFFFFF"
+                strapWidth={0.65}
+                metal="graphite"
+                gravity={1}
+                damping={0.55}
+                elasticity={0.5}
+                breeze={prefersReducedMotion ? 0 : 0.15}
+                interactive={true}
+                intro={!prefersReducedMotion}
+                className="w-full h-full"
+              />
+            )}
           </div>
-        </div>
+        </motion.div>
       )}
 
-      <motion.div
-        variants={containerVariants}
-        initial={introFinished ? 'hidden' : false}
-        animate={introFinished ? 'visible' : 'hidden'}
-        className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-between gap-2 sm:gap-4 lg:gap-3 pointer-events-none"
-      >
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-between gap-2 sm:gap-4 lg:gap-3 pointer-events-none">
         {/* ================= 1. TOP METADATA ROW ================= */}
         <motion.div
-          variants={itemVariants}
+          variants={variants.topMetadata}
+          initial="hidden"
+          animate={isRevealed ? 'visible' : 'hidden'}
           className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 pb-2.5 border-b border-[#292929] font-mono text-[11px] sm:text-xs text-[#737373] pointer-events-auto"
         >
           {/* Top Left: PORTFOLIO */}
@@ -236,21 +379,34 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
           {/* Left Column: Oversized Identity, Narrative & CTAs (lg:col-span-7 xl:col-span-8) */}
           <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-center space-y-3.5 sm:space-y-4 lg:space-y-4 z-10 text-left pointer-events-auto">
             {/* Massive Bold Left-Aligned Typography */}
-            <motion.div variants={itemVariants} className="space-y-1">
-              <h1 className="font-heading font-black tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84] select-none">
+            <div className="space-y-1">
+              <motion.h1
+                variants={variants.name}
+                initial="hidden"
+                animate={isRevealed ? 'visible' : 'hidden'}
+                style={{ transformOrigin: 'left center', willChange: 'transform, opacity' }}
+                className="font-heading font-black tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84] select-none"
+              >
                 OM<br />JOSHI.
-              </h1>
+              </motion.h1>
 
               {/* Role */}
-              <div className="pt-2 sm:pt-2.5 flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wider text-white font-semibold">
+              <motion.div
+                variants={variants.role}
+                initial="hidden"
+                animate={isRevealed ? 'visible' : 'hidden'}
+                className="pt-2 sm:pt-2.5 flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wider text-white font-semibold"
+              >
                 <Terminal className="w-3.5 h-3.5 text-white shrink-0" />
                 <span>IT Student &amp; Developer</span>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
             {/* Tagline */}
             <motion.div
-              variants={itemVariants}
+              variants={variants.tagline}
+              initial="hidden"
+              animate={isRevealed ? 'visible' : 'hidden'}
               className="border-l-2 border-white pl-3.5 py-0.5"
             >
               <p className="font-heading text-sm sm:text-base md:text-lg font-medium tracking-tight text-[#F5F5F5] italic">
@@ -260,7 +416,9 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
             {/* Narrow Introduction Column */}
             <motion.p
-              variants={itemVariants}
+              variants={variants.intro}
+              initial="hidden"
+              animate={isRevealed ? 'visible' : 'hidden'}
               className="font-sans text-xs sm:text-sm text-[#A3A3A3] leading-relaxed max-w-lg text-left"
             >
               I&apos;m an Information Technology student from Pune, interested in understanding how systems work and building practical solutions. I explore software engineering, full-stack development and cybersecurity through hands-on projects and continuous learning.
@@ -268,7 +426,9 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
             {/* Calls to Action */}
             <motion.div
-              variants={itemVariants}
+              variants={variants.cta}
+              initial="hidden"
+              animate={isRevealed ? 'visible' : 'hidden'}
               className="pt-0.5 flex flex-wrap items-center gap-3"
             >
               <a
@@ -294,7 +454,9 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
             {/* Social Links (Positioned Below CTAs) */}
             <motion.div
-              variants={itemVariants}
+              variants={variants.social}
+              initial="hidden"
+              animate={isRevealed ? 'visible' : 'hidden'}
               className="flex flex-wrap items-center gap-4 sm:gap-5 font-mono text-xs text-[#A3A3A3] pt-0.5"
             >
               <a
@@ -335,32 +497,37 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             <div className="hidden lg:block lg:col-span-5 xl:col-span-4 pointer-events-none" aria-hidden="true" />
           ) : (
             <motion.div
-              variants={itemVariants}
+              variants={variants.lanyard}
+              initial="hidden"
+              animate={isRevealed ? 'visible' : 'hidden'}
               className="w-full flex justify-center z-10 pointer-events-auto"
             >
               <div className="w-full max-w-md h-[380px] sm:h-[440px] select-none">
-                <Lanyard
-                  frontImage={imageSrc}
-                  backImage={imageSrc}
-                  imageFit="cover"
-                  cardColor="#111111"
-                  orientation="portrait"
-                  finish="matte"
-                  cornerRadius={0.12}
-                  size={0.58}
-                  anchor="center"
-                  strapLength={0.48}
-                  strapColor="#FFFFFF"
-                  strapWidth={0.65}
-                  metal="graphite"
-                  gravity={1}
-                  damping={0.55}
-                  elasticity={0.5}
-                  breeze={prefersReducedMotion ? 0 : 0.15}
-                  interactive={true}
-                  intro={!prefersReducedMotion}
-                  className="w-full h-full"
-                />
+                {isRevealed && (
+                  <Lanyard
+                    key="mobile-lanyard"
+                    frontImage={imageSrc}
+                    backImage={imageSrc}
+                    imageFit="cover"
+                    cardColor="#111111"
+                    orientation="portrait"
+                    finish="matte"
+                    cornerRadius={0.12}
+                    size={0.58}
+                    anchor="center"
+                    strapLength={0.48}
+                    strapColor="#FFFFFF"
+                    strapWidth={0.65}
+                    metal="graphite"
+                    gravity={1}
+                    damping={0.55}
+                    elasticity={0.5}
+                    breeze={prefersReducedMotion ? 0 : 0.15}
+                    interactive={true}
+                    intro={!prefersReducedMotion}
+                    className="w-full h-full"
+                  />
+                )}
               </div>
             </motion.div>
           )}
@@ -368,7 +535,9 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
         {/* ================= 3. BOTTOM SCATTERED METADATA & SCROLL INDICATOR ================= */}
         <motion.div
-          variants={itemVariants}
+          variants={variants.bottomMetadata}
+          initial="hidden"
+          animate={isRevealed ? 'visible' : 'hidden'}
           className="pt-2 sm:pt-2.5 border-t border-[#292929] flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 text-[10px] sm:text-[11px] font-mono text-[#737373] pointer-events-auto"
         >
           {/* Left: Exploring & Engineering Philosophy Loop */}
@@ -409,7 +578,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             <span className="text-[#A3A3A3] font-medium">B.TECH IT · NMIET · 2029</span>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

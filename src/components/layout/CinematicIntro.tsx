@@ -3,9 +3,10 @@ import { motion } from 'motion/react';
 
 interface CinematicIntroProps {
   onComplete: () => void;
+  onReveal?: () => void;
 }
 
-export function CinematicIntro({ onComplete }: CinematicIntroProps) {
+export function CinematicIntro({ onComplete, onReveal }: CinematicIntroProps) {
   const [phase, setPhase] = useState<'hold' | 'zoom'>('hold');
   const [progress, setProgress] = useState<number>(0);
   const timerRef = useRef<number[]>([]);
@@ -27,8 +28,9 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       rafRef.current = null;
     }
 
+    onReveal?.();
     onComplete();
-  }, [onComplete]);
+  }, [onComplete, onReveal]);
 
   useEffect(() => {
     // Respect prefers-reduced-motion: skip animation immediately if requested
@@ -43,7 +45,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       if (isCancelled || hasFinishedRef.current) return;
 
       const startTime = performance.now();
-      const progressDuration = 3400; // Counter reaches 100% at 3.4s
+      const progressDuration = 3000; // Counter reaches 100% at 3.0s
       let lastFloor = 0;
 
       // Deterministic synchronized RAF progress loop
@@ -68,20 +70,28 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
 
       rafRef.current = requestAnimationFrame(stepProgress);
 
-      // Phase D: Final Cinematic Zoom Reveal starts at 3200ms
+      // Phase D: Final Cinematic Zoom Reveal starts at 3000ms
       const zoomTimer = window.setTimeout(() => {
         if (!isCancelled && !hasFinishedRef.current) {
           setPhase('zoom');
         }
-      }, 3200);
+      }, 3000);
       timerRef.current.push(zoomTimer);
 
-      // Intro completes at 4500ms (total duration 4.5s)
+      // Synchronize Hero landing reveal when the 55x zoom expands beyond viewport at 3550ms
+      const revealTimer = window.setTimeout(() => {
+        if (!isCancelled && !hasFinishedRef.current) {
+          onReveal?.();
+        }
+      }, 3550);
+      timerRef.current.push(revealTimer);
+
+      // Intro completes at 4000ms (total duration 4.0s)
       const completeTimer = window.setTimeout(() => {
         if (!isCancelled && !hasFinishedRef.current) {
           handleFinish();
         }
-      }, 4500);
+      }, 4000);
       timerRef.current.push(completeTimer);
     };
 
@@ -114,7 +124,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
         rafRef.current = null;
       }
     };
-  }, [handleFinish]);
+  }, [handleFinish, onReveal]);
 
   // Formatted numeric percentage as 3 digits (e.g. 000%, 068%, 100%)
   const formattedProgress = `${String(Math.min(100, Math.max(0, Math.floor(progress)))).padStart(3, '0')}%`;
@@ -127,13 +137,13 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
       initial={{ opacity: 1 }}
       animate={{
-        // Viewport remains 100% stationary and opaque during initial scaling (0 to 600ms of zoom);
-        // then smoothly dissolves over 700ms to reveal the mounted homepage behind the expanding typography
+        // Viewport remains stationary and fully opaque during initial zoom;
+        // then cleanly dissolves over 500ms to reveal the mounted homepage behind the expanding typography
         opacity: phase === 'zoom' ? 0 : 1,
       }}
       transition={{
-        duration: 0.7,
-        delay: phase === 'zoom' ? 0.6 : 0,
+        duration: 0.5,
+        delay: phase === 'zoom' ? 0.45 : 0,
         ease: [0.4, 0, 0.2, 1],
       }}
     >
@@ -144,16 +154,30 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       <div className="absolute top-6 left-6 right-6 sm:top-8 sm:left-8 sm:right-8 flex items-center justify-between z-20 pointer-events-none select-none">
         <motion.div
           initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+          animate={{
+            opacity: phase === 'zoom' ? 0 : 1,
+            y: phase === 'zoom' ? -6 : 0,
+          }}
+          transition={{
+            duration: phase === 'zoom' ? 0.2 : 0.6,
+            delay: phase === 'zoom' ? 0 : 0.1,
+            ease: 'easeOut',
+          }}
           className="font-mono text-[11px] sm:text-xs text-[#737373] tracking-widest uppercase"
         >
           PORTFOLIO
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
+          animate={{
+            opacity: phase === 'zoom' ? 0 : 1,
+            y: phase === 'zoom' ? -6 : 0,
+          }}
+          transition={{
+            duration: phase === 'zoom' ? 0.2 : 0.6,
+            delay: phase === 'zoom' ? 0 : 0.15,
+            ease: 'easeOut',
+          }}
           className="font-mono text-[11px] sm:text-xs text-[#737373] tracking-widest uppercase"
         >
           PUNE, INDIA
@@ -180,7 +204,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
                 ? {
                     // Dramatic continuous scale to 55x: oversized letters extend beyond the viewport
                     scale: 55,
-                    opacity: [1, 1, 0.7, 0],
+                    opacity: [1, 1, 0.6, 0],
                   }
                 : {
                     scale: 1,
@@ -191,7 +215,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               scale:
                 phase === 'zoom'
                   ? {
-                      duration: 1.3,
+                      duration: 1.0,
                       ease: [0.65, 0, 0.15, 1],
                     }
                   : {
@@ -201,8 +225,8 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
               opacity:
                 phase === 'zoom'
                   ? {
-                      duration: 1.3,
-                      times: [0, 0.5, 0.8, 1],
+                      duration: 1.0,
+                      times: [0, 0.4, 0.7, 1],
                       ease: 'easeOut',
                     }
                   : {
@@ -215,30 +239,51 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
           </motion.div>
         </div>
 
-        {/* Thin Horizontal White Line: Animates expanding horizontally from the center */}
+        {/* Thin Horizontal White Line: Fades cleanly out when zoom begins */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.65, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          animate={{
+            scaleX: phase === 'zoom' ? 0 : 1,
+            opacity: phase === 'zoom' ? 0 : 1,
+          }}
+          transition={{
+            duration: phase === 'zoom' ? 0.2 : 0.65,
+            delay: phase === 'zoom' ? 0 : 0.7,
+            ease: [0.16, 1, 0.3, 1],
+          }}
           style={{ transformOrigin: '50% 50%' }}
           className="h-[1px] w-24 sm:w-36 bg-[#FFFFFF] my-3 sm:my-4 mx-auto select-none pointer-events-none"
         />
 
-        {/* Subtitle Metadata: DESIGNING · DEVELOPING · LEARNING */}
+        {/* Subtitle Metadata: DESIGNING · DEVELOPING · LEARNING (Fades cleanly out when zoom begins) */}
         <motion.div
           initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
+          animate={{
+            opacity: phase === 'zoom' ? 0 : 1,
+            y: phase === 'zoom' ? 6 : 0,
+          }}
+          transition={{
+            duration: phase === 'zoom' ? 0.2 : 0.6,
+            delay: phase === 'zoom' ? 0 : 0.9,
+            ease: 'easeOut',
+          }}
           className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#A3A3A3] uppercase select-none"
         >
           DESIGNING · DEVELOPING · LEARNING
         </motion.div>
 
-        {/* Minimal Loading Counter & Synchronized Progress Line */}
+        {/* Minimal Loading Counter & Synchronized Progress Line (Fades cleanly out when zoom begins) */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.05, ease: 'easeOut' }}
+          animate={{
+            opacity: phase === 'zoom' ? 0 : 1,
+            y: phase === 'zoom' ? 6 : 0,
+          }}
+          transition={{
+            duration: phase === 'zoom' ? 0.2 : 0.6,
+            delay: phase === 'zoom' ? 0 : 1.05,
+            ease: 'easeOut',
+          }}
           className="w-56 sm:w-68 mt-8 sm:mt-10 flex flex-col items-center gap-2.5 select-none"
         >
           {/* Status Label & 3-Digit Percentage */}
@@ -260,7 +305,11 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
       </div>
 
       {/* Minimal Bottom-Right Skip Intro Control */}
-      <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30">
+      <motion.div
+        animate={{ opacity: phase === 'zoom' ? 0 : 1 }}
+        transition={{ duration: phase === 'zoom' ? 0.2 : 0.4 }}
+        className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30"
+      >
         <button
           type="button"
           onClick={handleFinish}
@@ -269,7 +318,7 @@ export function CinematicIntro({ onComplete }: CinematicIntroProps) {
         >
           SKIP INTRO ↗
         </button>
-      </div>
+      </motion.div>
     </motion.aside>
   );
 }
