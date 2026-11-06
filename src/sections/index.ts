@@ -1,6 +1,7 @@
 export * from './Hero';
 export * from './About';
 export * from './Skills';
+export * from './WorkAndRecognition';
 export * from './Projects';
 export * from './Experience';
 export * from './Achievements';

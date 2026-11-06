@@ -6,12 +6,7 @@ import {
   Hero,
   About,
   Skills,
-  Projects,
-  Experience,
-  Achievements,
-  Certificates,
-  Interests,
-  Learning,
+  WorkAndRecognition,
   Contact,
 } from '@/sections';
 import { SwarmCursor, BackToTop, BlackHole } from '@/components/ui';
@@ -79,12 +74,7 @@ export default function App() {
             <Hero introFinished={isHeroRevealed} />
             <About />
             <Skills />
-            <Projects />
-            <Experience />
-            <Achievements />
-            <Certificates />
-            <Interests />
-            <Learning />
+            <WorkAndRecognition />
 
             {/* Contact + Footer Experience: shared wrapper with isolated background canvas */}
             <div
