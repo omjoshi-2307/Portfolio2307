@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Pure Black Background -->
+  <rect width="128" height="128" rx="26" fill="#000000" />
+  <rect x="2" y="2" width="124" height="124" rx="24" fill="none" stroke="#292929" stroke-width="2.5" />
+  
+  <!-- Complete Name Typography: OM JOSHI -->
+  <g fill="#FFFFFF" text-anchor="middle" font-weight="900" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <!-- Line 1: OM -->
+    <text x="64" y="56" font-size="42" letter-spacing="3">OM</text>
+    <!-- Line 2: JOSHI -->
+    <text x="64" y="96" font-size="27" letter-spacing="2">JOSHI</text>
+  </g>
+</svg>
