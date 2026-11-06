@@ -1,93 +1,148 @@
-import { Mail, ArrowUpRight, MapPin, Clock } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '@/components/ui';
+import { Mail, ArrowUpRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, XIcon, InstagramIcon, CredlyIcon } from '@/components/ui';
+
+const CONTACT_CHANNELS = [
+  {
+    name: 'LinkedIn',
+    handle: 'in/0m-joshi2307',
+    href: 'https://www.linkedin.com/in/0m-joshi2307/',
+    icon: LinkedinIcon,
+    description: 'Professional updates & networking',
+    ariaLabel: 'Om Joshi LinkedIn Profile (opens in new tab)',
+  },
+  {
+    name: 'GitHub',
+    handle: 'omjoshi-2307',
+    href: 'https://github.com/omjoshi-2307',
+    icon: GithubIcon,
+    description: 'Repositories & open source code',
+    ariaLabel: 'Om Joshi GitHub Profile (opens in new tab)',
+  },
+  {
+    name: 'X',
+    handle: '@omjoshi_2307',
+    href: 'https://x.com/omjoshi_2307',
+    icon: XIcon,
+    description: 'Thoughts, builds & discussions',
+    ariaLabel: 'Om Joshi X Profile (opens in new tab)',
+  },
+  {
+    name: 'Instagram',
+    handle: '@0m.a.joshi',
+    href: 'https://www.instagram.com/0m.a.joshi/',
+    icon: InstagramIcon,
+    description: 'Life, design & creative work',
+    ariaLabel: 'Om Joshi Instagram Profile (opens in new tab)',
+  },
+  {
+    name: 'Credly',
+    handle: 'om-joshi2623',
+    href: 'https://www.credly.com/users/om-joshi2623',
+    icon: CredlyIcon,
+    description: 'Verified badges & credentials',
+    ariaLabel: 'Om Joshi Credly Profile (opens in new tab)',
+  },
+] as const;
 
 export function Contact() {
   return (
     <section
       id="contact"
-      aria-label="Contact and Inquiries"
-      className="scroll-mt-20 py-20 sm:py-28 px-6 sm:px-8 lg:px-12 border-t border-[#292929]/70 bg-transparent"
+      aria-label="Contact Om Joshi"
+      className="scroll-mt-20 py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-transparent relative z-10"
     >
-      <div className="max-w-7xl mx-auto space-y-12">
-        {/* Section Header */}
-        <div className="space-y-2">
-          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
-            07 // CONTACT &amp; INQUIRIES
+      <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20">
+        {/* Section Introduction */}
+        <div className="space-y-6 max-w-4xl">
+          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span>LET&apos;S CONNECT</span>
           </div>
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white uppercase">
-            START A CONVERSATION
-          </h2>
+
+          <div className="space-y-2">
+            <h2 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-white uppercase leading-[0.95] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+              HAVE AN IDEA?
+            </h2>
+            <div className="font-heading text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#E5E5E5] italic leading-[1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+              LET&apos;S BUILD SOMETHING MEANINGFUL.
+            </div>
+          </div>
+
+          <p className="font-sans text-base sm:text-lg text-[#D4D4D4] leading-relaxed max-w-2xl pt-2 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
+            I&apos;m always interested in connecting with people who enjoy technology, learning and building meaningful things. Whether it&apos;s an idea, a collaboration or simply a conversation, feel free to reach out.
+          </p>
         </div>
 
-        {/* Two-Column Card Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Invitation */}
-          <div className="lg:col-span-7 space-y-6">
-            <p className="font-sans text-base sm:text-lg text-[#A3A3A3] leading-relaxed">
-              Have an opportunity, technical question, or project you&apos;d like to discuss? I&apos;m always open to connecting with engineers, mentors, and collaborative teams.
-            </p>
-
-            <div className="space-y-4 pt-2">
+        {/* Primary Email CTA & Selectable Address */}
+        <div className="p-8 sm:p-10 border border-[#292929] bg-[#0A0A0A]/85 backdrop-blur-md rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-[#737373] transition-colors duration-300 shadow-2xl">
+          <div className="space-y-2">
+            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
+              PRIMARY DIRECT CHANNEL
+            </div>
+            <div className="font-mono text-xl sm:text-2xl text-white font-medium select-all hover:text-white transition-colors break-all">
               <a
                 href="mailto:omjoshi2307@gmail.com"
-                aria-label="Send email to Om Joshi"
-                className="group inline-flex items-center gap-3 px-6 py-4 bg-white hover:bg-[#F5F5F5] text-black font-mono text-sm font-semibold uppercase tracking-wider rounded-interactive transition-all shadow-[0_0_20px_-3px_rgba(255,255,255,0.3)] active:scale-[0.98]"
+                className="hover:underline underline-offset-4"
               >
-                <Mail className="w-4 h-4 text-black" />
-                <span>omjoshi2307@gmail.com</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                omjoshi2307@gmail.com
               </a>
-
-              <div className="font-mono text-xs text-[#737373] flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5" />
-                <span>Response time: Usually within 24 hours</span>
-              </div>
+            </div>
+            <div className="font-sans text-xs text-[#737373]">
+              Click to open mail client or copy directly · Available for inquiries
             </div>
           </div>
 
-          {/* Right Direct Links & Details */}
-          <div className="lg:col-span-5 border border-[#292929] bg-[#0A0A0A] p-6 sm:p-8 rounded-card space-y-6 font-mono text-xs">
-            <div className="text-[10px] text-[#737373] tracking-widest uppercase pb-2 border-b border-[#292929]">
-              DIRECT CHANNELS &amp; PRESENCE
-            </div>
+          <a
+            href="mailto:omjoshi2307@gmail.com"
+            aria-label="Send email to Om Joshi at omjoshi2307@gmail.com"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] active:scale-[0.98] shrink-0"
+          >
+            <Mail className="w-4 h-4 text-black" />
+            <span>GET IN TOUCH ↗</span>
+          </a>
+        </div>
 
-            <div className="space-y-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 border border-[#292929] rounded-subtle hover:border-white transition-colors text-[#A3A3A3] hover:text-white"
-                aria-label="GitHub profile (opens in a new tab)"
-              >
-                <div className="flex items-center gap-2.5">
-                  <GithubIcon className="w-4 h-4 text-white" />
-                  <span className="font-semibold text-white">GitHub</span>
-                </div>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+        {/* Direct Channels & Profiles Grid */}
+        <div className="space-y-6">
+          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
+            DIRECT CHANNELS &amp; VERIFIED PRESENCE
+          </div>
 
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 border border-[#292929] rounded-subtle hover:border-white transition-colors text-[#A3A3A3] hover:text-white"
-                aria-label="LinkedIn profile (opens in a new tab)"
-              >
-                <div className="flex items-center gap-2.5">
-                  <LinkedinIcon className="w-4 h-4 text-white" />
-                  <span className="font-semibold text-white">LinkedIn</span>
-                </div>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {CONTACT_CHANNELS.map((channel) => {
+              const Icon = channel.icon;
+              return (
+                <a
+                  key={channel.name}
+                  href={channel.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={channel.ariaLabel}
+                  className="group p-5 border border-[#292929] bg-[#0A0A0A]/80 backdrop-blur-md rounded-xl hover:border-white hover:bg-[#0A0A0A]/95 transition-all duration-300 flex flex-col justify-between space-y-4 shadow-lg"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 border border-[#292929] rounded-lg bg-black/40 text-white group-hover:border-white/50 transition-colors">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="font-mono text-sm font-semibold text-white group-hover:underline underline-offset-4">
+                          {channel.name}
+                        </div>
+                        <div className="font-mono text-xs text-[#737373]">
+                          {channel.handle}
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-[#737373] group-hover:text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
 
-              <div className="flex items-start gap-2.5 p-3 border border-[#292929] rounded-subtle text-[#737373]">
-                <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-white font-semibold">Pune, Maharashtra, India</div>
-                  <div className="text-[11px] text-[#737373] mt-0.5">Indian Standard Time · UTC+5:30</div>
-                </div>
-              </div>
-            </div>
+                  <p className="font-sans text-xs text-[#A3A3A3] leading-relaxed">
+                    {channel.description}
+                  </p>
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

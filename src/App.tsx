@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { CinematicIntro } from '@/components/layout/CinematicIntro';
 import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import {
   Hero,
   About,
@@ -13,7 +14,7 @@ import {
   Learning,
   Contact,
 } from '@/sections';
-import { SwarmCursor } from '@/components/ui';
+import { SwarmCursor, BackToTop, BlackHole } from '@/components/ui';
 
 export default function App() {
   // Play on every page refresh; respect prefers-reduced-motion
@@ -84,25 +85,52 @@ export default function App() {
             <Certificates />
             <Interests />
             <Learning />
-            <Contact />
+
+            {/* Contact + Footer Experience: shared wrapper with isolated background canvas */}
+            <div
+              id="contact-footer-experience"
+              className="relative w-full overflow-hidden isolate"
+              style={{ isolation: 'isolate' }}
+            >
+              {/* Isolated Black Hole Background Layer */}
+              <div
+                id="black-hole-background-layer"
+                className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                aria-hidden="true"
+              >
+                <BlackHole
+                  width="100%"
+                  height="100%"
+                  backgroundColor="transparent"
+                  colors={['#FFFFFF', '#737373']}
+                  opacity={0.65}
+                  zoom={1.8}
+                  particleCount={13}
+                  orbSize={0.75}
+                  glow={0.08}
+                  contrast={3}
+                  ringIntensity={1}
+                  mirrorSplits={2}
+                  warpEnabled={true}
+                  distanceFade={0.35}
+                  speed={1}
+                  intro={true}
+                  cursorInteraction={true}
+                  dpr={1.5}
+                />
+              </div>
+
+              {/* Foreground Content Layer */}
+              <div className="relative z-[1]">
+                <Contact />
+                <Footer />
+              </div>
+            </div>
           </main>
         </div>
 
-        {/* Subtle Technical Precision Footer */}
-        <footer className="border-t border-[#292929] py-8 px-6 sm:px-8 lg:px-12 bg-[#0A0A0A] relative z-0">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#A3A3A3]">
-            <div className="flex items-center gap-2">
-              <span className="text-white font-semibold">OM JOSHI</span>
-              <span className="text-[#292929]">·</span>
-              <span>© {new Date().getFullYear()}</span>
-              <span className="text-[#292929]">·</span>
-              <span className="text-[#737373]">Pune, India</span>
-            </div>
-            <div className="text-[11px] text-[#737373]">
-              B.Tech Information Technology · NMIET · 2029
-            </div>
-          </div>
-        </footer>
+        {/* Floating Back to Top button */}
+        <BackToTop />
       </SwarmCursor>
     </div>
   );
