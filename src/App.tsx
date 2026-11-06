@@ -7,7 +7,10 @@ import {
   Skills,
   Projects,
   Experience,
-  Certifications,
+  Achievements,
+  Certificates,
+  Interests,
+  Learning,
   Contact,
 } from '@/sections';
 import { SwarmCursor } from '@/components/ui';
@@ -77,7 +80,10 @@ export default function App() {
             <Skills />
             <Projects />
             <Experience />
-            <Certifications />
+            <Achievements />
+            <Certificates />
+            <Interests />
+            <Learning />
             <Contact />
           </main>
         </div>
