@@ -63,7 +63,7 @@ export function Projects() {
             <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
               04 // SELECTED PROJECTS
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white uppercase">
               FEATURED &amp; TECHNICAL WORK
             </h2>
           </div>
@@ -99,7 +99,7 @@ export function Projects() {
                     )}
                   </div>
 
-                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-medium text-white tracking-tight">
                     {project.title}
                   </h3>
 

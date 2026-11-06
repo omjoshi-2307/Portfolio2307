@@ -384,8 +384,12 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 variants={variants.name}
                 initial="hidden"
                 animate={isRevealed ? 'visible' : 'hidden'}
-                style={{ transformOrigin: 'left center', willChange: 'transform, opacity' }}
-                className="font-heading font-black tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84] select-none"
+                style={{
+                  fontFamily: '"Trixy Stories Bold", "Trixy Stories", serif',
+                  transformOrigin: 'left center',
+                  willChange: 'transform, opacity',
+                }}
+                className="font-trixy font-black tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84] select-none"
               >
                 OM<br />JOSHI.
               </motion.h1>
@@ -398,30 +402,30 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 className="pt-2 sm:pt-2.5 flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wider text-white font-semibold"
               >
                 <Terminal className="w-3.5 h-3.5 text-white shrink-0" />
-                <span>IT Student &amp; Developer</span>
+                <span>IT STUDENT · DEVELOPER</span>
               </motion.div>
             </div>
 
-            {/* Tagline */}
+            {/* Primary Statement */}
             <motion.div
               variants={variants.tagline}
               initial="hidden"
               animate={isRevealed ? 'visible' : 'hidden'}
-              className="border-l-2 border-white pl-3.5 py-0.5"
+              className="border-l-2 border-white pl-4 py-1"
             >
-              <p className="font-heading text-sm sm:text-base md:text-lg font-medium tracking-tight text-[#F5F5F5] italic">
-                “Curious by nature. Practical by approach. Always building.”
+              <p className="font-heading text-base sm:text-lg md:text-xl lg:text-2xl font-normal italic tracking-wide text-[#F5F5F5] leading-snug">
+                Understanding technology. Building things that matter.
               </p>
             </motion.div>
 
-            {/* Narrow Introduction Column */}
+            {/* Introduction Column */}
             <motion.p
               variants={variants.intro}
               initial="hidden"
               animate={isRevealed ? 'visible' : 'hidden'}
               className="font-sans text-xs sm:text-sm text-[#A3A3A3] leading-relaxed max-w-lg text-left"
             >
-              I&apos;m an Information Technology student from Pune, interested in understanding how systems work and building practical solutions. I explore software engineering, full-stack development and cybersecurity through hands-on projects and continuous learning.
+              I&apos;m an Information Technology student from Pune, curious about how software and systems work. I enjoy turning ideas into practical projects, exploring different areas of technology, and learning by building.
             </motion.p>
 
             {/* Calls to Action */}
@@ -434,10 +438,10 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               <a
                 href="#projects"
                 onClick={(e) => handleScrollToNext(e, 'projects')}
-                aria-label="Explore Projects"
+                aria-label="Explore My Work"
                 className="group relative inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-interactive shadow-[0_0_20px_-3px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_-1px_rgba(255,255,255,0.5)] transition-all duration-200 active:scale-[0.98]"
               >
-                <span>Explore Projects</span>
+                <span>EXPLORE MY WORK</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
 
@@ -445,10 +449,10 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="#contact"
                 onClick={(e) => handleScrollToNext(e, 'contact')}
                 aria-label="Get in Touch"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200"
               >
-                <EmailIcon className="w-3.5 h-3.5 text-[#A3A3A3]" />
-                <span>Get in Touch</span>
+                <span>GET IN TOUCH</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
               </a>
             </motion.div>
 
@@ -540,15 +544,15 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
           animate={isRevealed ? 'visible' : 'hidden'}
           className="pt-2 sm:pt-2.5 border-t border-[#292929] flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 text-[10px] sm:text-[11px] font-mono text-[#737373] pointer-events-auto"
         >
-          {/* Left: Exploring & Engineering Philosophy Loop */}
+          {/* Left: Technical Interests & Working Philosophy */}
           <div className="flex flex-col sm:flex-row sm:items-baseline gap-x-3 gap-y-0.5">
             <div>
-              <span className="uppercase tracking-widest text-[#737373]">EXPLORING // </span>
-              <span className="text-white font-medium">SOFTWARE ENGINEERING · FULL-STACK · CYBERSECURITY</span>
+              <span className="uppercase tracking-widest text-[#737373]">INTERESTS // </span>
+              <span className="text-white font-medium">SOFTWARE ENGINEERING · FULL-STACK DEVELOPMENT · CYBERSECURITY</span>
             </div>
             <span className="text-[#292929] hidden sm:inline">·</span>
             <div>
-              <span className="uppercase tracking-widest text-[#737373]">LOOP // </span>
+              <span className="uppercase tracking-widest text-[#737373]">PHILOSOPHY // </span>
               <span className="text-[#A3A3A3]">LEARN → BUILD → TEST → DEBUG → IMPROVE</span>
             </div>
           </div>

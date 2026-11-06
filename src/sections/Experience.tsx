@@ -44,7 +44,7 @@ export function Experience() {
           <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
             05 // EXPERIENCE &amp; ACHIEVEMENTS
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white uppercase">
             MILESTONES &amp; JOURNEY
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#A3A3A3] max-w-2xl leading-relaxed">
@@ -71,7 +71,7 @@ export function Experience() {
               </div>
 
               <div className="space-y-1.5">
-                <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-medium text-white tracking-tight">
                   {item.title}
                 </h3>
                 <div className="font-mono text-xs text-[#A3A3A3]">

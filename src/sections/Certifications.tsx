@@ -42,7 +42,7 @@ export function Certifications() {
           <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
             06 // CERTIFICATIONS &amp; COURSEWORK
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white uppercase">
             TECHNICAL FOUNDATIONS
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#A3A3A3] max-w-2xl leading-relaxed">
@@ -62,7 +62,7 @@ export function Certifications() {
                   <span>{cert.code}</span>
                   <span>{cert.date}</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white tracking-tight">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium text-white tracking-tight">
                   {cert.title}
                 </h3>
                 <div className="font-mono text-xs text-[#A3A3A3]">

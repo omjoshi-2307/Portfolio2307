@@ -165,7 +165,7 @@ export function Header() {
           <a
             href="#home"
             onClick={handleBrandClick}
-            className="group flex items-center gap-1.5 font-heading text-lg sm:text-xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
+            className="group flex items-center gap-1.5 font-heading text-xl sm:text-2xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
             aria-label="Om Joshi Portfolio Home"
           >
             <span>OM JOSHI</span>
@@ -187,7 +187,7 @@ export function Header() {
                   href={item.href}
                   onClick={(e) => handleNavClick(index, item.id, e)}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-200 ${
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 ${
                     isActive
                       ? 'text-white font-semibold bg-white/[0.12] border border-white/20 shadow-[0_1px_10px_rgba(255,255,255,0.06)]'
                       : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05] border border-transparent'
@@ -240,7 +240,7 @@ export function Header() {
                     href={item.href}
                     onClick={(e) => handleNavClick(index, item.id, e)}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-colors ${
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider transition-colors ${
                       isActive
                         ? 'text-white font-semibold bg-white/[0.12] border border-white/20'
                         : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05]'

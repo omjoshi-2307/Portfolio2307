@@ -5,3 +5,4 @@ export type { SwarmCursorProps } from './SwarmCursor';
 export { Lanyard } from './Lanyard';
 export type { LanyardProps } from './Lanyard';
 export { GithubIcon, LinkedinIcon } from './Icons';
+export { TechIcon } from './TechIcons';

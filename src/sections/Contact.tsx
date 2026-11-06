@@ -14,7 +14,7 @@ export function Contact() {
           <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
             07 // CONTACT &amp; INQUIRIES
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white uppercase">
             START A CONVERSATION
           </h2>
         </div>
@@ -29,12 +29,12 @@ export function Contact() {
 
             <div className="space-y-4 pt-2">
               <a
-                href="mailto:omjoshi@example.com"
+                href="mailto:omjoshi2307@gmail.com"
                 aria-label="Send email to Om Joshi"
                 className="group inline-flex items-center gap-3 px-6 py-4 bg-white hover:bg-[#F5F5F5] text-black font-mono text-sm font-semibold uppercase tracking-wider rounded-interactive transition-all shadow-[0_0_20px_-3px_rgba(255,255,255,0.3)] active:scale-[0.98]"
               >
                 <Mail className="w-4 h-4 text-black" />
-                <span>omjoshi@example.com</span>
+                <span>omjoshi2307@gmail.com</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
 
