@@ -6,3 +6,5 @@ export { Lanyard } from './Lanyard';
 export type { LanyardProps } from './Lanyard';
 export { GithubIcon, LinkedinIcon } from './Icons';
 export { TechIcon } from './TechIcons';
+export { ScrollStack, ScrollStackItem } from './ScrollStack';
+export type { ScrollStackProps, ScrollStackItemProps } from './ScrollStack';

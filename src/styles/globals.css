@@ -46,7 +46,7 @@
     background-color: #000000 !important;
     background: #000000 !important;
     color: #FFFFFF !important;
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

@@ -316,6 +316,51 @@ export function TechIcon({ name, className = 'w-4 h-4' }: { name: string; classN
         </svg>
       );
 
+    case 'freighter':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+          <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+          <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+          <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+        </svg>
+      );
+
+    case 'atmega':
+    case 'atmega328p':
+    case 'microcontroller':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <rect x="9" y="9" width="6" height="6" />
+          <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+        </svg>
+      );
+
+    case 'hcsr04':
+    case 'ultrasonic':
+    case 'sensor':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+          <rect x="2" y="6" width="20" height="12" rx="3" />
+          <circle cx="7.5" cy="12" r="3" />
+          <circle cx="16.5" cy="12" r="3" />
+          <circle cx="7.5" cy="12" r="1" fill="currentColor" />
+          <circle cx="16.5" cy="12" r="1" fill="currentColor" />
+        </svg>
+      );
+
+    case 'l298n':
+    case 'motor':
+    case 'motordriver':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 3v4M12 17v4M3 12h4M17 12h4" />
+          <path d="M7.76 7.76l2.83 2.83M13.41 13.41l2.83 2.83M7.76 16.24l2.83-2.83M13.41 10.59l2.83-2.83" />
+          <circle cx="12" cy="12" r="2.5" />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
