@@ -196,7 +196,7 @@ export function Header() {
                   className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                     isActive
                       ? 'text-accent font-semibold bg-white/[0.06] border border-accent/30 shadow-[0_1px_10px_rgba(255,42,133,0.08)]'
-                      : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05] border border-transparent'
+                      : 'text-[#A3A3A3] hover:text-accent hover:bg-white/[0.05] border border-transparent'
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
