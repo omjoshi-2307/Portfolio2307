@@ -70,7 +70,7 @@ export function Learning() {
           {LEARNING_ITEMS.map((item) => (
             <div
               key={item.number}
-              className="p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors"
+              className="p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-accent/[0.025] transition-colors"
             >
               {/* Left Identifier & Area */}
               <div className="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
@@ -90,7 +90,7 @@ export function Learning() {
               {/* Right Status Badge */}
               <div className="shrink-0 pt-1 md:pt-0 pl-10 sm:pl-0">
                 <span className="px-2.5 py-1 text-[10px] font-mono uppercase bg-[#141414] text-white border border-[#292929] rounded-subtle tracking-wider inline-flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   <span>{item.status}</span>
                 </span>
               </div>
