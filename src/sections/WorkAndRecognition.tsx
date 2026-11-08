@@ -14,6 +14,7 @@ import {
   Repeat,
 } from 'lucide-react';
 import { GithubIcon, TechIcon } from '@/components/ui';
+import { SureDEscrowDiagram } from '@/components/illustrations/SureDEscrowDiagram';
 
 // ==========================================
 // DATA: SUBSECTION A — PROJECTS
@@ -559,34 +560,17 @@ export function WorkAndRecognition() {
 
                   {/* Right Column: Restrained Editorial Visual Architecture (lg:col-span-5) */}
                   <div className="lg:col-span-5 p-5 border border-[#292929] bg-[#0E0E0E] rounded-subtle space-y-4">
-                    {/* Visual 1: SureD Escrow State Machine */}
+                    {/* Custom SVG: SureD escrow workflow */}
                     {project.visualType === 'sured' && (
-                      <div className="space-y-4 font-mono text-xs">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 text-[10px] text-[#737373]">
-                          <span>ESCROW PROTOCOL ARCHITECTURE</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                          <span>ESCROW WORKFLOW</span>
                           <span className="text-white">SOROBAN</span>
                         </div>
-                        <div className="space-y-2.5">
-                          {[
-                            { step: '01', label: 'DEPOSIT AGREEMENT', status: 'TENANT / LANDLORD SIGNED' },
-                            { step: '02', label: 'ESCROW CUSTODY', status: 'STELLAR SMART CONTRACT' },
-                            { step: '03', label: 'CONDITION AUDIT', status: 'INSPECTION VERIFICATION' },
-                            { step: '04', label: 'SETTLEMENT DISPATCH', status: 'AUTOMATED RETURN' },
-                          ].map((item) => (
-                            <div
-                              key={item.step}
-                              className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between text-[11px]"
-                            >
-                              <span className="text-[#737373]">{item.step} // {item.label}</span>
-                              <span className="text-white text-[10px] uppercase font-semibold">
-                                {item.status}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="text-[10px] text-[#737373] pt-1 border-t border-[#292929]/50">
+                        <SureDEscrowDiagram />
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] leading-relaxed text-[#737373]">
                           Smart contract backend by Khushal Choudhary · SureD 2.0 planned extension.
-                        </div>
+                        </p>
                       </div>
                     )}
 
