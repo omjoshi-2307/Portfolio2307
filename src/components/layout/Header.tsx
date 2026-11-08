@@ -174,7 +174,7 @@ export function Header() {
             <img
               src="/om-joshi-marathi-logo.svg"
               alt="ओम जोशी"
-              className="h-11 w-[170px] sm:h-12 sm:w-[180px] object-contain object-left"
+              className="h-9 w-[150px] sm:h-10 sm:w-[160px] object-contain object-left"
             />
           </a>
         </div>
