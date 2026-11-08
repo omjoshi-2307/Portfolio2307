@@ -98,7 +98,7 @@ export function CinematicIntro({ onComplete, onReveal }: CinematicIntroProps) {
     // Ensure the font loads before starting to prevent FOIT/FOUT
     if (typeof document !== 'undefined' && 'fonts' in document) {
       document.fonts
-        .load('bold 96px "Trixy Stories Bold"')
+        .load('700 96px "Cormorant Garamond"')
         .then(() => startSequence())
         .catch(() => startSequence());
     } else {
@@ -189,9 +189,9 @@ export function CinematicIntro({ onComplete, onReveal }: CinematicIntroProps) {
         {/* Main Centered Identity: OM JOSHI (Scales as one unified composition during Phase D zoom) */}
         <div className="relative flex items-center justify-center my-2 sm:my-3">
           <motion.div
-            className="font-trixy font-bold tracking-wider uppercase text-[#FFFFFF] select-none text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[11rem] leading-none whitespace-nowrap"
+            className="font-display font-bold tracking-wider uppercase text-[#FFFFFF] select-none text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[11rem] leading-none whitespace-nowrap"
             style={{
-              fontFamily: '"Trixy Stories Bold", "Trixy Stories"',
+              fontFamily: '"Cormorant Garamond", Georgia, serif',
               transformOrigin: '50% 50%',
               willChange: 'transform',
               backfaceVisibility: 'hidden',

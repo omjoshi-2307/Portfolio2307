@@ -1,20 +1,5 @@
 @import './tokens.css';
 
-@font-face {
-  font-family: 'Trixy Stories Bold';
-  src:
-    local('Trixy Stories Bold'),
-    local('TrixyStories-Bold'),
-    local('Trixy Stories'),
-    url('/fonts/TrixyStories-Bold.woff2') format('woff2'),
-    url('/fonts/TrixyStories-Bold.woff') format('woff'),
-    url('/fonts/TrixyStories-Bold.otf') format('opentype'),
-    url('/fonts/TrixyStories-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: block;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

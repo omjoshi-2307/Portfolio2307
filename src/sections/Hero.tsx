@@ -81,36 +81,52 @@ function formatPune24HourTime(date: Date): string {
 }
 
 export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: HeroProps) {
-  // Responsive desktop detection for Lanyard full-screen positioning vs mobile inline stack
+  // Use the actual desktop breakpoint rather than reacting to every resize event.
   const [isDesktop, setIsDesktop] = useState<boolean>(() => {
     if (typeof window === 'undefined') return true;
-    return window.innerWidth >= 1024;
+    return window.matchMedia('(min-width: 1024px)').matches;
   });
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    const handleChange = (event: MediaQueryListEvent) => setIsDesktop(event.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   // Live Pune 24-hour clock state
   const [puneTime, setPuneTime] = useState<string>(() => formatPune24HourTime(new Date()));
 
   useEffect(() => {
-    // Update the displayed clock once per minute
-    const interval = window.setInterval(() => {
-      setPuneTime(formatPune24HourTime(new Date()));
-    }, 60_000);
+    // Align updates to the start of each minute so the clock does not drift.
+    let interval: number | null = null;
+    const updateTime = () => setPuneTime(formatPune24HourTime(new Date()));
+    const now = new Date();
+    const untilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 
-    return () => window.clearInterval(interval);
+    const timeout = window.setTimeout(() => {
+      updateTime();
+      interval = window.setInterval(updateTime, 60_000);
+    }, untilNextMinute);
+
+    return () => {
+      window.clearTimeout(timeout);
+      if (interval !== null) window.clearInterval(interval);
+    };
   }, []);
 
-  // Respect prefers-reduced-motion
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Keep motion preferences current if the operating-system setting changes.
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = (event: MediaQueryListEvent) => setPrefersReducedMotion(event.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   const handleScrollToNext = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -122,12 +138,8 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
     }
   };
 
-  // Latch reveal state so Hero entrance animation triggers once and remains permanently visible
-  const [isRevealed, setIsRevealed] = useState<boolean>(() => introFinished || prefersReducedMotion);
-
-  if (introFinished && !isRevealed) {
-    setIsRevealed(true);
-  }
+  // The intro completion flag is latched by the parent; reduced motion reveals immediately.
+  const isRevealed = introFinished || prefersReducedMotion;
 
   // Coordinated animation variants memoized to prevent variant churn on clock ticks
   const variants = useMemo(() => {
@@ -279,7 +291,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
   return (
     <section
       id="hero"
-      aria-label="Hero Introduction"
+      aria-labelledby="hero-title"
       className="relative min-h-[calc(100vh-4rem)] lg:h-[calc(100svh-4rem)] lg:min-h-0 flex flex-col justify-between px-6 sm:px-8 lg:px-12 py-3 sm:py-5 lg:py-4 overflow-hidden bg-transparent"
     >
       {/* Anchor alias for #home */}
@@ -366,7 +378,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             </div>
             <span className="text-[#292929] hidden sm:inline">|</span>
             <div className="hidden sm:flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <span className={`w-1.5 h-1.5 rounded-full bg-white ${prefersReducedMotion ? '' : 'animate-pulse'}`} aria-hidden="true" />
               <span className="text-[#737373] uppercase tracking-wider">STATUS //</span>
               <span className="text-[#A3A3A3] uppercase">CURRENTLY LEARNING &amp; BUILDING</span>
             </div>
@@ -380,15 +392,16 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             {/* Massive Bold Left-Aligned Typography */}
             <div className="space-y-1">
               <motion.h1
+                id="hero-title"
                 variants={variants.name}
                 initial="hidden"
                 animate={isRevealed ? 'visible' : 'hidden'}
                 style={{
-                  fontFamily: '"Trixy Stories Bold", "Trixy Stories", serif',
+                  fontFamily: '"Cormorant Garamond", Georgia, serif',
                   transformOrigin: 'left center',
                   willChange: 'transform, opacity',
                 }}
-                className="font-trixy font-black tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84] select-none"
+                className="font-display font-bold tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84]"
               >
                 OM<br />JOSHI.
               </motion.h1>
@@ -438,7 +451,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="#projects"
                 onClick={(e) => handleScrollToNext(e, 'projects')}
                 aria-label="Explore My Work"
-                className="group relative inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-interactive shadow-[0_0_20px_-3px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_-1px_rgba(255,255,255,0.5)] transition-all duration-200 active:scale-[0.98]"
+                className="group relative inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-interactive shadow-[0_0_20px_-3px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_-1px_rgba(255,255,255,0.5)] transition-all duration-200 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 <span>EXPLORE MY WORK</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -448,7 +461,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="/resume.pdf"
                 download="Om-Joshi-Resume.pdf"
                 aria-label="Download Om Joshi Resume"
-                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200"
+                className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 <span>DOWNLOAD RESUME</span>
                 <ArrowDownToLine className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-y-0.5 group-hover:text-white" />
@@ -458,7 +471,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="#contact"
                 onClick={(e) => handleScrollToNext(e, 'contact')}
                 aria-label="Get in Touch"
-                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200"
+                className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 <span>GET IN TOUCH</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
@@ -476,7 +489,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="https://github.com/omjoshi-2307"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 rounded-sm hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 aria-label="Om Joshi GitHub Profile (opens in new tab)"
               >
                 <GithubIcon className="w-3.5 h-3.5" />
@@ -487,7 +500,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="https://www.linkedin.com/in/0m-joshi2307/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 rounded-sm hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 aria-label="Om Joshi LinkedIn Profile (opens in new tab)"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
@@ -496,7 +509,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
               <a
                 href="mailto:omjoshi2307@gmail.com"
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 rounded-sm hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 aria-label="Send Direct Email to omjoshi2307@gmail.com"
               >
                 <EmailIcon className="w-3.5 h-3.5" />
@@ -572,10 +585,11 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               href="#about"
               onClick={(e) => handleScrollToNext(e, 'about')}
               aria-label="Scroll to explore about section"
-              className="group inline-flex items-center gap-1.5 font-mono text-xs tracking-widest text-[#737373] hover:text-white transition-colors cursor-pointer select-none"
+              className="group inline-flex min-h-11 items-center gap-1.5 rounded-sm font-mono text-xs tracking-widest text-[#737373] hover:text-white transition-colors cursor-pointer select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               <span className="uppercase text-[11px]">SCROLL TO EXPLORE</span>
               <motion.span
+                aria-hidden="true"
                 animate={prefersReducedMotion ? undefined : { y: [0, 3, 0] }}
                 transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
                 className="inline-block text-xs"

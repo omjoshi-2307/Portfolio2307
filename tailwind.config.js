@@ -45,7 +45,6 @@ export default {
         editorial: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
-        trixy: ['"Trixy Stories Bold"', 'serif'],
       },
       borderRadius: {
         sharp: '0px',
