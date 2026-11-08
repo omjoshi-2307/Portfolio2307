@@ -17,6 +17,20 @@ const DURATION_SUPPORT = 0.55;
 const DURATION_LANYARD = 0.85;
 const EASE_EDITORIAL = [0.16, 1, 0.3, 1] as const;
 
+// Short, explicit Devanagari grapheme stages keep matras attached while typing.
+const MARATHI_NAME_FRAMES = ['ओ', 'ओम', 'ओम ', 'ओम ज', 'ओम जो', 'ओम जोश', 'ओम जोशी'];
+const ENGLISH_NAME_FRAMES = ['O', 'OM', 'OM ', 'OM J', 'OM JO', 'OM JOS', 'OM JOSH', 'OM JOSHI'];
+const NAME_FRAMES = [
+  ...MARATHI_NAME_FRAMES,
+  ...Array(8).fill('ओम जोशी'),
+  ...MARATHI_NAME_FRAMES.slice(0, -1).reverse(),
+  '',
+  ...ENGLISH_NAME_FRAMES,
+  ...Array(8).fill('OM JOSHI'),
+  ...ENGLISH_NAME_FRAMES.slice(0, -1).reverse(),
+  '',
+];
+
 function GithubIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
     <svg
@@ -139,6 +153,21 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
       window.scrollTo({ top: window.innerHeight, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     }
   };
+
+  // Loop the Marathi and English name states with a restrained typewriter cadence.
+  const [nameFrameIndex, setNameFrameIndex] = useState<number>(0);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const interval = window.setInterval(() => {
+      setNameFrameIndex((index) => (index + 1) % NAME_FRAMES.length);
+    }, 145);
+    return () => window.clearInterval(interval);
+  }, [prefersReducedMotion]);
+
+  const displayedName = prefersReducedMotion ? 'ओम जोशी' : NAME_FRAMES[nameFrameIndex];
+  const [firstName = '', lastName = ''] = displayedName.split(' ');
+  const isMarathiName = /[\\u0900-\\u097F]/.test(displayedName);
 
   // The intro completion flag is latched by the parent; reduced motion reveals immediately.
   const isRevealed = introFinished || prefersReducedMotion;
@@ -397,17 +426,30 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             <div className="space-y-1">
               <motion.h1
                 id="hero-title"
+                aria-label="Om Joshi"
                 variants={variants.name}
                 initial="hidden"
                 animate={isRevealed ? 'visible' : 'hidden'}
                 style={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontFamily: isMarathiName
+                    ? '"Tiro Devanagari Marathi", "Noto Sans Devanagari", sans-serif'
+                    : '"Cormorant Garamond", Georgia, serif',
                   transformOrigin: 'left center',
                   willChange: 'transform, opacity',
                 }}
-                className="font-display font-bold tracking-[-0.04em] text-white uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84]"
+                className="font-display font-bold tracking-[-0.035em] text-white text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.9] min-h-[1.8em]"
               >
-                OM<br />JOSHI.
+                <span className="sr-only">Om Joshi</span>
+                <span aria-hidden="true" className="block">{firstName || '\u00A0'}</span>
+                <span aria-hidden="true" className="block min-h-[0.9em]">
+                  {lastName || '\u00A0'}
+                  {!prefersReducedMotion && (
+                    <span
+                      className="inline-block h-[0.72em] border-l-[3px] border-white ml-2 align-baseline opacity-80"
+                      aria-hidden="true"
+                    />
+                  )}
+                </span>
               </motion.h1>
 
               {/* Role */}
