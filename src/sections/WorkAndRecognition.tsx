@@ -8,7 +8,6 @@ import {
   Calendar,
   CheckCircle2,
   Sparkles,
-  Repeat,
 } from 'lucide-react';
 import { GithubIcon, TechIcon } from '@/components/ui';
 import {
@@ -331,19 +330,6 @@ const ACHIEVEMENTS: Achievement[] = [
   },
 ];
 
-// ==========================================
-// DATA: SUBSECTION E — CURRENT FOCUS
-// ==========================================
-const CURRENT_FOCUS_AREAS = [
-  { name: 'Software Engineering', description: 'Design patterns, system architecture and maintainable codebases' },
-  { name: 'Full-Stack Development', description: 'API design, component lifecycles and state synchronization' },
-  { name: 'Cybersecurity', description: 'Network defense, authentication primitives and access control' },
-  { name: 'Artificial Intelligence', description: 'Intelligent systems, practical pipelines and model application' },
-  { name: 'Computer Vision', description: 'Depth estimation, OpenCV, object detection and image geometry' },
-  { name: 'Blockchain', description: 'Decentralized escrow, smart contracts and ledger state machines' },
-  { name: 'Embedded Systems', description: 'Microcontrollers, sensor integration and hardware assembly' },
-] as const;
-
 export function WorkAndRecognition() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -369,7 +355,7 @@ export function WorkAndRecognition() {
               WORK &amp; RECOGNITION.
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#A3A3A3] max-w-xl leading-relaxed">
-              A consolidated record of software engineering projects, hands-on hackathon sprints, verified milestones, technical credentials and active development pursuits.
+              Selected projects, collaborative experiences and recognitions that reflect how I approach practical engineering.
             </p>
           </div>
         </div>
@@ -830,65 +816,11 @@ export function WorkAndRecognition() {
           </div>
         </div>
 
-        {/* =================================================================== */}
-        {/* SUBSECTION D: CURRENT FOCUS                                         */}
-        {/* =================================================================== */}
-        <div className="relative space-y-8 pt-8 border-t border-[#292929]">
-          <div id="current-focus" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-          <div id="learning" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-          <div id="interests" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-          {/* Subsection Header */}
-          <div className="space-y-2 pb-4 border-b border-[#292929]/70">
-            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-white" />
-              <span className="text-white font-semibold">04.D</span>
-              <span className="text-[#292929]">/</span>
-              <span>ACTIVE HORIZONS</span>
-            </div>
-            <h3 className="font-heading text-3xl sm:text-4xl font-medium tracking-tight text-white uppercase">
-              CURRENT FOCUS.
-            </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#A3A3A3] max-w-xl leading-relaxed">
-              Active engineering interests and the continuous iteration loop driving my everyday practice.
-            </p>
-          </div>
-
-          {/* 7 Focus Areas Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {CURRENT_FOCUS_AREAS.map((focus, idx) => (
-              <div
-                key={focus.name}
-                className="p-4 border border-[#292929] bg-[#0A0A0A] rounded-xl space-y-1.5 hover:border-white/40 transition-colors"
-              >
-                <div className="flex items-center justify-between font-mono text-[10px] text-[#858585]">
-                  <span>DIRECTION // 0{idx + 1}</span>
-                  <span className="w-1 h-1 rounded-full bg-white" />
-                </div>
-                <div className="font-heading text-lg font-medium text-white tracking-tight">
-                  {focus.name}
-                </div>
-                <p className="font-sans text-xs text-[#A3A3A3] leading-relaxed">
-                  {focus.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Concise Learning Philosophy Banner */}
-          <div className="p-6 sm:p-8 border border-[#292929] bg-[#0E0E0E] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-xl">
-            <div className="space-y-1">
-              <div className="font-mono text-[10px] uppercase text-[#858585] tracking-widest">
-                ENGINEERING PHILOSOPHY //
-              </div>
-              <div className="font-mono text-sm sm:text-base font-semibold text-white tracking-wider">
-                LEARN → BUILD → TEST → DEBUG → IMPROVE → REPEAT.
-              </div>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#858585]">
-              <Repeat className="w-4 h-4 text-white" />
-              <span>Disciplined Iteration</span>
-            </div>
-          </div>
+        {/* Preserve legacy deep links; current learning areas live in Skills. */}
+        <div className="sr-only" aria-hidden="true">
+          <span id="current-focus" />
+          <span id="learning" />
+          <span id="interests" />
         </div>
       </div>
     </section>
