@@ -65,9 +65,9 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="inline-flex items-center gap-1.5 text-[#A3A3A3] hover:text-white transition-colors duration-200 group"
+                  className="inline-flex items-center gap-1.5 text-[#A3A3A3] hover:text-accent transition-colors duration-200 group"
                 >
-                  <Icon className="w-3.5 h-3.5 text-[#858585] group-hover:text-white transition-colors" />
+                  <Icon className="w-3.5 h-3.5 text-[#858585] group-hover:text-accent transition-colors" />
                   <span className="group-hover:underline underline-offset-4">{link.name}</span>
                 </a>
               );
