@@ -14,7 +14,13 @@ import {
   Repeat,
 } from 'lucide-react';
 import { GithubIcon, TechIcon } from '@/components/ui';
-import { SureDEscrowDiagram } from '@/components/illustrations/SureDEscrowDiagram';
+import {
+  SureDEscrowDiagram,
+  DepthWizardDiagram,
+  WalleRobotDiagram,
+  JalSanchaeeDiagram,
+  CivicLoopDiagram,
+} from '@/components/illustrations/ProjectDiagrams';
 
 // ==========================================
 // DATA: SUBSECTION A — PROJECTS
@@ -574,116 +580,59 @@ export function WorkAndRecognition() {
                       </div>
                     )}
 
-                    {/* Visual 2: DepthWizard AI Depth Pipeline */}
+                    {/* Custom SVG: DepthWizard computer-vision pipeline */}
                     {project.visualType === 'depthwizard' && (
-                      <div className="space-y-4 font-mono text-xs">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 text-[10px] text-[#737373]">
-                          <span>ISRO SIH26175 PIPELINE</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                          <span>IMAGE-TO-3D PIPELINE</span>
                           <span className="text-white">COMPUTER VISION</span>
                         </div>
-                        <div className="space-y-2">
-                          {project.pipeline?.map((stage, idx) => (
-                            <div
-                              key={stage}
-                              className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between text-[11px]"
-                            >
-                              <span className="text-white font-medium">0{idx + 1} / {stage}</span>
-                              <span className="text-[#737373] text-[10px]">STAGE 0{idx + 1}</span>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="text-[10px] text-[#737373] pt-1 border-t border-[#292929]/50 flex items-center gap-1.5">
-                          <Users className="w-3 h-3 text-[#737373]" />
-                          <span>Team SochX Horizon · Internal Round Participation</span>
-                        </div>
+                        <DepthWizardDiagram />
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                          Team SochX Horizon · SIH 2026 internal selection round.
+                        </p>
                       </div>
                     )}
 
-                    {/* Visual 3: WALL-E Hardware Circuit Diagram */}
+                    {/* Custom SVG: WALL-E hardware architecture */}
                     {project.visualType === 'walle' && (
-                      <div className="space-y-4 font-mono text-xs">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 text-[10px] text-[#737373]">
-                          <span>EMBEDDED HARDWARE ARCHITECTURE</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                          <span>ROBOT CONTROL ARCHITECTURE</span>
                           <span className="text-white">ARDUINO</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-2 text-[11px]">
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414]">
-                            <div className="text-[10px] text-[#737373]">CONTROLLER</div>
-                            <div className="text-white font-semibold">ATmega328P</div>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414]">
-                            <div className="text-[10px] text-[#737373]">SENSOR</div>
-                            <div className="text-white font-semibold">HC-SR04</div>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414]">
-                            <div className="text-[10px] text-[#737373]">MOTOR DRIVER</div>
-                            <div className="text-white font-semibold">L298N DUAL H</div>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414]">
-                            <div className="text-[10px] text-[#737373]">LOGIC</div>
-                            <div className="text-white font-semibold">COLLISION LOOP</div>
-                          </div>
-                        </div>
-                        <div className="text-[10px] text-[#737373] pt-1 border-t border-[#292929]/50 flex items-center gap-1.5">
-                          <Cpu className="w-3 h-3 text-[#737373]" />
-                          <span>Independent Physical Build · Autonomous Navigation</span>
-                        </div>
+                        <WalleRobotDiagram />
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                          Physical hardware build · Autonomous obstacle avoidance.
+                        </p>
                       </div>
                     )}
 
-                    {/* Visual 4: Jal-Sanchaee-Navachar Telemetry Concept */}
+                    {/* Custom SVG: Jal-Sanchaee water monitoring concept */}
                     {project.visualType === 'water' && (
-                      <div className="space-y-4 font-mono text-xs">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 text-[10px] text-[#737373]">
-                          <span>URBAN TELEMETRY ARCHITECTURE</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                          <span>WATER MONITORING CONCEPT</span>
                           <span className="text-white">TECHATHON</span>
                         </div>
-                        <div className="space-y-2 text-[11px]">
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between">
-                            <span className="text-[#737373]">INGESTION</span>
-                            <span className="text-white">ULTRASONIC TANK SENSORS</span>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between">
-                            <span className="text-[#737373]">MONITORING</span>
-                            <span className="text-white">OVERFLOW &amp; LEAK DETECTION</span>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between">
-                            <span className="text-[#737373]">DASHBOARD</span>
-                            <span className="text-white">COMMUNITY WATER CREDITS</span>
-                          </div>
-                        </div>
-                        <div className="text-[10px] text-[#737373] pt-1 border-t border-[#292929]/50 flex items-center gap-1.5">
-                          <Droplet className="w-3 h-3 text-[#737373]" />
-                          <span>24-Hour Prototype Sprint · Team Presentation</span>
-                        </div>
+                        <JalSanchaeeDiagram />
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                          AISSMS Techathon 3.0 · 24-hour rapid prototype concept.
+                        </p>
                       </div>
                     )}
 
-                    {/* Visual 5: CivicLoop Governance Concept */}
+                    {/* Custom SVG: CivicLoop proposed accountability flow */}
                     {project.visualType === 'civicloop' && (
-                      <div className="space-y-4 font-mono text-xs">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 text-[10px] text-[#737373]">
-                          <span>CIVIC ACCOUNTABILITY FLOW</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                          <span>PUBLIC ACCOUNTABILITY FLOW</span>
                           <span className="text-white">ANVESHANA</span>
                         </div>
-                        <div className="space-y-2 text-[11px]">
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between">
-                            <span className="text-[#737373]">REPORTING</span>
-                            <span className="text-white">GEO-TAGGED CITIZEN ISSUES</span>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between">
-                            <span className="text-[#737373]">CLUSTERING</span>
-                            <span className="text-white">AUTOMATED DUPLICATE MERGE</span>
-                          </div>
-                          <div className="p-2 border border-[#292929]/80 bg-[#141414] flex items-center justify-between">
-                            <span className="text-[#737373]">AUDIT TRAIL</span>
-                            <span className="text-white">VERIFIED RESOLUTION EVIDENCE</span>
-                          </div>
-                        </div>
-                        <div className="text-[10px] text-[#737373] pt-1 border-t border-[#292929]/50 flex items-center gap-1.5">
-                          <Award className="w-3 h-3 text-white" />
-                          <span>Top 60 Pune Region Selection · Early Concept</span>
-                        </div>
+                        <CivicLoopDiagram />
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                          Proposed feature architecture · Early-stage initiative, not yet implemented.
+                        </p>
                       </div>
                     )}
                   </div>
