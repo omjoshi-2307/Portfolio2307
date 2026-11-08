@@ -6,8 +6,6 @@ import {
   Users,
   Calendar,
   CheckCircle2,
-  ExternalLink,
-  ShieldCheck,
   Sparkles,
   Repeat,
 } from 'lucide-react';
@@ -277,75 +275,6 @@ const ACHIEVEMENTS: Achievement[] = [
       'AWS Student Community Engagement',
       'Continuous Technical Exploration',
     ],
-  },
-];
-
-// ==========================================
-// DATA: SUBSECTION D — CERTIFICATES
-// ==========================================
-interface Certificate {
-  id: string;
-  code: string;
-  title: string;
-  issuer: string;
-  category: string;
-  verificationUrl?: string;
-  isVerifiedLink?: boolean;
-  notes?: string;
-}
-
-const CERTIFICATES: Certificate[] = [
-  {
-    id: 'ibm-python-101',
-    code: 'CERT // 01',
-    title: 'Python 101 for Data Science',
-    issuer: 'IBM / Cognitive Class',
-    category: 'DATA SCIENCE & COMPUTATION',
-    verificationUrl: 'https://courses.cognitiveclass.ai/certificates/3c105827fd0d435da8785fded690cc4b',
-    isVerifiedLink: true,
-    notes: 'Verified IBM-accredited Cognitive Class credential covering data structures, Pandas, NumPy, and analytical foundations.',
-  },
-  {
-    id: 'cognitive-cs105',
-    code: 'CERT // 02',
-    title: 'CS105 — Introduction to Python',
-    issuer: 'Cognitive Class',
-    category: 'FOUNDATIONAL PROGRAMMING',
-    verificationUrl: 'https://www.credly.com/users/om-joshi2623',
-    isVerifiedLink: true,
-    notes: 'Foundational Python control flow, algorithmic problem solving, functions, and structured modular programming.',
-  },
-  {
-    id: 'ethical-hacking-101',
-    code: 'CERT // 03',
-    title: 'Ethical Hacking 101',
-    issuer: 'Cybersecurity Education',
-    category: 'CYBERSECURITY & DEFENSIVE SYSTEMS',
-    notes: 'Defensive fundamentals, network reconnaissance, attack surface identification, and secure system practices.',
-  },
-  {
-    id: 'python-3x',
-    code: 'CERT // 04',
-    title: 'Programming with Python 3.X',
-    issuer: 'Advanced Coursework',
-    category: 'CORE SOFTWARE DEVELOPMENT',
-    notes: 'Object-oriented programming, exception handling, standard library utilities, and idiomatic Python development.',
-  },
-  {
-    id: 'ms-intro-ml',
-    code: 'CERT // 05',
-    title: 'Introduction to Machine Learning',
-    issuer: 'Microsoft Learn',
-    category: 'ARTIFICIAL INTELLIGENCE & ML',
-    notes: 'Core machine learning models, supervised classification, regression metrics, and predictive feature engineering.',
-  },
-  {
-    id: 'ms-web-vscode',
-    code: 'CERT // 06',
-    title: 'Web Development with VS Code',
-    issuer: 'Microsoft Learn',
-    category: 'FRONTEND ARCHITECTURE & TOOLING',
-    notes: 'Modern web development toolchains, DOM manipulation, debugging workflows, and source-control integration in VS Code.',
   },
 ];
 
@@ -819,94 +748,7 @@ export function WorkAndRecognition() {
         </div>
 
         {/* =================================================================== */}
-        {/* SUBSECTION D: CERTIFICATES                                          */}
-        {/* =================================================================== */}
-        <div className="relative space-y-12 pt-8 border-t border-[#292929]">
-          <div id="certificates" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-          <div id="certifications" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
-          {/* Subsection Header */}
-          <div className="space-y-2 pb-4 border-b border-[#292929]/70">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div>
-                <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                  <span className="text-white font-semibold">04.D</span>
-                  <span className="text-[#292929]">/</span>
-                  <span>VERIFIED CREDENTIALS</span>
-                </div>
-                <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white uppercase">
-                  CERTIFICATES.
-                </h3>
-                <p className="font-sans text-xs sm:text-sm text-[#A3A3A3] max-w-xl leading-relaxed mt-1">
-                  Foundational certifications and coursework completed through recognized programmes.
-                </p>
-              </div>
-
-              {/* Credly Profile External Link */}
-              <a
-                href="https://www.credly.com/users/om-joshi2623"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-[#292929] bg-[#0A0A0A] hover:border-white rounded-interactive font-mono text-xs text-[#A3A3A3] hover:text-white transition-colors group shrink-0"
-                aria-label="View Om Joshi Credly Profile with verified badges (opens in a new tab)"
-              >
-                <span>View All Badges on Credly</span>
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Compact Certificates Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CERTIFICATES.map((cert) => (
-              <div
-                key={cert.id}
-                className="border border-[#292929] bg-[#0A0A0A] p-5 sm:p-6 rounded-xl flex flex-col justify-between space-y-4 hover:border-[#737373] transition-colors"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between font-mono text-[10px] text-[#737373]">
-                    <span className="text-white font-semibold uppercase">{cert.code}</span>
-                    <span className="text-[#737373] uppercase">{cert.issuer}</span>
-                  </div>
-
-                  <h4 className="font-heading text-xl font-medium text-white tracking-tight">
-                    {cert.title}
-                  </h4>
-
-                  {cert.notes && (
-                    <p className="font-sans text-xs text-[#A3A3A3] leading-relaxed">
-                      {cert.notes}
-                    </p>
-                  )}
-                </div>
-
-                {/* Verification Action / Indicator */}
-                <div className="pt-3 border-t border-[#292929]/50 flex items-center justify-between text-xs font-mono">
-                  <div className="flex items-center gap-1.5 text-[11px] text-[#737373]">
-                    <ShieldCheck className="w-3.5 h-3.5 text-white" />
-                    <span>{cert.isVerifiedLink ? 'Verified Credential' : 'Coursework Credential'}</span>
-                  </div>
-
-                  {cert.verificationUrl && (
-                    <a
-                      href={cert.verificationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-[#A3A3A3] hover:text-white underline underline-offset-4"
-                      aria-label={`Verify ${cert.title} credential (opens in new tab)`}
-                    >
-                      <span>Verify</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* =================================================================== */}
-        {/* SUBSECTION E: CURRENT FOCUS                                         */}
+        {/* SUBSECTION D: CURRENT FOCUS                                         */}
         {/* =================================================================== */}
         <div className="relative space-y-8 pt-8 border-t border-[#292929]">
           <div id="current-focus" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
@@ -916,7 +758,7 @@ export function WorkAndRecognition() {
           <div className="space-y-2 pb-4 border-b border-[#292929]/70">
             <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
-              <span className="text-white font-semibold">04.E</span>
+              <span className="text-white font-semibold">04.D</span>
               <span className="text-[#292929]">/</span>
               <span>ACTIVE HORIZONS</span>
             </div>

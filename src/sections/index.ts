@@ -5,8 +5,6 @@ export * from './WorkAndRecognition';
 export * from './Projects';
 export * from './Experience';
 export * from './Achievements';
-export * from './Certificates';
-export { Certificates as Certifications } from './Certificates';
 export * from './Interests';
 export * from './Learning';
 export * from './Contact';
