@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { CinematicIntro } from '@/components/layout/CinematicIntro';
 import { NotFound } from '@/components/layout/NotFound';
 import { Header } from '@/components/layout/Header';
@@ -10,7 +10,11 @@ import {
   WorkAndRecognition,
   Contact,
 } from '@/sections';
-import { SwarmCursor, BackToTop, BlackHole } from '@/components/ui';
+import { SwarmCursor, BackToTop } from '@/components/ui';
+
+const DeferredBlackHole = lazy(() =>
+  import('@/components/ui/BlackHole').then(({ BlackHole }) => ({ default: BlackHole })),
+);
 
 const BLACK_HOLE_COLORS: [string, string] = ['#FFFFFF', '#737373'];
 
@@ -25,6 +29,32 @@ export default function App() {
     if (typeof window === 'undefined') return true;
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   });
+
+  const [isBlackHoleNearViewport, setIsBlackHoleNearViewport] = useState(false);
+  const blackHoleLayerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const layer = blackHoleLayerRef.current;
+    if (!layer) return;
+
+    if (!('IntersectionObserver' in window)) {
+      setIsBlackHoleNearViewport(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsBlackHoleNearViewport(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '800px 0px' },
+    );
+
+    observer.observe(layer);
+    return () => observer.disconnect();
+  }, []);
 
   const handleHeroReveal = useCallback(() => {
     setIsHeroRevealed(true);
@@ -97,29 +127,34 @@ export default function App() {
               {/* Isolated Black Hole Background Layer */}
               <div
                 id="black-hole-background-layer"
+                ref={blackHoleLayerRef}
                 className="sticky top-0 -mb-[100vh] h-screen w-full pointer-events-none z-0"
                 aria-hidden="true"
               >
-                <BlackHole
-                  width="100%"
-                  height="100%"
-                  backgroundColor="transparent"
-                  colors={BLACK_HOLE_COLORS}
-                  opacity={0.65}
-                  zoom={1.8}
-                  particleCount={13}
-                  orbSize={0.75}
-                  glow={0.08}
-                  contrast={3}
-                  ringIntensity={1}
-                  mirrorSplits={2}
-                  warpEnabled={true}
-                  distanceFade={0.35}
-                  speed={1}
-                  intro={true}
-                  cursorInteraction={false}
-                  dpr={1.5}
-                />
+                {isBlackHoleNearViewport && (
+                  <Suspense fallback={null}>
+                    <DeferredBlackHole
+                      width="100%"
+                      height="100%"
+                      backgroundColor="transparent"
+                      colors={BLACK_HOLE_COLORS}
+                      opacity={0.65}
+                      zoom={1.8}
+                      particleCount={13}
+                      orbSize={0.75}
+                      glow={0.08}
+                      contrast={3}
+                      ringIntensity={1}
+                      mirrorSplits={2}
+                      warpEnabled={true}
+                      distanceFade={0.35}
+                      speed={1}
+                      intro={true}
+                      cursorInteraction={false}
+                      dpr={1.5}
+                    />
+                  </Suspense>
+                )}
               </div>
 
               {/* Foreground Content Layer */}

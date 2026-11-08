@@ -1,0 +1,11 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "url": ["https://portfolio2307.vercel.app/"],
+      "settings": {
+        "preset": "desktop"
+      }
+    }
+  }
+}

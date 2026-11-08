@@ -1,0 +1,36 @@
+name: Lighthouse performance audit
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    name: Core Web Vitals and Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        preset: [mobile, desktop]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Allow Vercel production deployment to finish
+        run: sleep 45
+
+      - name: Run Lighthouse (${{ matrix.preset }})
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://portfolio2307.vercel.app/
+          runs: 3
+          configPath: ./.lighthouserc.${{ matrix.preset }}.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true

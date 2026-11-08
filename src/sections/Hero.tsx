@@ -1,8 +1,10 @@
-import { useState, useEffect, useMemo } from 'react';
+import { lazy, Suspense, useState, useEffect, useMemo } from 'react';
 import { motion, type Variants } from 'motion/react';
 import { ArrowDownToLine, ArrowUpRight, Terminal } from 'lucide-react';
 import grayscalePortrait from '@/assets/photo-grayscale.jpeg';
-import { Lanyard } from '@/components/ui';
+const LazyLanyard = lazy(() =>
+  import('@/components/ui/Lanyard').then(({ Lanyard }) => ({ default: Lanyard })),
+);
 
 interface HeroProps {
   introFinished?: boolean;
@@ -322,7 +324,8 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
         >
           <div className="w-full h-full pointer-events-auto">
             {isRevealed && (
-              <Lanyard
+              <Suspense fallback={null}>
+                <LazyLanyard
                 key="desktop-lanyard"
                 frontImage={imageSrc}
                 backImage={imageSrc}
@@ -344,7 +347,8 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 interactive={true}
                 intro={!prefersReducedMotion}
                 className="w-full h-full"
-              />
+                />
+              </Suspense>
             )}
           </div>
         </motion.div>
@@ -530,7 +534,8 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             >
               <div className="w-full max-w-md h-[380px] sm:h-[440px] select-none">
                 {isRevealed && (
-                  <Lanyard
+                  <Suspense fallback={null}>
+                    <LazyLanyard
                     key="mobile-lanyard"
                     frontImage={imageSrc}
                     backImage={imageSrc}
@@ -552,7 +557,8 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                     interactive={true}
                     intro={!prefersReducedMotion}
                     className="w-full h-full"
-                  />
+                    />
+                  </Suspense>
                 )}
               </div>
             </motion.div>
