@@ -136,7 +136,7 @@ export function Skills() {
                 {category.skills.map((skill) => (
                   <li
                     key={skill}
-                    className="inline-flex items-center gap-2 border border-[#292929] px-2.5 py-2 text-xs text-[#D4D4D4] transition-colors duration-200 hover:border-[#666666] hover:text-white"
+                    className="inline-flex items-center gap-2 border border-[#292929] px-2.5 py-2 text-xs text-[#D4D4D4] transition-colors duration-200 hover:border-accent/70 hover:text-accent"
                   >
                     <span className="text-[#8A8A8A]" aria-hidden="true">
                       <TechIcon name={skill} className="h-3.5 w-3.5" />
@@ -152,7 +152,7 @@ export function Skills() {
         <motion.div {...reveal} className="space-y-6 border-t border-[#292929] pt-8 sm:pt-10">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#292929]/70 pb-3">
             <div className="flex items-center gap-2.5">
-              <Compass className="h-4 w-4 text-[#A3A3A3]" aria-hidden="true" />
+              <Compass className="h-4 w-4 text-accent" aria-hidden="true" />
               <h3 className="font-mono text-xs font-semibold tracking-[0.16em] text-white sm:text-sm">
                 CURRENT FOCUS
               </h3>
@@ -164,13 +164,13 @@ export function Skills() {
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {CURRENT_FOCUS.map((item, index) => (
-              <div key={item.title} className="space-y-3 border-l border-[#3A3A3A] py-1 pl-4">
+              <div key={item.title} className="space-y-3 border-l border-accent/50 py-1 pl-4">
                 <div className="flex items-center justify-between gap-3">
                   <h4 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
                     {item.title}
                   </h4>
                   {index === 0 && (
-                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#858585]" aria-hidden="true" />
+                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-accent" aria-hidden="true" />
                   )}
                 </div>
                 <p className="text-xs leading-relaxed text-[#858585]">{item.description}</p>
