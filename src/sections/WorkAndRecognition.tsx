@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'motion/react';
 import {
   ArrowUpRight,
   Terminal,
@@ -362,6 +363,8 @@ const CURRENT_FOCUS_AREAS = [
 ] as const;
 
 export function WorkAndRecognition() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="work"
@@ -411,11 +414,16 @@ export function WorkAndRecognition() {
           </div>
 
           {/* Project Cards Sequence */}
-          <div className="space-y-8">
-            {PROJECTS.map((project) => (
-              <article
+          <div className="relative space-y-8 lg:space-y-0">
+            {PROJECTS.map((project, index) => (
+              <motion.article
                 key={project.title}
-                className="bg-[#0A0A0A] border border-[#292929] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl transition-all duration-300 hover:border-[#737373] relative flex flex-col justify-between space-y-6"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.55, delay: shouldReduceMotion ? 0 : 0.04, ease: [0.16, 1, 0.3, 1] }}
+                style={{ zIndex: index + 1 }}
+                className="relative flex flex-col justify-between space-y-6 rounded-2xl border border-[#292929] bg-[#0A0A0A] p-6 shadow-2xl transition-[border-color,box-shadow] duration-300 hover:border-[#737373] sm:p-8 lg:sticky lg:top-24 lg:mb-8 lg:p-10"
               >
                 {/* 1. Header Bar: Number, Title, Classification & Badges */}
                 <div className="space-y-3 border-b border-[#292929] pb-5">
@@ -634,7 +642,7 @@ export function WorkAndRecognition() {
                     )}
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
