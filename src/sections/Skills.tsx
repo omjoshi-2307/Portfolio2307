@@ -13,31 +13,31 @@ const SKILL_CATEGORIES: SkillCategory[] = [
   {
     number: '01',
     title: 'Programming Languages',
-    description: 'Languages used across coursework, problem-solving and project development.',
-    skills: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript', 'Rust'],
+    description: 'Languages used in coursework and software projects.',
+    skills: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript'],
   },
   {
     number: '02',
     title: 'Frontend & Interface',
-    description: 'Building responsive interfaces and component-based web experiences.',
-    skills: ['HTML', 'CSS', 'React', 'Tailwind CSS', 'Vite', 'Framer Motion', 'shadcn/ui'],
+    description: 'Building responsive interfaces with modern frontend tools.',
+    skills: ['HTML', 'CSS', 'React', 'Tailwind CSS', 'Vite', 'Motion', 'shadcn/ui'],
   },
   {
     number: '03',
     title: 'Backend & Data',
-    description: 'Application logic, API integration and working with application data.',
-    skills: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'PostgreSQL', 'Prisma'],
+    description: 'Server-side application logic, API integration and document databases.',
+    skills: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB'],
   },
   {
     number: '04',
     title: 'Blockchain & Hardware',
-    description: 'Exploring decentralised applications and practical hardware projects.',
-    skills: ['Stellar', 'Soroban', 'Freighter Wallet', 'Arduino'],
+    description: 'Working with wallet integration in blockchain applications and hands-on hardware projects.',
+    skills: ['Stellar', 'Freighter Wallet', 'Arduino'],
   },
   {
     number: '05',
     title: 'Developer Tools',
-    description: 'Tools used for development, collaboration, design and deployment.',
+    description: 'Tools used across coding, version control, design and deployment workflows.',
     skills: ['Git', 'GitHub', 'VS Code', 'Vercel', 'Figma', 'Docker', 'Antigravity'],
   },
 ];
@@ -98,8 +98,7 @@ export function Skills() {
               Skills &amp; Technologies.
             </h2>
             <p className="max-w-2xl font-sans text-sm leading-relaxed text-[#A3A3A3] sm:text-base">
-              A practical toolkit shaped by coursework, experimentation and building software.
-              I focus on applying fundamentals, then expanding them through real projects.
+              A practical toolkit built through coursework and project work. The technologies listed reflect tools I have worked with; my current learning areas are shown separately below.
             </p>
           </div>
         </motion.div>
@@ -159,7 +158,7 @@ export function Skills() {
               </h3>
             </div>
             <span className="font-mono text-[10px] tracking-wider text-[#737373]">
-              AREAS I’M ACTIVELY DEVELOPING
+              AREAS I’M CURRENTLY LEARNING
             </span>
           </div>
 
