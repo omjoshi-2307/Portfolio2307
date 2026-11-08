@@ -817,7 +817,14 @@ const SwarmCursor = ({
       move(s, dt / 2, ease);
       move(s, dt / 2, ease);
       draw();
-      raf = requestAnimationFrame(frame);
+      const idleHidden =
+        s.idle === 'hide' &&
+        !pointer.inside &&
+        presence < 0.01 &&
+        introClock >= 1 &&
+        burst.age > 1.2 &&
+        ping.age > 1.6;
+      if (!idleHidden) raf = requestAnimationFrame(frame);
     };
 
     function wake() {
@@ -844,6 +851,7 @@ const SwarmCursor = ({
       pointer.x = x;
       pointer.y = y;
       pointer.inside = inside;
+      wake();
     };
 
     const onScroll = () => {
@@ -901,6 +909,7 @@ const SwarmCursor = ({
 
     const onPointerLeave = () => {
       pointer.inside = false;
+      wake();
     };
 
     const onVisibility = () => {

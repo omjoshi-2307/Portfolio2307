@@ -159,27 +159,24 @@ export function BlackHole({
     const container = containerRef.current;
     if (!container) return;
 
-    // Respect user's motion preferences
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const effectiveSpeed = prefersReducedMotion ? 0 : speed;
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let prefersReducedMotion = motionQuery.matches;
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, dpr);
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance',
+      antialias: false,
+      powerPreference: 'low-power',
     });
 
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, dpr);
     renderer.setPixelRatio(pixelRatio);
     renderer.setSize(container.clientWidth, container.clientHeight);
-    if (backgroundColor === 'transparent') {
-      renderer.setClearColor(0x000000, 0);
-    } else {
-      renderer.setClearColor(new THREE.Color(backgroundColor), 1);
-    }
+    renderer.setClearColor(
+      backgroundColor === 'transparent' ? 0x000000 : new THREE.Color(backgroundColor),
+      backgroundColor === 'transparent' ? 0 : 1
+    );
 
     container.appendChild(renderer.domElement);
     renderer.domElement.style.width = '100%';
@@ -188,9 +185,10 @@ export function BlackHole({
 
     const color1 = new THREE.Color(colors[0]);
     const color2 = new THREE.Color(colors[1]);
-
     const uniforms = {
-      uResolution: { value: new THREE.Vector2(container.clientWidth * pixelRatio, container.clientHeight * pixelRatio) },
+      uResolution: {
+        value: new THREE.Vector2(container.clientWidth * pixelRatio, container.clientHeight * pixelRatio),
+      },
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0.5, 0.5) },
       uZoom: { value: zoom },
@@ -202,11 +200,11 @@ export function BlackHole({
       uMirrorSplits: { value: mirrorSplits },
       uWarpEnabled: { value: warpEnabled ? 1.0 : 0.0 },
       uDistanceFade: { value: distanceFade },
-      uSpeed: { value: effectiveSpeed },
+      uSpeed: { value: prefersReducedMotion ? 0 : speed },
       uColor1: { value: new THREE.Vector3(color1.r, color1.g, color1.b) },
       uColor2: { value: new THREE.Vector3(color2.r, color2.g, color2.b) },
       uOpacity: { value: opacity },
-      uIntroProgress: { value: intro ? 0.0 : 1.0 },
+      uIntroProgress: { value: prefersReducedMotion || !intro ? 1.0 : 0.0 },
       uCursorInteraction: { value: cursorInteraction ? 1.0 : 0.0 },
     };
 
@@ -218,22 +216,59 @@ export function BlackHole({
       depthWrite: false,
       depthTest: false,
     });
-
     const geometry = new THREE.PlaneGeometry(2, 2);
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    scene.add(new THREE.Mesh(geometry, material));
 
-    // Mouse tracking
     let targetMouseX = 0.5;
     let targetMouseY = 0.5;
     let currentMouseX = 0.5;
     let currentMouseY = 0.5;
+    let isVisible = false;
+    let animationFrameId: number | null = null;
+    const startTime = performance.now();
+    const introDuration = 1800;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const shouldAnimate = () =>
+      !prefersReducedMotion &&
+      (speed > 0 || (intro && uniforms.uIntroProgress.value < 1) || cursorInteraction);
+
+    const renderFrame = (currentTime: number) => {
+      animationFrameId = null;
+      if (!isVisible || document.hidden) return;
+
+      const elapsedMs = currentTime - startTime;
+      uniforms.uTime.value = prefersReducedMotion ? 0 : elapsedMs / 1000;
+
+      if (prefersReducedMotion) {
+        uniforms.uIntroProgress.value = 1;
+      } else if (intro && uniforms.uIntroProgress.value < 1) {
+        const progress = Math.min(1, elapsedMs / introDuration);
+        uniforms.uIntroProgress.value = 1 - Math.pow(1 - progress, 3);
+      }
+
+      if (cursorInteraction) {
+        currentMouseX += (targetMouseX - currentMouseX) * 0.05;
+        currentMouseY += (targetMouseY - currentMouseY) * 0.05;
+        uniforms.uMouse.value.set(currentMouseX, currentMouseY);
+      }
+
+      renderer.render(scene, camera);
+      if (shouldAnimate()) {
+        animationFrameId = requestAnimationFrame(renderFrame);
+      }
+    };
+
+    const wake = () => {
+      if (isVisible && !document.hidden && animationFrameId === null) {
+        animationFrameId = requestAnimationFrame(renderFrame);
+      }
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       if (rect.width > 0 && rect.height > 0) {
-        targetMouseX = (e.clientX - rect.left) / rect.width;
-        targetMouseY = 1.0 - (e.clientY - rect.top) / rect.height;
+        targetMouseX = (event.clientX - rect.left) / rect.width;
+        targetMouseY = 1 - (event.clientY - rect.top) / rect.height;
       }
     };
 
@@ -242,55 +277,64 @@ export function BlackHole({
       targetMouseY = 0.5;
     };
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('mouseleave', handleMouseLeave);
-
-    // Resize observer
-    const resizeObserver = new ResizeObserver((entries) => {
+    const resizeObserver = new ResizeObserver(entries => {
       for (const entry of entries) {
         const { width, height } = entry.contentRect;
         if (width > 0 && height > 0) {
           renderer.setSize(width, height);
           uniforms.uResolution.value.set(width * pixelRatio, height * pixelRatio);
+          wake();
         }
       }
     });
-
     resizeObserver.observe(container);
 
-    // Animation loop
-    let animationFrameId: number;
-    const startTime = performance.now();
-    const introDuration = 1800; // ms
-
-    const animate = (currentTime: number) => {
-      const elapsedMs = currentTime - startTime;
-      const elapsedSec = elapsedMs / 1000;
-
-      uniforms.uTime.value = elapsedSec;
-
-      if (intro && uniforms.uIntroProgress.value < 1.0) {
-        const progress = Math.min(1.0, elapsedMs / introDuration);
-        // Smooth ease-out
-        uniforms.uIntroProgress.value = 1.0 - Math.pow(1.0 - progress, 3);
+    const intersectionObserver = new IntersectionObserver(entries => {
+      isVisible = entries.some(entry => entry.isIntersecting);
+      if (isVisible) {
+        wake();
+      } else if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
       }
+    });
+    intersectionObserver.observe(container);
 
-      // Smooth mouse interpolation
-      currentMouseX += (targetMouseX - currentMouseX) * 0.05;
-      currentMouseY += (targetMouseY - currentMouseY) * 0.05;
-      uniforms.uMouse.value.set(currentMouseX, currentMouseY);
-
-      renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(animate);
+    const handleVisibilityChange = () => {
+      if (document.hidden && animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      } else {
+        wake();
+      }
     };
 
-    animationFrameId = requestAnimationFrame(animate);
+    const handleMotionChange = (event: MediaQueryListEvent) => {
+      prefersReducedMotion = event.matches;
+      uniforms.uSpeed.value = prefersReducedMotion ? 0 : speed;
+      if (prefersReducedMotion) uniforms.uIntroProgress.value = 1;
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      wake();
+    };
+
+    if (cursorInteraction) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+      window.addEventListener('mouseleave', handleMouseLeave);
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    motionQuery.addEventListener('change', handleMotionChange);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      motionQuery.removeEventListener('change', handleMotionChange);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
 
       if (renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);

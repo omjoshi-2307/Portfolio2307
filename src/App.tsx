@@ -12,6 +12,8 @@ import {
 } from '@/sections';
 import { SwarmCursor, BackToTop, BlackHole } from '@/components/ui';
 
+const BLACK_HOLE_COLORS: [string, string] = ['#FFFFFF', '#737373'];
+
 export default function App() {
   // Play on every page refresh; respect prefers-reduced-motion
   const [isIntroActive, setIsIntroActive] = useState<boolean>(() => {
@@ -56,7 +58,7 @@ export default function App() {
 
       {/* Shared SwarmCursor wrapping the entire portfolio content */}
       <SwarmCursor
-        count={500}
+        count={320}
         size={2}
         shape="dot"
         color="#FFFFFF"
@@ -73,6 +75,7 @@ export default function App() {
         hideCursor={false}
         intro={true}
         enabled={!isIntroActive}
+        dpr={1.5}
         className="flex-1 flex flex-col justify-between min-h-screen bg-black"
         style={{ backgroundColor: '#000000' }}
       >
@@ -101,7 +104,7 @@ export default function App() {
                   width="100%"
                   height="100%"
                   backgroundColor="transparent"
-                  colors={['#FFFFFF', '#737373']}
+                  colors={BLACK_HOLE_COLORS}
                   opacity={0.65}
                   zoom={1.8}
                   particleCount={13}
