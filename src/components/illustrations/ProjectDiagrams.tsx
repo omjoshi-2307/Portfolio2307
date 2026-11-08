@@ -24,24 +24,13 @@ const Frame = ({ children, title, description, ...props }: DiagramProps & {
 function Backdrop() {
   return (
     <>
-      <defs>
-        <pattern id="diagram-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-          <path d="M24 0H0V24" stroke="#FFFFFF" strokeOpacity=".045" strokeWidth=".7" />
-        </pattern>
-        <linearGradient id="diagram-panel" x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#1B1B1B" />
-          <stop offset="1" stopColor="#0B0B0B" />
-        </linearGradient>
-        <linearGradient id="diagram-accent" x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#F5F5F5" />
-          <stop offset="1" stopColor="#737373" />
-        </linearGradient>
-        <filter id="diagram-shadow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="10" />
-        </filter>
-      </defs>
       <rect width="760" height="470" rx="14" fill="#090909" />
-      <rect width="760" height="470" rx="14" fill="url(#diagram-grid)" />
+      <path
+        d="M24 78H736M24 102H736M24 126H736M24 150H736M24 174H736M24 198H736M24 222H736M24 246H736M24 270H736M24 294H736M24 318H736M24 342H736M24 366H736M24 390H736M24 414H736M24 438H736"
+        stroke="#FFFFFF"
+        strokeOpacity=".025"
+        strokeWidth=".7"
+      />
       <path d="M24 54H736" stroke="#343434" />
       <circle cx="30" cy="28" r="3" fill="#737373" />
       <circle cx="43" cy="28" r="3" fill="#525252" />
@@ -74,13 +63,13 @@ export function SureDEscrowDiagram(props: DiagramProps) {
         <path d="M286 361H190V397H286M474 361H570V397H474" strokeDasharray="4 5" />
       </g>
       <g>
-        <rect x="38" y="82" width="194" height="72" rx="9" fill="url(#diagram-panel)" stroke="#555" />
+        <rect x="38" y="82" width="194" height="72" rx="9" fill="#151515" stroke="#555" />
         <circle cx="75" cy="118" r="19" fill="#222" stroke="#777" />
         <circle cx="75" cy="111" r="5" stroke="#E5E5E5" strokeWidth="1.4" />
         <path d="M65 128C67 119 83 119 85 128" stroke="#E5E5E5" strokeWidth="1.4" strokeLinecap="round" />
         <text x="108" y="111" fill="#737373" fontSize="9" fontFamily="monospace" letterSpacing="1.5">PARTY 01</text>
         <text x="108" y="132" fill="#F5F5F5" fontSize="15" fontWeight="600">TENANT</text>
-        <rect x="528" y="82" width="194" height="72" rx="9" fill="url(#diagram-panel)" stroke="#555" />
+        <rect x="528" y="82" width="194" height="72" rx="9" fill="#151515" stroke="#555" />
         <circle cx="565" cy="118" r="19" fill="#222" stroke="#777" />
         <circle cx="565" cy="111" r="5" stroke="#E5E5E5" strokeWidth="1.4" />
         <path d="M555 128C557 119 573 119 575 128" stroke="#E5E5E5" strokeWidth="1.4" strokeLinecap="round" />
@@ -140,7 +129,7 @@ export function DepthWizardDiagram(props: DiagramProps) {
       <path d="M32 100H728" stroke="#333" />
       {stages.map((s, i) => (
         <g key={s.kind}>
-          <rect x={s.x} y="143" width="112" height="194" rx="9" fill="url(#diagram-panel)" stroke={i === 2 ? '#A3A3A3' : '#414141'} />
+          <rect x={s.x} y="143" width="112" height="194" rx="9" fill="#151515" stroke={i === 2 ? '#A3A3A3' : '#414141'} />
           <text x={s.x + 12} y="165" fill="#737373" fontSize="8" fontFamily="monospace">0{i + 1}</text>
           {i < 4 && <path d={`M${s.x + 116} 240H${s.x + 142}`} stroke="#777" strokeWidth="1.3" />}
           {i < 4 && <path d={`M${s.x + 136} 235L${s.x + 142} 240L${s.x + 136} 245`} stroke="#A3A3A3" strokeWidth="1.2" />}
@@ -211,7 +200,7 @@ export function WalleRobotDiagram(props: DiagramProps) {
         <path d="M374 198L380 204L386 198M374 309L380 315L386 309" />
       </g>
       <g>
-        <rect x="267" y="100" width="226" height="76" rx="10" fill="url(#diagram-panel)" stroke="#777" />
+        <rect x="267" y="100" width="226" height="76" rx="10" fill="#151515" stroke="#777" />
         <rect x="287" y="117" width="48" height="42" rx="6" fill="#242424" stroke="#666" />
         <circle cx="303" cy="138" r="9" stroke="#E5E5E5" strokeWidth="1.5" />
         <circle cx="321" cy="138" r="9" stroke="#E5E5E5" strokeWidth="1.5" />
@@ -224,7 +213,7 @@ export function WalleRobotDiagram(props: DiagramProps) {
         <text x="354" y="235" fill="#858585" fontSize="9" fontFamily="monospace">CONTROL UNIT</text>
         <text x="354" y="257" fill="#F5F5F5" fontSize="14" fontWeight="600">ARDUINO UNO</text>
         <text x="380" y="303" textAnchor="middle" fill="#737373" fontSize="8" fontFamily="monospace">DIRECTION / PWM SIGNALS</text>
-        <rect x="267" y="315" width="226" height="68" rx="10" fill="url(#diagram-panel)" stroke="#777" />
+        <rect x="267" y="315" width="226" height="68" rx="10" fill="#151515" stroke="#777" />
         <rect x="287" y="330" width="48" height="38" rx="5" fill="#252525" stroke="#666" />
         <path d="M297 341H325M297 349H325M297 357H325" stroke="#AAA" strokeWidth="1" />
         <text x="354" y="343" fill="#858585" fontSize="9" fontFamily="monospace">MOTOR DRIVER</text>
@@ -261,7 +250,7 @@ export function JalSanchaeeDiagram(props: DiagramProps) {
       <Header index="04" name="JAL-SANCHAEE / WATER INTELLIGENCE" tag="AISSMS TECHATHON 3.0" />
       <text x="32" y="84" fill="#737373" fontSize="9" fontFamily="monospace" letterSpacing="1.5">CONCEPTUAL MONITORING ARCHITECTURE</text>
       <g>
-        <rect x="34" y="123" width="202" height="270" rx="10" fill="url(#diagram-panel)" stroke="#555" />
+        <rect x="34" y="123" width="202" height="270" rx="10" fill="#151515" stroke="#555" />
         <text x="54" y="151" fill="#858585" fontSize="9" fontFamily="monospace" letterSpacing="1.3">01 / WATER SOURCE</text>
         <path d="M93 190H177V330H93Z" stroke="#D4D4D4" strokeWidth="1.5" />
         <path d="M96 260C113 250 132 270 149 260C162 253 170 258 174 260V327H96Z" fill="#8A8A8A" opacity=".35" />
@@ -279,7 +268,7 @@ export function JalSanchaeeDiagram(props: DiagramProps) {
         <text x="380" y="319" textAnchor="middle" fill="#F5F5F5" fontSize="12" fontWeight="600">TELEMETRY LOGIC</text>
         <text x="380" y="338" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">THRESHOLDS · EVENTS</text>
         <text x="380" y="357" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">OVERFLOW · LEAK ALERTS</text>
-        <rect x="524" y="123" width="202" height="270" rx="10" fill="url(#diagram-panel)" stroke="#555" />
+        <rect x="524" y="123" width="202" height="270" rx="10" fill="#151515" stroke="#555" />
         <text x="544" y="151" fill="#858585" fontSize="9" fontFamily="monospace" letterSpacing="1.3">03 / VISIBILITY</text>
         <rect x="548" y="178" width="154" height="104" rx="6" fill="#080808" stroke="#555" />
         <rect x="560" y="190" width="58" height="34" rx="4" fill="#252525" />
@@ -315,7 +304,7 @@ export function CivicLoopDiagram(props: DiagramProps) {
       <Header index="05" name="CIVICLOOP / ACCOUNTABILITY" tag="ANVESHANA 2026–27" />
       <text x="32" y="84" fill="#737373" fontSize="9" fontFamily="monospace" letterSpacing="1.5">PROPOSED SERVICE FLOW · EARLY-STAGE CONCEPT</text>
       <g>
-        <rect x="32" y="137" width="150" height="186" rx="9" fill="url(#diagram-panel)" stroke="#555" />
+        <rect x="32" y="137" width="150" height="186" rx="9" fill="#151515" stroke="#555" />
         <circle cx="107" cy="188" r="25" stroke="#BDBDBD" strokeWidth="1.4" />
         <path d="M96 190H118M107 179V201" stroke="#E5E5E5" strokeWidth="1.5" strokeLinecap="round" />
         <text x="107" y="244" textAnchor="middle" fill="#F5F5F5" fontSize="11" fontWeight="600">CITIZEN REPORT</text>
@@ -329,7 +318,7 @@ export function CivicLoopDiagram(props: DiagramProps) {
         <text x="289" y="244" textAnchor="middle" fill="#F5F5F5" fontSize="11" fontWeight="600">DUPLICATE CLUSTER</text>
         <text x="289" y="263" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">SIMILARITY MATCH</text>
         <text x="289" y="278" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">MERGE RELATED REPORTS</text>
-        <rect x="396" y="137" width="150" height="186" rx="9" fill="url(#diagram-panel)" stroke="#555" />
+        <rect x="396" y="137" width="150" height="186" rx="9" fill="#151515" stroke="#555" />
         <path d="M471 162L494 174V195C494 213 482 224 471 230C460 224 448 213 448 195V174L471 162Z" stroke="#D4D4D4" strokeWidth="1.5" />
         <path d="M460 194L468 202L483 185" stroke="#D4D4D4" strokeWidth="1.5" strokeLinecap="round" />
         <text x="471" y="244" textAnchor="middle" fill="#F5F5F5" fontSize="11" fontWeight="600">WARD REVIEW</text>
