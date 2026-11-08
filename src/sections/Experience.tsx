@@ -124,12 +124,12 @@ export function Experience() {
             <div key={entry.title + idx} className="relative group">
               {/* Timeline Node Marker */}
               <div
-                className="absolute -left-[31px] sm:-left-[39px] lg:-left-[47px] top-1.5 w-3 h-3 rounded-full bg-black border-2 border-white transition-transform duration-200 group-hover:scale-125 group-hover:bg-white"
+                className="absolute -left-[31px] sm:-left-[39px] lg:-left-[47px] top-1.5 w-3 h-3 rounded-full bg-black border-2 border-accent transition-transform duration-200 group-hover:scale-125 group-hover:bg-accent"
                 aria-hidden="true"
               />
 
               {/* Card Container */}
-              <div className="border border-[#292929] bg-[#0A0A0A] p-6 sm:p-8 rounded-card space-y-4 hover:border-white/40 transition-colors duration-200">
+              <div className="border border-[#292929] bg-[#0A0A0A] p-6 sm:p-8 rounded-card space-y-4 hover:border-accent/40 transition-colors duration-200">
                 {/* Meta Bar: Organisation, Classification & Date */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#292929] pb-3.5 font-mono text-xs">
                   <div className="flex flex-wrap items-center gap-2.5">
@@ -186,7 +186,7 @@ export function Experience() {
                     {entry.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 text-[#A3A3A3] bg-[#111111] rounded-subtle border border-[#292929] hover:border-white/30 transition-colors"
+                        className="px-2.5 py-1 text-[#A3A3A3] bg-[#111111] rounded-subtle border border-[#292929] hover:border-accent/30 transition-colors"
                       >
                         {tag}
                       </span>
