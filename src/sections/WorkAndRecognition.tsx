@@ -442,7 +442,7 @@ export function WorkAndRecognition() {
                     {/* Expandable, evidence-conscious project case study */}
                     {project.caseStudy && (
                       <details className="group border border-[#292929] bg-[#0D0D0D] rounded-subtle">
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3.5 font-mono text-[10px] uppercase tracking-widest text-[#A3A3A3] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3.5 font-mono text-[10px] uppercase tracking-widest text-[#A3A3A3] transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
                           <span>Read project case study</span>
                           <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
                         </summary>
@@ -769,7 +769,7 @@ export function WorkAndRecognition() {
             {ACHIEVEMENTS.map((item) => (
               <div
                 key={item.id}
-                className="bg-[#0A0A0A] border border-[#292929] rounded-xl p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-white transition-all duration-200 group"
+                className="bg-[#0A0A0A] border border-[#292929] rounded-xl p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-accent/60 transition-all duration-200 group"
               >
                 <div className="space-y-4">
                   {/* Card Header: Category & Number */}
