@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'motion/react';
 import {
   ArrowUpRight,
+  ChevronDown,
   Terminal,
   Layers,
   Users,
@@ -36,6 +37,12 @@ interface Project {
   liveUrl?: string;
   githubUrl?: string;
   isEarlyStage?: boolean;
+  caseStudy?: {
+    problem: string;
+    approach: string;
+    role?: string;
+    status: string;
+  };
   visualType: 'sured' | 'depthwizard' | 'walle' | 'water' | 'civicloop';
 }
 
@@ -50,6 +57,16 @@ const PROJECTS: Project[] = [
       'A platform designed to make rental security deposits more transparent through blockchain-powered escrow and tenant-landlord confirmation.',
     contribution:
       'Worked on frontend development, tenant and landlord flows, deposit lifecycle interfaces, Freighter wallet integration, transaction status indicators and user-flow testing.',
+    caseStudy: {
+      problem:
+        'Rental security deposits can be difficult to track when funds, confirmations and refund decisions are handled informally.',
+      approach:
+        'A Soroban escrow workflow records the deposit lifecycle on Stellar: create, fund, tenant and landlord confirmation, then release, with a refund path.',
+      role:
+        'Frontend development across tenant and landlord flows, deposit lifecycle interfaces, Freighter wallet integration, transaction status indicators and user-flow testing.',
+      status:
+        'Live demo linked. Smart-contract implementation was handled by a teammate; this case study describes my frontend contribution.',
+    },
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express.js', 'Stellar', 'Soroban', 'Freighter'],
     liveUrl: 'https://sure-d.vercel.app/',
     githubUrl: 'https://github.com/Khushal-93/SureD',
@@ -70,6 +87,14 @@ const PROJECTS: Project[] = [
       'Team: SochX Horizon (Internal Round)',
     ],
     pipeline: ['RGB IMAGE', 'AI DEPTH ESTIMATION', 'DEPTH MAP', 'DSM GENERATION', '3D FLYTHROUGH'],
+    caseStudy: {
+      problem:
+        'Explore how a single RGB image can be used to estimate scene height and surface structure for disaster-management visualization.',
+      approach:
+        'The team pipeline moves from RGB image to AI depth estimation, depth map, digital surface model (DSM) and a 3D flythrough. Georeferenced inputs can support absolute metric outputs; ordinary images produce relative outputs.',
+      status:
+        'SIH 2026 internal-selection project (SIH26175) by SochX Horizon; presented as a proposed team solution, not a deployed product.',
+    },
     techStack: ['Python', 'OpenCV', 'AI Tooling', 'Computer Vision', 'Digital Surface Models'],
     visualType: 'depthwizard',
   },
@@ -83,6 +108,16 @@ const PROJECTS: Project[] = [
       'An Arduino-based robotics project that uses ultrasonic distance sensing and motor control to detect and avoid obstacles.',
     contribution:
       'Worked on hardware assembly, wiring, Arduino programming, ultrasonic sensor integration, motor control and physical testing.',
+    caseStudy: {
+      problem:
+        'A small mobile robot needs to detect nearby obstacles and choose a safer direction without continuous manual steering.',
+      approach:
+        'The Arduino reads HC-SR04 distance measurements. When an obstacle is within the threshold, the robot stops, scans left and right with a servo, compares distances and drives using the motor controller.',
+      role:
+        'Hardware and documentation lead: circuit integration, obstacle-detection logic, troubleshooting, presentation and demonstration preparation.',
+      status:
+        'Four-week academic team project with a physical working model.',
+    },
     techStack: ['Arduino', 'Embedded C++', 'ATmega328P', 'HC-SR04', 'L298N', 'DC Gear Motors'],
     githubUrl: 'https://github.com/omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot',
     visualType: 'walle',
@@ -97,6 +132,16 @@ const PROJECTS: Project[] = [
       'A rapid-prototyped concept exploring water monitoring, tank-level visibility, overflow alerts and estimated consumption insights.',
     contribution:
       'Contributed to problem research, dashboard wireframes, data-flow mapping, rapid prototyping, presentation and team collaboration.',
+    caseStudy: {
+      problem:
+        'Explore how urban water storage and usage could be made more visible, including tank levels, overflow risk and estimated consumption.',
+      approach:
+        'A 24-hour sprint concept using dashboard wireframes, data-flow mapping, tank-level visibility, overflow alerts and estimated consumption insights.',
+      role:
+        'Contributed to problem research, dashboard wireframes, data-flow mapping, rapid prototyping and presentation.',
+      status:
+        'AISSMS Techathon 3.0 concept/prototype; not a fully integrated or deployed water-management system.',
+    },
     techStack: ['Rapid Prototyping', 'Telemetry Design', 'Dashboard Wireframes', 'Sensor Logic'],
     visualType: 'water',
   },
@@ -116,6 +161,14 @@ const PROJECTS: Project[] = [
       'Evidence-based updates',
       'Ward-level dashboards',
     ],
+    caseStudy: {
+      problem:
+        'Citizens need a clearer way to follow reported civic issues and understand whether progress updates are supported by evidence.',
+      approach:
+        'The proposed platform explores complaint reporting, duplicate clustering, a public status timeline, evidence-based updates and ward-level dashboards.',
+      status:
+        'Selected in Anveshana 2026–27 Top 60, Pune Region. This is an early-stage concept; development has not started and the listed features are proposals.',
+    },
     techStack: ['Civic Architecture', 'Complaint Clustering', 'Public Audit Logs', 'Ward Accountability'],
     visualType: 'civicloop',
   },
@@ -399,6 +452,36 @@ export function WorkAndRecognition() {
                     <p className="font-sans text-sm sm:text-base text-[#CCCCCC] leading-relaxed">
                       {project.description}
                     </p>
+
+                    {/* Expandable, evidence-conscious project case study */}
+                    {project.caseStudy && (
+                      <details className="group border border-[#292929] bg-[#0D0D0D] rounded-subtle">
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3.5 font-mono text-[10px] uppercase tracking-widest text-[#A3A3A3] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                          <span>Read project case study</span>
+                          <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
+                        </summary>
+                        <div className="grid grid-cols-1 gap-4 border-t border-[#292929] p-3.5 sm:grid-cols-2">
+                          <div className="space-y-1.5">
+                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">Problem</h5>
+                            <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.problem}</p>
+                          </div>
+                          <div className="space-y-1.5">
+                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">Approach</h5>
+                            <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.approach}</p>
+                          </div>
+                          {project.caseStudy.role && (
+                            <div className="space-y-1.5">
+                              <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">My contribution</h5>
+                              <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.role}</p>
+                            </div>
+                          )}
+                          <div className="space-y-1.5">
+                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">Status &amp; scope</h5>
+                            <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.status}</p>
+                          </div>
+                        </div>
+                      </details>
+                    )}
 
                     {/* Individual Contribution if available */}
                     {project.contribution && (
