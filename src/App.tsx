@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { CinematicIntro } from '@/components/layout/CinematicIntro';
+import { NotFound } from '@/components/layout/NotFound';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import {
@@ -31,6 +32,10 @@ export default function App() {
     setIsHeroRevealed(true);
     setIsIntroActive(false);
   }, []);
+
+  if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+    return <NotFound />;
+  }
 
   return (
     <div
