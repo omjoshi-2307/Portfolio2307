@@ -72,7 +72,6 @@ function formatPune24HourTime(date: Date): string {
       timeZone: 'Asia/Kolkata',
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit',
       hour12: false,
     });
     return formatter.format(date);
@@ -100,10 +99,10 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
   const [puneTime, setPuneTime] = useState<string>(() => formatPune24HourTime(new Date()));
 
   useEffect(() => {
-    // Update live clock every second
+    // Update the displayed clock once per minute
     const interval = window.setInterval(() => {
       setPuneTime(formatPune24HourTime(new Date()));
-    }, 1000);
+    }, 60_000);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -414,7 +413,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               className="border-l-2 border-white pl-4 py-1"
             >
               <p className="font-heading text-base sm:text-lg md:text-xl lg:text-2xl font-normal italic tracking-wide text-[#F5F5F5] leading-snug">
-                Understanding technology. Building things that matter.
+                Learning systems. Building useful software.
               </p>
             </motion.div>
 
@@ -425,7 +424,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               animate={isRevealed ? 'visible' : 'hidden'}
               className="font-sans text-xs sm:text-sm text-[#A3A3A3] leading-relaxed max-w-lg text-left"
             >
-              I&apos;m an Information Technology student from Pune, curious about how software and systems work. I enjoy turning ideas into practical projects, exploring different areas of technology, and learning by building.
+              I&apos;m an Information Technology student at NMIET, Pune, interested in software engineering and cybersecurity. I enjoy exploring how technology works and turning ideas into practical projects through continuous learning and building.
             </motion.p>
 
             {/* Calls to Action */}
