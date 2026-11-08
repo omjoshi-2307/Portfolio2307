@@ -168,12 +168,14 @@ export function Header() {
           <a
             href="#home"
             onClick={handleBrandClick}
-            className="group flex items-center gap-1.5 font-heading text-xl sm:text-2xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
+            className="group flex items-center gap-1.5 transition-opacity hover:opacity-90"
             aria-label="Om Joshi Portfolio Home"
           >
-            <img src="/favicon.svg" alt="" aria-hidden="true" className="h-7 w-7 shrink-0" />
-            <span>OM JOSHI</span>
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white ml-0.5 transition-transform duration-200 group-hover:scale-125" />
+            <img
+              src="/om-joshi-marathi-logo.svg"
+              alt="ओम जोशी — Om Joshi"
+              className="h-9 w-[120px] sm:h-10 sm:w-[134px] object-contain object-left"
+            />
           </a>
         </div>
 
