@@ -6,7 +6,7 @@
 An evolving portfolio documenting my journey through software
 engineering, technical exploration, and hands-on project development.
 
-[**Live Portfolio**](https://om-joshi-portfolio.vercel.app/) ·
+[**Live Portfolio**](https://portfolio2307.vercel.app/) ·
 [**GitHub**](https://github.com/omjoshi-2307) ·
 [**LinkedIn**](https://www.linkedin.com/in/0m-joshi2307/) ·
 [**X**](https://x.com/omjoshi_2307)
@@ -24,8 +24,7 @@ The portfolio brings together:
 
 -   **About** --- my background and approach to learning.
 -   **Skills** --- technologies and areas I am exploring.
--   **Work & Recognition** --- selected projects, activities,
-    achievements, certificates, and current focus.
+-   **Work & Recognition** --- selected projects, activities, achievements, and current focus.
 -   **Contact** --- direct ways to connect.
 
 The site is designed as an evolving record of what I learn, build, test,
@@ -191,24 +190,6 @@ project work.
 Participation, selection, and recognition are described separately; they
 should not be interpreted as equivalent awards.
 
-### Certificates
-
-Selected credentials listed in the portfolio:
-
--   **Python 101 for Data Science** --- IBM / Cognitive Class.\
-    [Certificate](https://courses.cognitiveclass.ai/certificates/3c105827fd0d435da8785fded690cc4b)
--   **CS105: Introduction to Python** --- Cognitive Class.\
-    [Credly profile](https://www.credly.com/users/om-joshi2623)
--   **Ethical Hacking 101**
--   **Programming with Python 3.X**
--   **Introduction to Machine Learning** --- Microsoft Learn.
--   **Web Development with VS Code** --- Microsoft Learn.
-
-For credentials without a direct certificate URL, use the relevant
-provider or credential record to verify the certificate. The Credly
-profile contains additional badges and credentials:
-[Credly](https://www.credly.com/users/om-joshi2623).
-
 ### Current Focus
 
 Areas I am actively exploring:
@@ -228,7 +209,7 @@ The following is a high-level guide to the application structure. Refer
 to the repository for the complete and current file tree.
 
 ``` text
-om-joshi-portfolio/
+Portfolio2307/
 ├── public/                 # Static assets, fonts, and icons
 ├── src/
 │   ├── assets/             # Images and other imported assets
@@ -261,8 +242,8 @@ File names and directory contents may evolve as the portfolio develops.
 ### 1. Clone the repository
 
 ``` bash
-git clone https://github.com/omjoshi-2307/om-joshi-portfolio.git
-cd om-joshi-portfolio
+git clone https://github.com/omjoshi-2307/Portfolio2307.git
+cd Portfolio2307
 ```
 
 ### 2. Install dependencies
@@ -317,7 +298,7 @@ commands change.
 
 The public portfolio is available at:
 
-**[om-joshi-portfolio.vercel.app](https://om-joshi-portfolio.vercel.app/)**
+**[portfolio2307.vercel.app](https://portfolio2307.vercel.app/)**
 
 The project is associated with Vercel deployment. Build and output
 settings should follow the repository's current Vercel project
@@ -357,7 +338,7 @@ For collaboration, technical discussions, or project-related
 conversations:
 
 -   **Portfolio:**
-    [om-joshi-portfolio.vercel.app](https://om-joshi-portfolio.vercel.app/)
+    [portfolio2307.vercel.app](https://portfolio2307.vercel.app/)
 -   **GitHub:**
     [github.com/omjoshi-2307](https://github.com/omjoshi-2307)
 -   **LinkedIn:**
@@ -365,8 +346,6 @@ conversations:
 -   **X:** [x.com/omjoshi_2307](https://x.com/omjoshi_2307)
 -   **Instagram:**
     [instagram.com/0m.a.joshi](https://www.instagram.com/0m.a.joshi/)
--   **Credly:**
-    [credly.com/users/om-joshi2623](https://www.credly.com/users/om-joshi2623)
 -   **Email:** <omjoshi2307@gmail.com>
 
 ------------------------------------------------------------------------
