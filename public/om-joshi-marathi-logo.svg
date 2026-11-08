@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 40 820 250" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 45 740 220" role="img" aria-labelledby="title desc">
   <title id="title">ओम जोशी</title>
-  <desc id="desc">A geometric Devanagari-inspired personal symbol beside the Marathi name Om Joshi.</desc>
+  <desc id="desc">A geometric personal symbol beside the Marathi name ओम जोशी.</desc>
   <defs>
     <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#fff"/>
@@ -14,6 +14,4 @@
   </g>
   <path d="M278 180l14-14 14 14-14 14z" fill="#fff"/>
   <text x="365" y="190" fill="#fff" font-family="'Tiro Devanagari Marathi','Noto Sans Devanagari','Mukta',sans-serif" font-size="112" font-weight="600" letter-spacing="1">ओम जोशी</text>
-  <text x="371" y="250" fill="#969696" font-family="Manrope,Arial,sans-serif" font-size="23" font-weight="500" letter-spacing="8">OM JOSHI</text>
-  <path d="M365 278h445" stroke="#555" stroke-width="1.5"/>
 </svg>
