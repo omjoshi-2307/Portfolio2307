@@ -23,6 +23,7 @@ export function Header() {
   const isManualScrollingRef = useRef<boolean>(false);
   const scrollTimeoutRef = useRef<number | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Scroll spy & background glass intensity tracker
   const handleScroll = useCallback(() => {
@@ -85,7 +86,10 @@ export function Header() {
     if (!isMobileMenuOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -210,10 +214,12 @@ export function Header() {
         {/* Mobile Navigation Toggle Button */}
         <div className="flex items-center md:hidden" ref={mobileMenuRef}>
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] active:bg-white/[0.12] transition-colors focus:outline-none focus:ring-1 focus:ring-white/30"
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation-menu"
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             {isMobileMenuOpen ? (
@@ -225,7 +231,9 @@ export function Header() {
 
           {/* Mobile Glassmorphic Dropdown Panel */}
           {isMobileMenuOpen && (
-            <div
+            <nav
+              id="mobile-navigation-menu"
+              aria-label="Mobile Portfolio Navigation"
               className="absolute top-full left-4 right-4 mt-2 p-3 rounded-2xl bg-black/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col gap-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
             >
               <div className="px-3 py-1.5 text-[10px] font-mono uppercase text-[#737373] tracking-widest border-b border-white/[0.06] mb-1">
@@ -252,7 +260,7 @@ export function Header() {
                   </a>
                 );
               })}
-            </div>
+            </nav>
           )}
         </div>
       </div>

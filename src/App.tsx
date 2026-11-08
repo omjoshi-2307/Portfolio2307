@@ -37,6 +37,10 @@ export default function App() {
       className="min-h-screen bg-black text-white selection:bg-white selection:text-black flex flex-col justify-between"
       style={{ backgroundColor: '#000000', color: '#FFFFFF' }}
     >
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+
       {/* Cinematic Gothic Intro Overlay - mounts over the homepage */}
       {isIntroActive && (
         <CinematicIntro
@@ -70,7 +74,7 @@ export default function App() {
         {/* Main Page Layout - ALWAYS mounted behind the intro to ensure seamless reveal */}
         <div className="relative z-0 bg-transparent">
           <Header />
-          <main>
+          <main id="main-content" tabIndex={-1}>
             <Hero introFinished={isHeroRevealed} />
             <About />
             <Skills />
