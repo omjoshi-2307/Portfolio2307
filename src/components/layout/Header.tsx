@@ -171,6 +171,7 @@ export function Header() {
             className="group flex items-center gap-1.5 font-heading text-xl sm:text-2xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
             aria-label="Om Joshi Portfolio Home"
           >
+            <img src="/favicon.svg" alt="" aria-hidden="true" className="h-7 w-7 shrink-0" />
             <span>OM JOSHI</span>
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-white ml-0.5 transition-transform duration-200 group-hover:scale-125" />
           </a>
