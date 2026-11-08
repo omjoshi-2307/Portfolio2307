@@ -79,13 +79,13 @@ export default function App() {
             {/* Contact + Footer Experience: shared wrapper with isolated background canvas */}
             <div
               id="contact-footer-experience"
-              className="relative w-full overflow-hidden isolate"
+              className="relative w-full isolate"
               style={{ isolation: 'isolate' }}
             >
               {/* Isolated Black Hole Background Layer */}
               <div
                 id="black-hole-background-layer"
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                className="sticky top-0 -mb-[100vh] h-screen w-full pointer-events-none z-0"
                 aria-hidden="true"
               >
                 <BlackHole
