@@ -359,7 +359,7 @@ export function WorkAndRecognition() {
       <div className="max-w-7xl mx-auto space-y-24 sm:space-y-32">
         {/* ================= MASTER SECTION HEADER ================= */}
         <div className="space-y-4 pb-8 border-b border-[#292929]">
-          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+          <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
             <span className="text-white font-semibold">04 // PORTFOLIO CHRONICLE</span>
             <span className="text-[#292929]">·</span>
             <span>EXPERIENCE &amp; CODE</span>
@@ -381,7 +381,7 @@ export function WorkAndRecognition() {
           <div id="projects" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
           {/* Subsection Header */}
           <div className="space-y-2 pb-4 border-b border-[#292929]/70">
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span className="text-white font-semibold">04.A</span>
               <span className="text-[#292929]">/</span>
@@ -415,7 +415,7 @@ export function WorkAndRecognition() {
                         PROJECT // {project.number}
                       </span>
                       <span className="text-[#292929]">·</span>
-                      <span className="text-[#737373] tracking-wider uppercase">
+                      <span className="text-[#858585] tracking-wider uppercase">
                         {project.classification}
                       </span>
                     </div>
@@ -462,21 +462,21 @@ export function WorkAndRecognition() {
                         </summary>
                         <div className="grid grid-cols-1 gap-4 border-t border-[#292929] p-3.5 sm:grid-cols-2">
                           <div className="space-y-1.5">
-                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">Problem</h5>
+                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#858585]">Problem</h5>
                             <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.problem}</p>
                           </div>
                           <div className="space-y-1.5">
-                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">Approach</h5>
+                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#858585]">Approach</h5>
                             <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.approach}</p>
                           </div>
                           {project.caseStudy.role && (
                             <div className="space-y-1.5">
-                              <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">My contribution</h5>
+                              <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#858585]">My contribution</h5>
                               <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.role}</p>
                             </div>
                           )}
                           <div className="space-y-1.5">
-                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">Status &amp; scope</h5>
+                            <h5 className="font-mono text-[10px] uppercase tracking-widest text-[#858585]">Status &amp; scope</h5>
                             <p className="font-sans text-xs leading-relaxed text-[#A3A3A3]">{project.caseStudy.status}</p>
                           </div>
                         </div>
@@ -486,7 +486,7 @@ export function WorkAndRecognition() {
                     {/* Individual Contribution if available */}
                     {project.contribution && (
                       <div className="p-3.5 border border-[#292929] bg-[#111111]/60 rounded-subtle space-y-1.5">
-                        <div className="font-mono text-[10px] uppercase tracking-widest text-[#737373] flex items-center gap-1.5">
+                        <div className="font-mono text-[10px] uppercase tracking-widest text-[#858585] flex items-center gap-1.5">
                           <Terminal className="w-3 h-3 text-white" />
                           <span>MY CONTRIBUTION //</span>
                         </div>
@@ -499,7 +499,7 @@ export function WorkAndRecognition() {
                     {/* Project Specific Details (DepthWizard) */}
                     {project.details && (
                       <div className="p-3.5 border border-[#292929] bg-[#111111]/60 rounded-subtle space-y-2 font-mono text-xs">
-                        <div className="text-[10px] uppercase tracking-widest text-[#737373] flex items-center gap-1.5">
+                        <div className="text-[10px] uppercase tracking-widest text-[#858585] flex items-center gap-1.5">
                           <Layers className="w-3 h-3 text-white" />
                           <span>PROJECT CONTEXT //</span>
                         </div>
@@ -517,7 +517,7 @@ export function WorkAndRecognition() {
                     {/* Proposed Areas (CivicLoop) */}
                     {project.proposedAreas && (
                       <div className="p-3.5 border border-[#292929] bg-[#111111]/60 rounded-subtle space-y-2">
-                        <div className="font-mono text-[10px] uppercase tracking-widest text-[#737373] flex items-center gap-1.5">
+                        <div className="font-mono text-[10px] uppercase tracking-widest text-[#858585] flex items-center gap-1.5">
                           <Layers className="w-3 h-3 text-white" />
                           <span>PROPOSED SYSTEM ARCHITECTURE //</span>
                         </div>
@@ -534,7 +534,7 @@ export function WorkAndRecognition() {
 
                     {/* Tech Stack Tags with Monochrome Icons */}
                     <div className="space-y-2 pt-1">
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">
+                      <div className="font-mono text-[10px] uppercase tracking-widest text-[#858585]">
                         TECHNOLOGY &amp; CONCEPTS //
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
@@ -559,7 +559,7 @@ export function WorkAndRecognition() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group inline-flex items-center gap-2 px-4 py-2 bg-white text-black font-mono text-xs font-semibold uppercase tracking-wider rounded-interactive hover:bg-[#F5F5F5] transition-all"
-                            aria-label={`Visit live deployment of ${project.title} (opens in a new tab)`}
+                            aria-label={`Live Platform — ${project.title} (opens in a new tab)`}
                           >
                             <span>Live Platform</span>
                             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -571,7 +571,7 @@ export function WorkAndRecognition() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs uppercase tracking-wider rounded-interactive transition-colors"
-                            aria-label={`View source code for ${project.title} on GitHub (opens in a new tab)`}
+                            aria-label={`Source Code — ${project.title} (opens in a new tab)`}
                           >
                             <GithubIcon className="w-3.5 h-3.5" />
                             <span>Source Code</span>
@@ -586,12 +586,12 @@ export function WorkAndRecognition() {
                     {/* Custom SVG: SureD escrow workflow */}
                     {project.visualType === 'sured' && (
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#858585]">
                           <span>ESCROW WORKFLOW</span>
                           <span className="text-white">SOROBAN</span>
                         </div>
                         <SureDEscrowDiagram />
-                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] leading-relaxed text-[#737373]">
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] leading-relaxed text-[#858585]">
                           Smart contract backend by Khushal Choudhary · SureD 2.0 planned extension.
                         </p>
                       </div>
@@ -600,12 +600,12 @@ export function WorkAndRecognition() {
                     {/* Custom SVG: DepthWizard computer-vision pipeline */}
                     {project.visualType === 'depthwizard' && (
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#858585]">
                           <span>IMAGE-TO-3D PIPELINE</span>
                           <span className="text-white">COMPUTER VISION</span>
                         </div>
                         <DepthWizardDiagram />
-                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#858585]">
                           Team SochX Horizon · SIH 2026 internal selection round.
                         </p>
                       </div>
@@ -614,12 +614,12 @@ export function WorkAndRecognition() {
                     {/* Custom SVG: WALL-E hardware architecture */}
                     {project.visualType === 'walle' && (
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#858585]">
                           <span>ROBOT CONTROL ARCHITECTURE</span>
                           <span className="text-white">ARDUINO</span>
                         </div>
                         <WalleRobotDiagram />
-                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#858585]">
                           Physical hardware build · Autonomous obstacle avoidance.
                         </p>
                       </div>
@@ -628,12 +628,12 @@ export function WorkAndRecognition() {
                     {/* Custom SVG: Jal-Sanchaee water monitoring concept */}
                     {project.visualType === 'water' && (
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#858585]">
                           <span>WATER MONITORING CONCEPT</span>
                           <span className="text-white">TECHATHON</span>
                         </div>
                         <JalSanchaeeDiagram />
-                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#858585]">
                           AISSMS Techathon 3.0 · 24-hour rapid prototype concept.
                         </p>
                       </div>
@@ -642,12 +642,12 @@ export function WorkAndRecognition() {
                     {/* Custom SVG: CivicLoop proposed accountability flow */}
                     {project.visualType === 'civicloop' && (
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#737373]">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-2 font-mono text-[10px] text-[#858585]">
                           <span>PUBLIC ACCOUNTABILITY FLOW</span>
                           <span className="text-white">ANVESHANA</span>
                         </div>
                         <CivicLoopDiagram />
-                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#737373]">
+                        <p className="border-t border-[#292929]/50 pt-2 font-mono text-[10px] text-[#858585]">
                           Proposed feature architecture · Early-stage initiative, not yet implemented.
                         </p>
                       </div>
@@ -666,7 +666,7 @@ export function WorkAndRecognition() {
           <div id="experience" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
           {/* Subsection Header */}
           <div className="space-y-2 pb-4 border-b border-[#292929]/70">
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span className="text-white font-semibold">04.B</span>
               <span className="text-[#292929]">/</span>
@@ -697,14 +697,14 @@ export function WorkAndRecognition() {
                         {entry.organisation}
                       </span>
                       <span className="text-[#292929]">/</span>
-                      <span className="text-[#737373] uppercase tracking-wide">
+                      <span className="text-[#858585] uppercase tracking-wide">
                         {entry.classification}
                       </span>
                     </div>
 
                     {entry.dateOrPeriod && (
                       <div className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] bg-[#141414] border border-[#292929] text-[#A3A3A3] rounded-subtle">
-                        <Calendar className="w-3 h-3 text-[#737373]" />
+                        <Calendar className="w-3 h-3 text-[#858585]" />
                         <span>{entry.dateOrPeriod}</span>
                       </div>
                     )}
@@ -723,7 +723,7 @@ export function WorkAndRecognition() {
                   {/* Team Members if present */}
                   {entry.team && (
                     <div className="pt-2 border-t border-[#292929]/60 font-mono text-xs">
-                      <div className="text-[10px] text-[#737373] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <div className="text-[10px] text-[#858585] uppercase tracking-wider mb-2 flex items-center gap-1.5">
                         <Users className="w-3 h-3 text-white" />
                         <span>TEAM COLLABORATORS //</span>
                       </div>
@@ -742,7 +742,7 @@ export function WorkAndRecognition() {
 
                   {/* Tags */}
                   {entry.tags && (
-                    <div className="flex flex-wrap gap-2 pt-1 font-mono text-[10px] text-[#737373]">
+                    <div className="flex flex-wrap gap-2 pt-1 font-mono text-[10px] text-[#858585]">
                       {entry.tags.map((tag) => (
                         <span key={tag} className="px-2 py-0.5 border border-[#292929] rounded-subtle">
                           #{tag}
@@ -764,7 +764,7 @@ export function WorkAndRecognition() {
           <div id="achievements" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
           {/* Subsection Header */}
           <div className="space-y-2 pb-4 border-b border-[#292929]/70">
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span className="text-white font-semibold">04.C</span>
               <span className="text-[#292929]">/</span>
@@ -787,7 +787,7 @@ export function WorkAndRecognition() {
               >
                 <div className="space-y-4">
                   {/* Card Header: Category & Number */}
-                  <div className="flex items-center justify-between border-b border-[#292929] pb-3 text-xs font-mono text-[#737373]">
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-3 text-xs font-mono text-[#858585]">
                     <span className="text-white font-semibold uppercase">{item.category}</span>
                     <span>HONOR // {item.number}</span>
                   </div>
@@ -802,7 +802,7 @@ export function WorkAndRecognition() {
                       {item.title}
                     </h4>
                     {item.organisation && (
-                      <div className="font-mono text-xs text-[#737373] uppercase">
+                      <div className="font-mono text-xs text-[#858585] uppercase">
                         {item.organisation}
                       </div>
                     )}
@@ -839,7 +839,7 @@ export function WorkAndRecognition() {
           <div id="interests" className="absolute -top-24 pointer-events-none" aria-hidden="true" />
           {/* Subsection Header */}
           <div className="space-y-2 pb-4 border-b border-[#292929]/70">
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span className="text-white font-semibold">04.D</span>
               <span className="text-[#292929]">/</span>
@@ -860,7 +860,7 @@ export function WorkAndRecognition() {
                 key={focus.name}
                 className="p-4 border border-[#292929] bg-[#0A0A0A] rounded-xl space-y-1.5 hover:border-white/40 transition-colors"
               >
-                <div className="flex items-center justify-between font-mono text-[10px] text-[#737373]">
+                <div className="flex items-center justify-between font-mono text-[10px] text-[#858585]">
                   <span>DIRECTION // 0{idx + 1}</span>
                   <span className="w-1 h-1 rounded-full bg-white" />
                 </div>
@@ -877,14 +877,14 @@ export function WorkAndRecognition() {
           {/* Concise Learning Philosophy Banner */}
           <div className="p-6 sm:p-8 border border-[#292929] bg-[#0E0E0E] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-xl">
             <div className="space-y-1">
-              <div className="font-mono text-[10px] uppercase text-[#737373] tracking-widest">
+              <div className="font-mono text-[10px] uppercase text-[#858585] tracking-widest">
                 ENGINEERING PHILOSOPHY //
               </div>
               <div className="font-mono text-sm sm:text-base font-semibold text-white tracking-wider">
                 LEARN → BUILD → TEST → DEBUG → IMPROVE → REPEAT.
               </div>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#737373]">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#858585]">
               <Repeat className="w-4 h-4 text-white" />
               <span>Disciplined Iteration</span>
             </div>

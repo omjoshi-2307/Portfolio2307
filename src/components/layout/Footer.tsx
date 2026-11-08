@@ -49,7 +49,7 @@ export function Footer() {
             <div className="font-heading text-lg sm:text-xl font-medium tracking-tight text-white uppercase">
               OM JOSHI
             </div>
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
+            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase">
               IT STUDENT · DEVELOPER
             </div>
           </div>
@@ -67,7 +67,7 @@ export function Footer() {
                   aria-label={link.label}
                   className="inline-flex items-center gap-1.5 text-[#A3A3A3] hover:text-white transition-colors duration-200 group"
                 >
-                  <Icon className="w-3.5 h-3.5 text-[#737373] group-hover:text-white transition-colors" />
+                  <Icon className="w-3.5 h-3.5 text-[#858585] group-hover:text-white transition-colors" />
                   <span className="group-hover:underline underline-offset-4">{link.name}</span>
                 </a>
               );
@@ -76,14 +76,14 @@ export function Footer() {
         </div>
 
         {/* Lower Row: Metadata, Copyright, Closing Line */}
-        <div className="pt-6 border-t border-[#292929]/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono text-xs text-[#737373]">
+        <div className="pt-6 border-t border-[#292929]/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono text-xs text-[#858585]">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="text-[#A3A3A3] font-medium">PUNE, INDIA</span>
             <span>·</span>
             <span>© {currentYear} OM JOSHI. ALL RIGHTS RESERVED.</span>
           </div>
 
-          <div className="text-[11px] tracking-wider text-[#737373] uppercase">
+          <div className="text-[11px] tracking-wider text-[#858585] uppercase">
             BUILT WITH CURIOSITY. REFINED THROUGH ITERATION.
           </div>
         </div>

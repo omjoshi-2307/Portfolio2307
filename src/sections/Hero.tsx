@@ -356,7 +356,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
           variants={variants.topMetadata}
           initial="hidden"
           animate={isRevealed ? 'visible' : 'hidden'}
-          className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 pb-2.5 border-b border-[#292929] font-mono text-[11px] sm:text-xs text-[#737373] pointer-events-auto"
+          className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 pb-2.5 border-b border-[#292929] font-mono text-[11px] sm:text-xs text-[#858585] pointer-events-auto"
         >
           {/* Top Left: PORTFOLIO */}
           <div className="flex items-center gap-3">
@@ -364,7 +364,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               PORTFOLIO
             </span>
             <span className="text-[#292929]">/</span>
-            <span className="text-[#737373] uppercase tracking-wider">
+            <span className="text-[#858585] uppercase tracking-wider">
               2026 ARCHIVE
             </span>
           </div>
@@ -379,7 +379,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             <span className="text-[#292929] hidden sm:inline">|</span>
             <div className="hidden sm:flex items-center gap-2">
               <span className={`w-1.5 h-1.5 rounded-full bg-white ${prefersReducedMotion ? '' : 'animate-pulse'}`} aria-hidden="true" />
-              <span className="text-[#737373] uppercase tracking-wider">STATUS //</span>
+              <span className="text-[#858585] uppercase tracking-wider">STATUS //</span>
               <span className="text-[#A3A3A3] uppercase">CURRENTLY LEARNING &amp; BUILDING</span>
             </div>
           </div>
@@ -460,7 +460,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               <a
                 href="/resume.pdf"
                 download="Om-Joshi-Resume.pdf"
-                aria-label="Download Om Joshi Resume"
+                aria-label="Download Resume PDF — Om Joshi"
                 className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 <span>DOWNLOAD RESUME</span>
@@ -564,17 +564,17 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
           variants={variants.bottomMetadata}
           initial="hidden"
           animate={isRevealed ? 'visible' : 'hidden'}
-          className="pt-2 sm:pt-2.5 border-t border-[#292929] flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 text-[10px] sm:text-[11px] font-mono text-[#737373] pointer-events-auto"
+          className="pt-2 sm:pt-2.5 border-t border-[#292929] flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 text-[10px] sm:text-[11px] font-mono text-[#858585] pointer-events-auto"
         >
           {/* Left: Technical Interests & Working Philosophy */}
           <div className="flex flex-col sm:flex-row sm:items-baseline gap-x-3 gap-y-0.5">
             <div>
-              <span className="uppercase tracking-widest text-[#737373]">INTERESTS // </span>
+              <span className="uppercase tracking-widest text-[#858585]">INTERESTS // </span>
               <span className="text-white font-medium">SOFTWARE ENGINEERING · FULL-STACK DEVELOPMENT · CYBERSECURITY</span>
             </div>
             <span className="text-[#292929] hidden sm:inline">·</span>
             <div>
-              <span className="uppercase tracking-widest text-[#737373]">PHILOSOPHY // </span>
+              <span className="uppercase tracking-widest text-[#858585]">PHILOSOPHY // </span>
               <span className="text-[#A3A3A3]">LEARN → BUILD → TEST → DEBUG → IMPROVE</span>
             </div>
           </div>
@@ -585,7 +585,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               href="#about"
               onClick={(e) => handleScrollToNext(e, 'about')}
               aria-label="Scroll to explore about section"
-              className="group inline-flex min-h-11 items-center gap-1.5 rounded-sm font-mono text-xs tracking-widest text-[#737373] hover:text-white transition-colors cursor-pointer select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="group inline-flex min-h-11 items-center gap-1.5 rounded-sm font-mono text-xs tracking-widest text-[#858585] hover:text-white transition-colors cursor-pointer select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               <span className="uppercase text-[11px]">SCROLL TO EXPLORE</span>
               <motion.span
@@ -601,7 +601,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
           {/* Right: Education & Status */}
           <div className="flex items-center justify-end gap-2">
-            <span className="uppercase tracking-widest text-[#737373]">EDUCATION // </span>
+            <span className="uppercase tracking-widest text-[#858585]">EDUCATION // </span>
             <span className="text-[#A3A3A3] font-medium">B.TECH IT · NMIET · 2029</span>
           </div>
         </motion.div>

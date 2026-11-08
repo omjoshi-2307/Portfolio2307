@@ -85,7 +85,7 @@ export function Skills() {
               <span className="px-2 text-[#525252]">/</span>
               TECHNICAL TOOLKIT
             </p>
-            <span className="font-mono text-[10px] tracking-wider text-[#737373]">
+            <span className="font-mono text-[10px] tracking-wider text-[#858585]">
               COURSEWORK · PROJECTS · PRACTICE
             </span>
           </div>
@@ -117,7 +117,7 @@ export function Skills() {
             >
               <div className="mb-5 flex items-start justify-between gap-4">
                 <div className="space-y-2">
-                  <p className="font-mono text-[10px] tracking-[0.16em] text-[#737373]">
+                  <p className="font-mono text-[10px] tracking-[0.16em] text-[#858585]">
                     CATEGORY / {category.number}
                   </p>
                   <h3 className="font-heading text-lg font-semibold tracking-wide text-white sm:text-xl">
@@ -127,7 +127,7 @@ export function Skills() {
                     {category.description}
                   </p>
                 </div>
-                <span className="pt-1 font-mono text-[10px] tabular-nums text-[#737373]">
+                <span className="pt-1 font-mono text-[10px] tabular-nums text-[#858585]">
                   {String(category.skills.length).padStart(2, '0')}
                 </span>
               </div>
@@ -157,7 +157,7 @@ export function Skills() {
                 CURRENT FOCUS
               </h3>
             </div>
-            <span className="font-mono text-[10px] tracking-wider text-[#737373]">
+            <span className="font-mono text-[10px] tracking-wider text-[#858585]">
               AREAS I’M CURRENTLY LEARNING
             </span>
           </div>
@@ -170,7 +170,7 @@ export function Skills() {
                     {item.title}
                   </h4>
                   {index === 0 && (
-                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#737373]" aria-hidden="true" />
+                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#858585]" aria-hidden="true" />
                   )}
                 </div>
                 <p className="text-xs leading-relaxed text-[#858585]">{item.description}</p>

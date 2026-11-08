@@ -1,0 +1,41 @@
+name: Accessibility checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  accessibility:
+    name: WCAG 2.1 AA smoke checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Build production app
+        run: npm run build
+
+      - name: Install isolated accessibility test tools
+        run: npm install --no-save --package-lock=false @playwright/test@1.65.0 @axe-core/playwright@4.14.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run browser accessibility checks
+        run: npx playwright test

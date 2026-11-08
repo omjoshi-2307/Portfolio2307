@@ -73,7 +73,7 @@ export function About() {
       <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
         {/* Section heading */}
         <motion.div {...fadeIn} className="space-y-3">
-          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+          <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
             <span className="text-white font-semibold">02 // ABOUT</span>
             <span className="text-[#292929]" aria-hidden="true">/</span>
             <span>THE PERSON BEHIND THE CODE</span>
@@ -92,7 +92,7 @@ export function About() {
           {/* Personal narrative */}
           <div className="lg:col-span-7 space-y-10 text-left">
             <motion.div {...fadeIn} className="space-y-3">
-              <div className="font-mono text-[11px] uppercase tracking-widest text-[#737373] flex items-center gap-2">
+              <div className="font-mono text-[11px] uppercase tracking-widest text-[#858585] flex items-center gap-2">
                 <span className="text-white font-medium">01</span>
                 <span className="text-[#292929]" aria-hidden="true">/</span>
                 <span>CURIOSITY &amp; FOUNDATIONS</span>
@@ -109,7 +109,7 @@ export function About() {
             </motion.div>
 
             <motion.div {...fadeIn} className="space-y-3">
-              <div className="font-mono text-[11px] uppercase tracking-widest text-[#737373] flex items-center gap-2">
+              <div className="font-mono text-[11px] uppercase tracking-widest text-[#858585] flex items-center gap-2">
                 <span className="text-white font-medium">02</span>
                 <span className="text-[#292929]" aria-hidden="true">/</span>
                 <span>HOW I LEARN</span>
@@ -123,7 +123,7 @@ export function About() {
             </motion.div>
 
             <motion.div {...fadeIn} className="space-y-4">
-              <div className="font-mono text-[11px] uppercase tracking-widest text-[#737373] flex items-center gap-2">
+              <div className="font-mono text-[11px] uppercase tracking-widest text-[#858585] flex items-center gap-2">
                 <span className="text-white font-medium">03</span>
                 <span className="text-[#292929]" aria-hidden="true">/</span>
                 <span>PROGRESS &amp; REFLECTION</span>
@@ -148,7 +148,7 @@ export function About() {
             <motion.div {...fadeIn} className="space-y-4">
               <div className="font-mono text-xs uppercase tracking-widest text-white font-semibold pb-2 border-b border-[#292929] flex items-center justify-between gap-3">
                 <span>// AREAS OF INTEREST</span>
-                <span className="text-[#737373] text-[10px] text-right">CURRENTLY EXPLORING</span>
+                <span className="text-[#858585] text-[10px] text-right">CURRENTLY EXPLORING</span>
               </div>
 
               <div className="space-y-3.5 pt-1">
@@ -172,7 +172,7 @@ export function About() {
             <motion.div {...fadeIn} className="space-y-4">
               <div className="font-mono text-xs uppercase tracking-widest text-white font-semibold pb-2 border-b border-[#292929] flex items-center justify-between gap-3">
                 <span>// MY APPROACH</span>
-                <span className="text-[#737373] text-[10px] flex items-center gap-1.5">
+                <span className="text-[#858585] text-[10px] flex items-center gap-1.5">
                   <RefreshCw className="w-3 h-3" aria-hidden="true" />
                   <span>ITERATIVE PROCESS</span>
                 </span>
@@ -184,7 +184,7 @@ export function About() {
                     key={item.number}
                     className="flex items-start gap-3 py-2 border-b border-[#292929]/50 last:border-b-0"
                   >
-                    <span className="text-[#737373] text-[11px] font-semibold tabular-nums">
+                    <span className="text-[#858585] text-[11px] font-semibold tabular-nums">
                       {item.number}
                     </span>
                     <div className="space-y-0.5 min-w-0">
@@ -205,10 +205,10 @@ export function About() {
         {/* Academic context */}
         <motion.div
           {...fadeIn}
-          className="pt-6 sm:pt-8 border-t border-[#292929] grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 font-mono text-xs text-[#737373]"
+          className="pt-6 sm:pt-8 border-t border-[#292929] grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 font-mono text-xs text-[#858585]"
         >
           <div className="space-y-1 min-w-0">
-            <div className="text-[10px] uppercase tracking-widest text-[#737373]">
+            <div className="text-[10px] uppercase tracking-widest text-[#858585]">
               ACADEMIC INSTITUTION //
             </div>
             <div className="text-white font-medium leading-relaxed">
@@ -217,7 +217,7 @@ export function About() {
           </div>
 
           <div className="space-y-1">
-            <div className="text-[10px] uppercase tracking-widest text-[#737373]">
+            <div className="text-[10px] uppercase tracking-widest text-[#858585]">
               DEGREE PROGRAM //
             </div>
             <div className="text-white font-medium leading-relaxed">
@@ -226,7 +226,7 @@ export function About() {
           </div>
 
           <div className="space-y-1">
-            <div className="text-[10px] uppercase tracking-widest text-[#737373]">
+            <div className="text-[10px] uppercase tracking-widest text-[#858585]">
               LOCATION &amp; TIMEZONE //
             </div>
             <div className="text-white font-medium leading-relaxed">

@@ -8,7 +8,6 @@ const CONTACT_CHANNELS = [
     href: 'https://www.linkedin.com/in/0m-joshi2307/',
     icon: LinkedinIcon,
     description: 'Professional updates & networking',
-    ariaLabel: 'Om Joshi LinkedIn Profile (opens in new tab)',
   },
   {
     name: 'GitHub',
@@ -16,7 +15,6 @@ const CONTACT_CHANNELS = [
     href: 'https://github.com/omjoshi-2307',
     icon: GithubIcon,
     description: 'Repositories & open source code',
-    ariaLabel: 'Om Joshi GitHub Profile (opens in new tab)',
   },
   {
     name: 'X',
@@ -24,7 +22,6 @@ const CONTACT_CHANNELS = [
     href: 'https://x.com/omjoshi_2307',
     icon: XIcon,
     description: 'Thoughts, builds & discussions',
-    ariaLabel: 'Om Joshi X Profile (opens in new tab)',
   },
   {
     name: 'Instagram',
@@ -32,7 +29,6 @@ const CONTACT_CHANNELS = [
     href: 'https://www.instagram.com/0m.a.joshi/',
     icon: InstagramIcon,
     description: 'Life, design & creative work',
-    ariaLabel: 'Om Joshi Instagram Profile (opens in new tab)',
   },
   {
     name: 'Credly',
@@ -40,7 +36,6 @@ const CONTACT_CHANNELS = [
     href: 'https://www.credly.com/users/om-joshi2623',
     icon: CredlyIcon,
     description: 'Verified badges & credentials',
-    ariaLabel: 'Om Joshi Credly Profile (opens in new tab)',
   },
 ] as const;
 
@@ -54,7 +49,7 @@ export function Contact() {
       <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20">
         {/* Section Introduction */}
         <div className="space-y-6 max-w-4xl">
-          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
+          <div className="font-mono text-xs text-[#858585] tracking-widest uppercase flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             <span>LET&apos;S CONNECT</span>
           </div>
@@ -76,7 +71,7 @@ export function Contact() {
         {/* Primary Email CTA & Selectable Address */}
         <div className="p-8 sm:p-10 border border-[#292929] bg-[#0A0A0A]/85 backdrop-blur-md rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-[#737373] transition-colors duration-300 shadow-2xl">
           <div className="space-y-2">
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
+            <div className="font-mono text-xs text-[#858585] tracking-widest uppercase">
               PRIMARY DIRECT CHANNEL
             </div>
             <div className="font-mono text-xl sm:text-2xl text-white font-medium select-all hover:text-white transition-colors break-all">
@@ -87,14 +82,13 @@ export function Contact() {
                 omjoshi2307@gmail.com
               </a>
             </div>
-            <div className="font-sans text-xs text-[#737373]">
+            <div className="font-sans text-xs text-[#858585]">
               Click to open mail client or copy directly · Available for inquiries
             </div>
           </div>
 
           <a
             href="mailto:omjoshi2307@gmail.com"
-            aria-label="Send email to Om Joshi at omjoshi2307@gmail.com"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] active:scale-[0.98] shrink-0"
           >
             <Mail className="w-4 h-4 text-black" />
@@ -104,7 +98,7 @@ export function Contact() {
 
         {/* Direct Channels & Profiles Grid */}
         <div className="space-y-6">
-          <div className="font-mono text-xs text-[#737373] tracking-widest uppercase">
+          <div className="font-mono text-xs text-[#858585] tracking-widest uppercase">
             DIRECT CHANNELS &amp; VERIFIED PRESENCE
           </div>
 
@@ -117,7 +111,6 @@ export function Contact() {
                   href={channel.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={channel.ariaLabel}
                   className="group p-5 border border-[#292929] bg-[#0A0A0A]/80 backdrop-blur-md rounded-xl hover:border-white hover:bg-[#0A0A0A]/95 transition-all duration-300 flex flex-col justify-between space-y-4 shadow-lg"
                 >
                   <div className="flex items-center justify-between">
@@ -129,12 +122,12 @@ export function Contact() {
                         <div className="font-mono text-sm font-semibold text-white group-hover:underline underline-offset-4">
                           {channel.name}
                         </div>
-                        <div className="font-mono text-xs text-[#737373]">
+                        <div className="font-mono text-xs text-[#858585]">
                           {channel.handle}
                         </div>
                       </div>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-[#737373] group-hover:text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="w-4 h-4 text-[#858585] group-hover:text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
 
                   <p className="font-sans text-xs text-[#A3A3A3] leading-relaxed">

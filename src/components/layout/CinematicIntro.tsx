@@ -163,7 +163,7 @@ export function CinematicIntro({ onComplete, onReveal }: CinematicIntroProps) {
             delay: phase === 'zoom' ? 0 : 0.1,
             ease: 'easeOut',
           }}
-          className="font-mono text-[11px] sm:text-xs text-[#737373] tracking-widest uppercase"
+          className="font-mono text-[11px] sm:text-xs text-[#858585] tracking-widest uppercase"
         >
           PORTFOLIO
         </motion.div>
@@ -178,7 +178,7 @@ export function CinematicIntro({ onComplete, onReveal }: CinematicIntroProps) {
             delay: phase === 'zoom' ? 0 : 0.15,
             ease: 'easeOut',
           }}
-          className="font-mono text-[11px] sm:text-xs text-[#737373] tracking-widest uppercase"
+          className="font-mono text-[11px] sm:text-xs text-[#858585] tracking-widest uppercase"
         >
           PUNE, INDIA
         </motion.div>
@@ -287,7 +287,7 @@ export function CinematicIntro({ onComplete, onReveal }: CinematicIntroProps) {
           className="w-56 sm:w-68 mt-8 sm:mt-10 flex flex-col items-center gap-2.5 select-none"
         >
           {/* Status Label & 3-Digit Percentage */}
-          <div className="w-full flex items-center justify-between font-mono text-[10px] tracking-widest text-[#737373]">
+          <div className="w-full flex items-center justify-between font-mono text-[10px] tracking-widest text-[#858585]">
             <span className="uppercase text-[9px] sm:text-[10px]">INITIALIZING EXPERIENCE</span>
             <span className="text-white font-semibold text-xs tabular-nums tracking-widest">
               {formattedProgress}
