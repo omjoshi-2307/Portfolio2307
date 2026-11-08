@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, type Variants } from 'motion/react';
-import { ArrowUpRight, Terminal } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpRight, Terminal } from 'lucide-react';
 import grayscalePortrait from '@/assets/photo-grayscale.jpeg';
 import { Lanyard } from '@/components/ui';
 
@@ -442,6 +442,16 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               >
                 <span>EXPLORE MY WORK</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+
+              <a
+                href="/resume.pdf"
+                download="Om-Joshi-Resume.pdf"
+                aria-label="Download Om Joshi Resume"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200"
+              >
+                <span>DOWNLOAD RESUME</span>
+                <ArrowDownToLine className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-y-0.5 group-hover:text-white" />
               </a>
 
               <a
