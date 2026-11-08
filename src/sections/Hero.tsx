@@ -411,7 +411,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
             </div>
             <span className="text-[#292929] hidden sm:inline">|</span>
             <div className="hidden sm:flex items-center gap-2">
-              <span className={`w-1.5 h-1.5 rounded-full bg-white ${prefersReducedMotion ? '' : 'animate-pulse'}`} aria-hidden="true" />
+              <span className={`w-1.5 h-1.5 rounded-full bg-accent ${prefersReducedMotion ? '' : 'animate-pulse'}`} aria-hidden="true" />
               <span className="text-[#858585] uppercase tracking-wider">STATUS //</span>
               <span className="text-[#A3A3A3] uppercase">CURRENTLY LEARNING &amp; BUILDING</span>
             </div>
@@ -446,7 +446,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                   {lastName || '\u00A0'}
                   {!prefersReducedMotion && (
                     <span
-                      className="inline-block h-[0.72em] border-l-[3px] border-white ml-2 align-baseline opacity-80"
+                      className="inline-block h-[0.72em] border-l-[3px] border-accent ml-2 align-baseline opacity-80"
                       aria-hidden="true"
                     />
                   )}
@@ -470,7 +470,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               variants={variants.tagline}
               initial="hidden"
               animate={isRevealed ? 'visible' : 'hidden'}
-              className="border-l-2 border-white pl-4 py-1"
+              className="border-l-2 border-accent pl-4 py-1"
             >
               <p className="font-heading text-base sm:text-lg md:text-xl lg:text-2xl font-normal italic tracking-wide text-[#F5F5F5] leading-snug">
                 Learning systems. Building useful software.
@@ -498,7 +498,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="#projects"
                 onClick={(e) => handleScrollToNext(e, 'projects')}
                 aria-label="Explore My Work"
-                className="group relative inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-interactive shadow-[0_0_20px_-3px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_-1px_rgba(255,255,255,0.5)] transition-all duration-200 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="group relative inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-accent hover:bg-accent-hover text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-interactive shadow-[0_0_20px_-3px_rgba(255,42,133,0.20)] hover:shadow-[0_0_25px_-1px_rgba(255,42,133,0.28)] transition-all duration-200 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <span>EXPLORE MY WORK</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -508,7 +508,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="/resume.pdf"
                 download="Om-Joshi-Resume.pdf"
                 aria-label="Download Resume PDF — Om Joshi"
-                className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-accent font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <span>DOWNLOAD RESUME</span>
                 <ArrowDownToLine className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-y-0.5 group-hover:text-white" />
@@ -518,7 +518,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="#contact"
                 onClick={(e) => handleScrollToNext(e, 'contact')}
                 aria-label="Get in Touch"
-                className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-accent font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <span>GET IN TOUCH</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
@@ -536,7 +536,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="https://github.com/omjoshi-2307"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-sm hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="flex items-center gap-1.5 rounded-sm hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 aria-label="Om Joshi GitHub Profile (opens in new tab)"
               >
                 <GithubIcon className="w-3.5 h-3.5" />
@@ -547,7 +547,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 href="https://www.linkedin.com/in/0m-joshi2307/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-sm hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="flex items-center gap-1.5 rounded-sm hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 aria-label="Om Joshi LinkedIn Profile (opens in new tab)"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
@@ -556,7 +556,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
               <a
                 href="mailto:omjoshi2307@gmail.com"
-                className="flex items-center gap-1.5 rounded-sm hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="flex items-center gap-1.5 rounded-sm hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 aria-label="Send Direct Email to omjoshi2307@gmail.com"
               >
                 <EmailIcon className="w-3.5 h-3.5" />
@@ -634,7 +634,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
               href="#about"
               onClick={(e) => handleScrollToNext(e, 'about')}
               aria-label="Scroll to explore about section"
-              className="group inline-flex min-h-11 items-center gap-1.5 rounded-sm font-mono text-xs tracking-widest text-[#858585] hover:text-white transition-colors cursor-pointer select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="group inline-flex min-h-11 items-center gap-1.5 rounded-sm font-mono text-xs tracking-widest text-[#858585] hover:text-accent transition-colors cursor-pointer select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               <span className="uppercase text-[11px]">SCROLL TO EXPLORE</span>
               <motion.span
