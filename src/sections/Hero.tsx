@@ -511,7 +511,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-accent font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <span>DOWNLOAD RESUME</span>
-                <ArrowDownToLine className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-y-0.5 group-hover:text-white" />
+                <ArrowDownToLine className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-y-0.5 group-hover:text-accent" />
               </a>
 
               <a
@@ -521,7 +521,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                 className="group inline-flex min-h-11 items-center gap-2 px-5 py-2.5 bg-transparent hover:bg-[#111111] text-white border border-[#292929] hover:border-accent font-mono text-xs sm:text-sm uppercase tracking-wider rounded-interactive transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <span>GET IN TOUCH</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#A3A3A3] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
               </a>
             </motion.div>
 
