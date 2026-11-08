@@ -236,7 +236,7 @@ export function Projects() {
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans text-[#A3A3A3]">
                           {project.proposedAreas.map((area) => (
                             <li key={area} className="flex items-center gap-1.5">
-                              <span className="w-1 h-1 rounded-full bg-white shrink-0" />
+                              <span className="w-1 h-1 rounded-full bg-accent shrink-0" />
                               <span>{area}</span>
                             </li>
                           ))}
@@ -253,7 +253,7 @@ export function Projects() {
                         {project.techStack.map((tech) => (
                           <span
                             key={tech}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono text-[#A3A3A3] bg-[#141414] border border-[#292929] rounded-subtle hover:border-white/30 transition-colors"
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono text-[#A3A3A3] bg-[#141414] border border-[#292929] rounded-subtle hover:border-accent/40 transition-colors"
                           >
                             <TechIcon name={tech} className="w-3 h-3 text-[#A3A3A3]" />
                             <span>{tech}</span>
@@ -270,7 +270,7 @@ export function Projects() {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group inline-flex items-center gap-2 px-4 py-2 bg-white text-black font-mono text-xs font-semibold uppercase tracking-wider rounded-interactive hover:bg-[#F5F5F5] transition-all"
+                            className="group inline-flex items-center gap-2 px-4 py-2 bg-accent text-black font-mono text-xs font-semibold uppercase tracking-wider rounded-interactive hover:bg-accent-hover transition-all"
                             aria-label={`Visit live deployment of ${project.title} (opens in a new tab)`}
                           >
                             <span>Live Platform</span>
@@ -282,7 +282,7 @@ export function Projects() {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-[#111111] text-white border border-[#292929] hover:border-white font-mono text-xs uppercase tracking-wider rounded-interactive transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[#111111] text-white border border-[#292929] hover:border-accent font-mono text-xs uppercase tracking-wider rounded-interactive transition-colors"
                             aria-label={`View source code for ${project.title} on GitHub (opens in a new tab)`}
                           >
                             <GithubIcon className="w-3.5 h-3.5" />
