@@ -193,16 +193,16 @@ export function Header() {
                   href={item.href}
                   onClick={(e) => handleNavClick(index, item.id, e)}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                     isActive
-                      ? 'text-white font-semibold bg-white/[0.12] border border-white/20 shadow-[0_1px_10px_rgba(255,255,255,0.06)]'
+                      ? 'text-accent font-semibold bg-white/[0.06] border border-accent/30 shadow-[0_1px_10px_rgba(255,42,133,0.08)]'
                       : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05] border border-transparent'
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
                     {isActive && (
                       <span
-                        className="inline-block w-1 h-1 rounded-full bg-white"
+                        className="inline-block w-1 h-1 rounded-full bg-accent"
                         aria-hidden="true"
                       />
                     )}
@@ -220,7 +220,7 @@ export function Header() {
             ref={menuButtonRef}
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] active:bg-white/[0.12] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] active:bg-white/[0.12] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation-menu"
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -250,15 +250,15 @@ export function Header() {
                     href={item.href}
                     onClick={(e) => handleNavClick(index, item.id, e)}
                     aria-current={isActive ? 'location' : undefined}
-                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                       isActive
-                        ? 'text-white font-semibold bg-white/[0.12] border border-white/20'
+                        ? 'text-accent font-semibold bg-white/[0.06] border border-accent/30'
                         : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05]'
                     }`}
                   >
                     <span>{item.label}</span>
                     {isActive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
                     )}
                   </a>
                 );
