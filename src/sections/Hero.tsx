@@ -167,7 +167,7 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
 
   const displayedName = prefersReducedMotion ? 'ओम जोशी' : NAME_FRAMES[nameFrameIndex];
   const [firstName = '', lastName = ''] = displayedName.split(' ');
-  const isMarathiName = /[\\u0900-\\u097F]/.test(displayedName);
+  const isMarathiName = /[\u0900-\u097F]/.test(displayedName);
 
   // The intro completion flag is latched by the parent; reduced motion reveals immediately.
   const isRevealed = introFinished || prefersReducedMotion;
@@ -435,9 +435,10 @@ export function Hero({ introFinished = true, imageSrc = grayscalePortrait }: Her
                     ? '"Tiro Devanagari Marathi", "Noto Sans Devanagari", sans-serif'
                     : '"Cormorant Garamond", Georgia, serif',
                   transformOrigin: 'left center',
+                  letterSpacing: isMarathiName ? 'normal' : '-0.04em',
                   willChange: 'transform, opacity',
                 }}
-                className="font-display font-bold tracking-[-0.035em] text-white text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.9] min-h-[1.8em]"
+                className="font-display font-bold text-white text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.84]"
               >
                 <span className="sr-only">Om Joshi</span>
                 <span aria-hidden="true" className="block">{firstName || '\u00A0'}</span>
