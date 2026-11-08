@@ -279,9 +279,9 @@ export function JalSanchaeeDiagram(props: DiagramProps) {
         <text x="658" y="217" textAnchor="middle" fill="#F5F5F5" fontSize="9">NORMAL</text>
         <path d="M560 258L576 246L590 251L605 235L620 243L636 228L651 234L667 219L690 226" stroke="#D4D4D4" strokeWidth="1.6" />
         <path d="M560 258H690" stroke="#444" />
-        <text x="625" y="319" textAnchor="middle" fill="#F5F5F5" fontSize="12" fontWeight="600">COMMUNITY DASHBOARD</text>
+        <text x="625" y="319" textAnchor="middle" fill="#F5F5F5" fontSize="12" fontWeight="600">WATER USE DASHBOARD</text>
         <text x="625" y="338" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">USAGE · ALERTS · INSIGHTS</text>
-        <text x="625" y="357" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">WATER CREDIT CONCEPT</text>
+        <text x="625" y="357" textAnchor="middle" fill="#858585" fontSize="8" fontFamily="monospace">CONSUMPTION INSIGHTS</text>
       </g>
       <g stroke="#A3A3A3" strokeWidth="1.4">
         <path d="M236 257H282M270 251L282 257L270 263" />
