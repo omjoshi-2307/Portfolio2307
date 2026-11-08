@@ -105,7 +105,7 @@ export default function App() {
                   distanceFade={0.35}
                   speed={1}
                   intro={true}
-                  cursorInteraction={true}
+                  cursorInteraction={false}
                   dpr={1.5}
                 />
               </div>
