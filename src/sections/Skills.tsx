@@ -1,291 +1,180 @@
-import { motion, type Transition } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
+import { Compass, Sparkles } from 'lucide-react';
 import { TechIcon } from '@/components/ui';
-import { Sparkles, Compass } from 'lucide-react';
-
-interface SkillItem {
-  name: string;
-  proficiency: 'Comfortable' | 'Working Knowledge' | 'Currently Learning';
-}
 
 interface SkillCategory {
   number: string;
   title: string;
   description: string;
-  skills: SkillItem[];
+  skills: string[];
 }
 
 const SKILL_CATEGORIES: SkillCategory[] = [
   {
     number: '01',
     title: 'Programming Languages',
-    description: 'Foundational computational and structured languages used for systems, scripting, and applications.',
-    skills: [
-      { name: 'C', proficiency: 'Comfortable' },
-      { name: 'C++', proficiency: 'Comfortable' },
-      { name: 'Python', proficiency: 'Comfortable' },
-      { name: 'JavaScript', proficiency: 'Working Knowledge' },
-      { name: 'TypeScript', proficiency: 'Working Knowledge' },
-    ],
+    description: 'Languages used across coursework, problem-solving and project development.',
+    skills: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript', 'Rust'],
   },
   {
     number: '02',
-    title: 'Frontend Development',
-    description: 'Modern component-driven web architectures, responsive layouts, and performant interfaces.',
-    skills: [
-      { name: 'HTML', proficiency: 'Comfortable' },
-      { name: 'CSS', proficiency: 'Comfortable' },
-      { name: 'React', proficiency: 'Working Knowledge' },
-      { name: 'Tailwind CSS', proficiency: 'Working Knowledge' },
-      { name: 'Vite', proficiency: 'Working Knowledge' },
-    ],
+    title: 'Frontend & Interface',
+    description: 'Building responsive interfaces and component-based web experiences.',
+    skills: ['HTML', 'CSS', 'React', 'Tailwind CSS', 'Vite', 'Framer Motion', 'shadcn/ui'],
   },
   {
     number: '03',
-    title: 'Backend & Databases',
-    description: 'Server runtimes, structured and document databases, and scalable HTTP API design.',
-    skills: [
-      { name: 'Node.js', proficiency: 'Working Knowledge' },
-      { name: 'Express.js', proficiency: 'Working Knowledge' },
-      { name: 'REST APIs', proficiency: 'Working Knowledge' },
-      { name: 'MongoDB', proficiency: 'Currently Learning' },
-      { name: 'PostgreSQL', proficiency: 'Currently Learning' },
-    ],
+    title: 'Backend & Data',
+    description: 'Application logic, API integration and working with application data.',
+    skills: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'PostgreSQL', 'Prisma'],
   },
   {
     number: '04',
-    title: 'Cybersecurity & Networking',
-    description: 'Fundamental network protocols, defensive operating systems, access control, and cryptographic primitives.',
-    skills: [
-      { name: 'Linux', proficiency: 'Comfortable' },
-      { name: 'TCP/IP', proficiency: 'Working Knowledge' },
-      { name: 'Networking Fundamentals', proficiency: 'Working Knowledge' },
-      { name: 'Authentication', proficiency: 'Working Knowledge' },
-      { name: 'Cryptography Fundamentals', proficiency: 'Currently Learning' },
-    ],
+    title: 'Blockchain & Hardware',
+    description: 'Exploring decentralised applications and practical hardware projects.',
+    skills: ['Stellar', 'Soroban', 'Freighter Wallet', 'Arduino'],
   },
   {
     number: '05',
-    title: 'Tools & Platforms',
-    description: 'Developer environments, version control systems, deployment platforms, and software workflow tooling.',
-    skills: [
-      { name: 'Git', proficiency: 'Comfortable' },
-      { name: 'GitHub', proficiency: 'Comfortable' },
-      { name: 'VS Code', proficiency: 'Comfortable' },
-      { name: 'Antigravity', proficiency: 'Working Knowledge' },
-      { name: 'Docker', proficiency: 'Currently Learning' },
-      { name: 'Figma', proficiency: 'Working Knowledge' },
-      { name: 'Vercel', proficiency: 'Working Knowledge' },
-    ],
-  },
-  {
-    number: '06',
-    title: 'Emerging Technologies & Hardware',
-    description: 'Embedded microcontrollers, smart contract networks, computer vision algorithms, and intelligent systems.',
-    skills: [
-      { name: 'Arduino', proficiency: 'Working Knowledge' },
-      { name: 'Embedded C++', proficiency: 'Working Knowledge' },
-      { name: 'Stellar', proficiency: 'Currently Learning' },
-      { name: 'Soroban', proficiency: 'Currently Learning' },
-      { name: 'OpenCV', proficiency: 'Currently Learning' },
-      { name: 'YOLO', proficiency: 'Currently Learning' },
-      { name: 'AI Tooling', proficiency: 'Working Knowledge' },
-    ],
+    title: 'Developer Tools',
+    description: 'Tools used for development, collaboration, design and deployment.',
+    skills: ['Git', 'GitHub', 'VS Code', 'Vercel', 'Figma', 'Docker', 'Antigravity'],
   },
 ];
 
-const EXPLORING_AREAS = [
+const CURRENT_FOCUS = [
   {
-    title: 'Deeper React Concepts',
-    description: 'Advanced component composition patterns, concurrent rendering mechanics, and fine-grained state management.',
+    title: 'Cybersecurity',
+    description: 'Building a stronger foundation in security principles and defensive practices.',
   },
   {
-    title: 'Cybersecurity Fundamentals',
-    description: 'Hands-on network defense principles, access control frameworks, and defensive engineering practices.',
+    title: 'Networking & Systems',
+    description: 'Deepening my understanding of network communication, protocols and operating systems.',
   },
   {
-    title: 'Networking & System Security',
-    description: 'Packet-level inspection, transport layer mechanics, distributed communication, and server environment hardening.',
+    title: 'Frontend Engineering',
+    description: 'Improving component architecture, TypeScript patterns and accessible interfaces.',
   },
   {
-    title: 'AI & Computer Vision Exploration',
-    description: 'Real-time object detection models (YOLO), OpenCV image processing pipelines, and agentic AI developer tooling.',
+    title: 'AI & Computer Vision',
+    description: 'Exploring image-processing workflows and how AI systems interpret visual data.',
   },
 ];
-
-const EASE_EDITORIAL = [0.16, 1, 0.3, 1] as const;
 
 export function Skills() {
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const shouldReduceMotion = useReducedMotion();
 
-  const editorialTransition: Transition = {
-    duration: prefersReducedMotion ? 0 : 0.55,
-    ease: EASE_EDITORIAL,
-  };
-
-  const fadeIn = {
-    initial: prefersReducedMotion ? false : { opacity: 0, y: 14 },
-    whileInView: prefersReducedMotion ? undefined : { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-40px' },
-    transition: editorialTransition,
+  const reveal = {
+    initial: shouldReduceMotion ? false : { opacity: 0, y: 16 },
+    whileInView: shouldReduceMotion ? undefined : { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 },
+    transition: { duration: shouldReduceMotion ? 0 : 0.55, ease: [0.16, 1, 0.3, 1] as const },
   };
 
   return (
     <section
       id="skills"
-      aria-label="Skills & Technologies"
-      className="scroll-mt-20 py-20 sm:py-28 px-6 sm:px-8 lg:px-12 border-t border-[#292929] bg-transparent select-none"
+      aria-labelledby="skills-heading"
+      className="scroll-mt-20 border-t border-[#292929] bg-transparent px-6 py-20 sm:px-8 sm:py-28 lg:px-12"
     >
-      <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
-        {/* ================= SECTION HEADER ================= */}
-        <motion.div {...fadeIn} className="space-y-3">
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-[#292929]">
-            <div className="font-mono text-xs text-[#737373] tracking-widest uppercase flex items-center gap-2">
-              <span className="text-white font-semibold">03 / TECHNICAL PROFILE</span>
-              <span className="text-[#292929]">/</span>
-              <span>INDEX OF COMPETENCIES</span>
-            </div>
-
-            {/* Subtle Proficiency Legend */}
-            <div className="hidden sm:flex items-center gap-4 font-mono text-[10px] text-[#737373] tracking-wider uppercase">
-              <span className="text-[#A3A3A3]">LEVELS //</span>
-              <span className="flex items-center gap-1.5 text-white">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-white" />
-                Comfortable
-              </span>
-              <span className="text-[#292929]">·</span>
-              <span className="flex items-center gap-1.5 text-[#A3A3A3]">
-                <span className="inline-block w-1.5 h-1.5 rounded-full border border-white" />
-                Working Knowledge
-              </span>
-              <span className="text-[#292929]">·</span>
-              <span className="flex items-center gap-1.5 text-[#737373]">
-                <span className="inline-block w-1.5 h-1.5 rounded-full border border-[#737373] animate-pulse" />
-                Currently Learning
-              </span>
-            </div>
+      <div className="mx-auto max-w-7xl space-y-12 sm:space-y-16">
+        <motion.div {...reveal} className="space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#292929] pb-3">
+            <p className="font-mono text-[10px] tracking-[0.18em] text-[#A3A3A3] sm:text-xs">
+              <span className="text-white">03 / CAPABILITIES</span>
+              <span className="px-2 text-[#525252]">/</span>
+              TECHNICAL TOOLKIT
+            </p>
+            <span className="font-mono text-[10px] tracking-wider text-[#737373]">
+              COURSEWORK · PROJECTS · PRACTICE
+            </span>
           </div>
 
-          <div className="pt-2 space-y-2">
-            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white uppercase">
-              SKILLS &amp; TECHNOLOGIES.
+          <div className="space-y-3">
+            <h2
+              id="skills-heading"
+              className="font-heading text-4xl font-medium uppercase tracking-tight text-white sm:text-5xl lg:text-6xl"
+            >
+              Skills &amp; Technologies.
             </h2>
-            <p className="font-sans text-sm sm:text-base text-[#A3A3A3] max-w-2xl leading-relaxed">
-              Technologies, tools and concepts I explore through hands-on practice, experimentation and continuous learning.
+            <p className="max-w-2xl font-sans text-sm leading-relaxed text-[#A3A3A3] sm:text-base">
+              A practical toolkit shaped by coursework, experimentation and building software.
+              I focus on applying fundamentals, then expanding them through real projects.
             </p>
           </div>
         </motion.div>
 
-        {/* ================= 6-CATEGORY EDITORIAL GRID ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {SKILL_CATEGORIES.map((cat, idx) => (
-            <motion.div
-              key={cat.title}
-              {...fadeIn}
+        <div className="grid grid-cols-1 gap-x-10 md:grid-cols-2 lg:grid-cols-3">
+          {SKILL_CATEGORIES.map((category, index) => (
+            <motion.article
+              key={category.number}
+              {...reveal}
               transition={{
-                ...editorialTransition,
-                delay: prefersReducedMotion ? 0 : idx * 0.05,
+                duration: shouldReduceMotion ? 0 : 0.55,
+                delay: shouldReduceMotion ? 0 : index * 0.045,
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="border border-[#292929] bg-[#0A0A0A] p-5 sm:p-6 flex flex-col justify-between space-y-5 hover:border-white/30 transition-colors duration-200"
+              className="border-t border-[#292929] py-6 sm:py-7"
             >
-              {/* Category Header */}
-              <div className="space-y-2 pb-3 border-b border-[#292929]">
-                <div className="flex items-center justify-between font-mono text-[10px] text-[#737373]">
-                  <span>CATEGORY // {cat.number}</span>
-                  <span className="text-[#A3A3A3]">{cat.skills.length} ITEMS</span>
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div className="space-y-2">
+                  <p className="font-mono text-[10px] tracking-[0.16em] text-[#737373]">
+                    CATEGORY / {category.number}
+                  </p>
+                  <h3 className="font-heading text-lg font-semibold tracking-wide text-white sm:text-xl">
+                    {category.title}
+                  </h3>
+                  <p className="max-w-sm text-xs leading-relaxed text-[#858585]">
+                    {category.description}
+                  </p>
                 </div>
-                <h3 className="font-heading text-lg sm:text-xl font-semibold text-white tracking-wide">
-                  {cat.title}
-                </h3>
-                <p className="font-sans text-xs text-[#737373] leading-relaxed">
-                  {cat.description}
-                </p>
+                <span className="pt-1 font-mono text-[10px] tabular-nums text-[#737373]">
+                  {String(category.skills.length).padStart(2, '0')}
+                </span>
               </div>
 
-              {/* Technologies List with Monochrome Logos */}
-              <div className="space-y-1.5 pt-1">
-                {cat.skills.map((skill) => {
-                  const isComfortable = skill.proficiency === 'Comfortable';
-                  const isWorking = skill.proficiency === 'Working Knowledge';
-
-                  return (
-                    <div
-                      key={skill.name}
-                      title={`${skill.name} — ${skill.proficiency}`}
-                      className="group flex items-center justify-between py-2 px-2.5 rounded-sm bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-[#292929] transition-all duration-200"
-                    >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <span className="text-[#A3A3A3] group-hover:text-white transition-colors duration-200 shrink-0">
-                          <TechIcon name={skill.name} className="w-4 h-4" />
-                        </span>
-                        <span className="font-heading text-xs sm:text-sm text-[#E5E5E5] group-hover:text-white transition-colors truncate">
-                          {skill.name}
-                        </span>
-                      </div>
-
-                      {/* Subtle Proficiency Dot & Label */}
-                      <span className="flex items-center gap-1.5 shrink-0 font-mono text-[9px] uppercase tracking-wider">
-                        {isComfortable && (
-                          <span className="flex items-center gap-1 text-[#A3A3A3]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                            <span className="hidden sm:inline">Comfortable</span>
-                          </span>
-                        )}
-                        {isWorking && (
-                          <span className="flex items-center gap-1 text-[#737373]">
-                            <span className="w-1.5 h-1.5 rounded-full border border-white" />
-                            <span className="hidden sm:inline">Working</span>
-                          </span>
-                        )}
-                        {!isComfortable && !isWorking && (
-                          <span className="flex items-center gap-1 text-[#737373]">
-                            <span className="w-1.5 h-1.5 rounded-full border border-[#737373] animate-pulse" />
-                            <span className="hidden sm:inline">Learning</span>
-                          </span>
-                        )}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
+              <ul className="flex flex-wrap gap-2" aria-label={category.title}>
+                {category.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="inline-flex items-center gap-2 border border-[#292929] px-2.5 py-2 text-xs text-[#D4D4D4] transition-colors duration-200 hover:border-[#666666] hover:text-white"
+                  >
+                    <span className="text-[#8A8A8A]" aria-hidden="true">
+                      <TechIcon name={skill} className="h-3.5 w-3.5" />
+                    </span>
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
           ))}
         </div>
 
-        {/* ================= CURRENTLY EXPLORING SUBSECTION ================= */}
-        <motion.div
-          {...fadeIn}
-          className="pt-8 border-t border-[#292929] space-y-6"
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-2 border-b border-[#292929]/70">
-            <div className="flex items-center gap-2">
-              <Compass className="w-4 h-4 text-white shrink-0" />
-              <h3 className="font-mono text-xs sm:text-sm font-semibold tracking-widest uppercase text-white">
-                CURRENTLY EXPLORING
+        <motion.div {...reveal} className="space-y-6 border-t border-[#292929] pt-8 sm:pt-10">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#292929]/70 pb-3">
+            <div className="flex items-center gap-2.5">
+              <Compass className="h-4 w-4 text-[#A3A3A3]" aria-hidden="true" />
+              <h3 className="font-mono text-xs font-semibold tracking-[0.16em] text-white sm:text-sm">
+                CURRENT FOCUS
               </h3>
             </div>
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#737373]">
-              ACTIVE EXPERIMENTS &amp; LEARNING INTERESTS
+            <span className="font-mono text-[10px] tracking-wider text-[#737373]">
+              AREAS I’M ACTIVELY DEVELOPING
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {EXPLORING_AREAS.map((item, i) => (
-              <div
-                key={item.title}
-                className="p-4 border border-[#292929] bg-[#0A0A0A] space-y-2 hover:border-white/40 transition-colors duration-200"
-              >
-                <div className="flex items-center justify-between font-mono text-[10px] text-[#737373]">
-                  <span>FOCUS // 0{i + 1}</span>
-                  <Sparkles className="w-3 h-3 text-[#737373]" />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {CURRENT_FOCUS.map((item, index) => (
+              <div key={item.title} className="space-y-3 border-l border-[#3A3A3A] py-1 pl-4">
+                <div className="flex items-center justify-between gap-3">
+                  <h4 className="font-heading text-sm font-semibold uppercase tracking-wide text-white">
+                    {item.title}
+                  </h4>
+                  {index === 0 && (
+                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#737373]" aria-hidden="true" />
+                  )}
                 </div>
-                <h4 className="font-heading text-xs sm:text-sm font-bold text-white uppercase tracking-wide">
-                  {item.title}
-                </h4>
-                <p className="font-sans text-xs text-[#A3A3A3] leading-relaxed">
-                  {item.description}
-                </p>
+                <p className="text-xs leading-relaxed text-[#858585]">{item.description}</p>
               </div>
             ))}
           </div>
