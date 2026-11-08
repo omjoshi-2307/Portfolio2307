@@ -163,17 +163,17 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-14 sm:h-16 flex items-center justify-between gap-4">
-        {/* Left: OM JOSHI Wordmark */}
+        {/* Left: Marathi Wordmark */}
         <div className="flex items-center gap-3 shrink-0">
           <a
             href="#home"
             onClick={handleBrandClick}
             className="group flex items-center gap-1.5 transition-opacity hover:opacity-90"
-            aria-label="Om Joshi Portfolio Home"
+            aria-label="ओम जोशी — Portfolio Home"
           >
             <img
               src="/om-joshi-marathi-logo.svg"
-              alt="ओम जोशी — Om Joshi"
+              alt="ओम जोशी"
               className="h-11 w-[170px] sm:h-12 sm:w-[180px] object-contain object-left"
             />
           </a>
