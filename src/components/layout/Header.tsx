@@ -189,8 +189,8 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(index, item.id, e)}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 ${
+                  aria-current={isActive ? 'location' : undefined}
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
                     isActive
                       ? 'text-white font-semibold bg-white/[0.12] border border-white/20 shadow-[0_1px_10px_rgba(255,255,255,0.06)]'
                       : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05] border border-transparent'
@@ -217,7 +217,7 @@ export function Header() {
             ref={menuButtonRef}
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] active:bg-white/[0.12] transition-colors focus:outline-none focus:ring-1 focus:ring-white/30"
+            className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08] active:bg-white/[0.12] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation-menu"
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -236,7 +236,7 @@ export function Header() {
               aria-label="Mobile Portfolio Navigation"
               className="absolute top-full left-4 right-4 mt-2 p-3 rounded-2xl bg-black/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col gap-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
             >
-              <div className="px-3 py-1.5 text-[10px] font-mono uppercase text-[#737373] tracking-widest border-b border-white/[0.06] mb-1">
+              <div className="px-3 py-1.5 text-[10px] font-mono uppercase text-[#858585] tracking-widest border-b border-white/[0.06] mb-1">
                 // NAVIGATION
               </div>
               {NAV_ITEMS.map((item, index) => {
@@ -246,8 +246,8 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleNavClick(index, item.id, e)}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider transition-colors ${
+                    aria-current={isActive ? 'location' : undefined}
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
                       isActive
                         ? 'text-white font-semibold bg-white/[0.12] border border-white/20'
                         : 'text-[#A3A3A3] hover:text-white hover:bg-white/[0.05]'
