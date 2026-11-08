@@ -74,7 +74,7 @@ export function Contact() {
             <div className="font-mono text-xs text-[#858585] tracking-widest uppercase">
               PRIMARY DIRECT CHANNEL
             </div>
-            <div className="font-mono text-xl sm:text-2xl text-white font-medium select-all hover:text-white transition-colors break-all">
+            <div className="font-mono text-xl sm:text-2xl text-white font-medium select-all hover:text-accent transition-colors break-all">
               <a
                 href="mailto:omjoshi2307@gmail.com"
                 className="hover:underline underline-offset-4"
@@ -89,7 +89,7 @@ export function Contact() {
 
           <a
             href="mailto:omjoshi2307@gmail.com"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-white hover:bg-[#F5F5F5] text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] active:scale-[0.98] shrink-0"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-accent hover:bg-accent-hover text-black font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all shadow-[0_0_24px_-8px_rgba(255,42,133,0.28)] active:scale-[0.98] shrink-0"
           >
             <Mail className="w-4 h-4 text-black" />
             <span>GET IN TOUCH ↗</span>
@@ -111,11 +111,11 @@ export function Contact() {
                   href={channel.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group p-5 border border-[#292929] bg-[#0A0A0A]/80 backdrop-blur-md rounded-xl hover:border-white hover:bg-[#0A0A0A]/95 transition-all duration-300 flex flex-col justify-between space-y-4 shadow-lg"
+                  className="group p-5 border border-[#292929] bg-[#0A0A0A]/80 backdrop-blur-md rounded-xl hover:border-accent/70 hover:bg-[#0A0A0A]/95 transition-all duration-300 flex flex-col justify-between space-y-4 shadow-lg"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 border border-[#292929] rounded-lg bg-black/40 text-white group-hover:border-white/50 transition-colors">
+                      <div className="p-2 border border-[#292929] rounded-lg bg-black/40 text-white group-hover:border-accent/50 transition-colors">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
@@ -127,7 +127,7 @@ export function Contact() {
                         </div>
                       </div>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-[#858585] group-hover:text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="w-4 h-4 text-[#858585] group-hover:text-accent transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
 
                   <p className="font-sans text-xs text-[#A3A3A3] leading-relaxed">
