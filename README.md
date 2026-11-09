@@ -1,357 +1,167 @@
-::: {align="center"}
-# OM JOSHI
+# Om Joshi — Personal Portfolio
 
-### A Personal Portfolio --- Engineering, Exploration & Digital Craft.
+A personal portfolio showcasing my projects, technical interests, and ongoing journey in software engineering.
 
-An evolving portfolio documenting my journey through software
-engineering, technical exploration, and hands-on project development.
+🌐 **Live Portfolio:** [portfolio2307.vercel.app](https://portfolio2307.vercel.app/)  
+💻 **GitHub:** [omjoshi-2307](https://github.com/omjoshi-2307) · **LinkedIn:** [Om Joshi](https://www.linkedin.com/in/0m-joshi2307/) · **X:** [@omjoshi_2307](https://x.com/omjoshi_2307)
 
-[**Live Portfolio**](https://portfolio2307.vercel.app/) ·
-[**GitHub**](https://github.com/omjoshi-2307) ·
-[**LinkedIn**](https://www.linkedin.com/in/0m-joshi2307/) ·
-[**X**](https://x.com/omjoshi_2307)
-:::
+---
 
-------------------------------------------------------------------------
+## About
 
-## Overview
+This repository contains the source code for my personal portfolio. It brings together my background, selected projects, technical interests, and ways to connect.
 
-This repository contains the source code for my personal portfolio: a
-place to present my background, technical interests, selected work, and
-ongoing learning.
+The portfolio is built around a minimal monochrome visual identity, editorial typography, considered spacing, and purposeful motion. It is intended to evolve alongside the work I build and the skills I develop.
 
-The portfolio brings together:
+## Highlights
 
--   **About** --- my background and approach to learning.
--   **Skills** --- technologies and areas I am exploring.
--   **Work & Recognition** --- selected projects, activities, achievements, and current focus.
--   **Contact** --- direct ways to connect.
+- Responsive portfolio layout and section-based navigation
+- Animated introduction with reduced-motion consideration
+- Interactive 3D lanyard experience
+- Canvas-based cursor effect
+- Project case studies and dedicated section anchors
+- Consolidated Work & Recognition section
+- Contact and social profile links
+- Localized visual effects in the Contact and Footer areas
 
-The site is designed as an evolving record of what I learn, build, test,
-and improve.
-
-## Design Philosophy
-
-The visual direction is deliberately restrained: monochrome surfaces,
-editorial typography, generous spacing, and clear content hierarchy.
-
--   **Monochrome identity** --- black, white, and neutral grey keep
-    attention on the content.
--   **Editorial typography** --- Cormorant Garamond, Manrope, and
-    JetBrains Mono establish distinct roles for display headings,
-    interface text, and technical details. The hero identity uses a
-    dedicated display font.
--   **Asymmetric composition** --- structured layouts, fine dividers,
-    and intentional whitespace replace unnecessary decoration.
--   **Motion with purpose** --- animation and interactive effects add
-    depth while keeping content readable.
--   **Localized visual effects** --- the Black Hole visual is confined
-    to the Contact and Footer area rather than being used as a site-wide
-    background.
-
-## Features
-
-The current portfolio implementation includes:
-
--   Cinematic name-reveal introduction with reduced-motion handling.
--   Interactive 3D lanyard experience.
--   Canvas-based swarm cursor effect.
--   Consolidated **Work & Recognition** section.
--   Responsive navigation with active-section tracking.
--   Project case-study content and deep section anchors.
--   Contact links and social navigation.
--   Black Hole visual effect limited to Contact and Footer.
--   Semantic page structure and accessibility-oriented labels.
-
-Some visual effects depend on browser graphics capabilities. The
-experience should remain usable when motion is reduced or effects are
-unavailable.
-
-## Technology Stack
-
-  Area              Technologies
-  ----------------- ---------------------------------------
-  UI framework      React 19
-  Language          TypeScript 5.8
-  Build tooling     Vite 8
-  Styling           Tailwind CSS 3, CSS custom properties
-  Motion            Motion for React
-  Icons             Lucide React
-  3D and graphics   Three.js, WebGL, GLSL
-  Code quality      ESLint, TypeScript
-  CSS tooling       PostCSS, Autoprefixer
-
-The table reflects the versions and tools documented for this project.
-For exact installed versions, refer to `package.json` and the lockfile.
+Some visual effects depend on browser graphics support. The site is designed to keep its core content accessible when motion is reduced or effects are unavailable.
 
 ## Selected Projects
 
-### 01 --- SureD
+### SureD — Blockchain-Powered Rental Security Deposit Platform
 
-**Blockchain-Powered Rental Security Deposit Platform**
+A rental security-deposit platform exploring transparent tenant–landlord workflows through Stellar and Soroban escrow.
 
-SureD explores a more transparent way to manage residential rental
-security deposits through a tenant--landlord workflow and
-blockchain-based escrow.
+- Explores deposit funding, confirmation, release, and refund flows.
+- My work focused on frontend architecture, interface and dashboard development, wallet connection, transaction-status presentation, and user-flow testing.
+- Smart-contract backend work was handled by project collaborator [Khushal Choudhary](https://github.com/Khushal-93).
 
--   **Ecosystem:** Stellar and Soroban.
--   **Workflow:** deposit funding, tenant and landlord confirmation, and
-    release or refund flow.
--   **My contribution:** frontend architecture, interface and dashboard
-    work, tenant/landlord flows, wallet connection, transaction status
-    presentation, and user-flow testing.
--   **Collaboration:** Soroban smart-contract backend work was handled
-    by project collaborator [Khushal](https://github.com/Khushal-93).
+[Live application](https://sure-d.vercel.app/) · [Source repository](https://github.com/Khushal-93/SureD)
 
-[Live application](https://sure-d.vercel.app/) · [Source
-repository](https://github.com/Khushal-93/SureD)
+### DepthWizard — Single-View Height Estimation & 3D Flythrough
 
-### 02 --- DepthWizard
+A team project prepared for Smart India Hackathon 2026 problem statement **SIH26175**, in the ISRO / Department of Space disaster-management context. Team **SochX Horizon** participated in the college internal selection round.
 
-**Single-View Height Estimation & 3D Flythrough**
+**Conceptual pipeline:**  
+`RGB Image → AI Depth Estimation → Depth Map → DSM Generation → 3D Flythrough`
 
-DepthWizard is a team project prepared for Smart India Hackathon 2026
-problem statement **SIH26175**, in the ISRO / Department of Space
-disaster-management context. The team, **SochX Horizon**, participated
-in the college internal selection round.
+The concept explores estimating depth from a single image and generating a digital surface representation. Non-georeferenced inputs support relative depth representations; absolute spatial measurements require suitable georeferencing information.
 
-Conceptual processing pipeline:
+### WALL-E — Autonomous Obstacle-Avoiding Robot
 
-`RGB IMAGE` → `AI DEPTH ESTIMATION` → `DEPTH MAP` → `DSM GENERATION` →
-`3D FLYTHROUGH`
+An embedded robotics project based on ultrasonic distance sensing and motor control.
 
-The project explores estimating depth from a single image and generating
-a digital surface representation. Non-georeferenced inputs support
-relative depth representations; absolute spatial measurements require
-suitable georeferencing information.
+- Arduino Uno (ATmega328P)
+- HC-SR04 ultrasonic sensor
+- L298N motor driver and DC motors
+- Hardware assembly, wiring, programming, and testing
 
-### 03 --- WALL-E
+[Source repository](https://github.com/omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot)
 
-**Autonomous Obstacle-Avoiding Robot**
+### Jal-Sanchaee-Navachar — Water Management Concept
 
-An embedded robotics project built around ultrasonic distance sensing
-and motor control.
+A concept and UI prototype developed during the **AISSMS Techathon 3.0** 24-hour sprint. The work explored water-level monitoring, overflow alerts, usage insights, and community water-credit ideas. It should be understood as a sprint prototype, not a fully deployed or integrated system.
 
--   **Controller:** Arduino Uno (ATmega328P).
--   **Sensing:** HC-SR04 ultrasonic sensor.
--   **Motor control:** L298N motor driver and DC motors.
--   **Work:** hardware assembly, wiring, programming, and testing.
+### CivicLoop — Complaints That Don't Disappear
 
-[Source
-repository](https://github.com/omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot)
+An early-stage civic-technology concept associated with **Anveshana 2026–27 Top 60, Pune Region**. The proposed direction includes complaint tracking, duplicate-issue grouping, public status history, evidence-based updates, and ward-level accountability. These are proposed capabilities, not claims of a completed product.
 
-### 04 --- Jal-Sanchaee-Navachar
+## Activities & Current Focus
 
-**Water Management & Conservation Concept**
+Selected activities include:
+- **Anveshana 2026–27:** CivicLoop selected among the Top 60 projects in the Pune Region.
+- **Smart India Hackathon 2026:** College internal selection participation with SochX Horizon for SIH26175.
+- **Stellar Build Station Pune:** 21-day builder sprint focused on the Stellar ecosystem and Soroban through SureD.
+- **Google Cloud Study Jams 2025:** Learning-programme participation.
+- **AISSMS Techathon 3.0:** 24-hour innovation sprint with Jal-Sanchaee-Navachar.
+- **AWS Student Builder** and **Adobe University Hackathon:** Student community and hackathon activities.
 
-A concept and prototype developed during the **AISSMS Techathon 3.0**
-24-hour sprint.
+Participation, selection, and awards are distinct and are described accordingly.
 
-The work explored water-level monitoring, overflow alerts, usage
-insights, and community water-credit ideas. The sprint produced a
-concept and UI prototype; it should not be considered a fully deployed
-or fully integrated system.
-
-### 05 --- CivicLoop
-
-**Complaints That Don't Disappear**
-
-An early-stage civic-technology concept associated with **Anveshana
-2026--27 Top 60, Pune Region**.
-
-The proposed direction includes transparent complaint tracking,
-duplicate-issue grouping, public status history, evidence-based updates,
-and ward-level accountability. These are proposed capabilities, not
-claims of a completed or deployed product.
-
-## Work & Recognition
-
-The portfolio presents activities, recognition, and learning alongside
-project work.
-
-### Experience & Activities
-
--   **Anveshana 2026--27** --- CivicLoop was selected among the Top 60
-    projects in the Pune Region.
--   **Smart India Hackathon 2026** --- participated in the college
-    internal selection round with SochX Horizon for SIH26175
-    (DepthWizard).
--   **Stellar Build Station Pune** --- participated in a 21-day builder
-    sprint focused on the Stellar ecosystem and Soroban through SureD.
--   **Google Cloud Study Jams 2025** --- completed the learning
-    programme and received a Certificate of Excellence; the portfolio
-    records 19+1 badges.
--   **AISSMS Techathon 3.0** --- participated in a 24-hour innovation
-    sprint with Jal-Sanchaee-Navachar.
--   **AWS Student Builder** --- student community and cloud-learning
-    activity.
--   **Adobe University Hackathon** --- student hackathon participation.
-
-Participation, selection, and recognition are described separately; they
-should not be interpreted as equivalent awards.
-
-### Current Focus
-
-Areas I am actively exploring:
-
--   Software engineering and clean application architecture.
--   Full-stack development and API design.
--   Cybersecurity and network fundamentals.
--   Artificial intelligence and computer vision.
--   Blockchain and smart-contract systems.
--   Embedded systems and hardware prototyping.
+Current areas of exploration:
+- Software engineering and application architecture
+- Full-stack development and API design
+- Cybersecurity and networking fundamentals
+- Artificial intelligence and computer vision
+- Blockchain and smart-contract systems
+- Embedded systems and hardware prototyping
 
 > **LEARN → BUILD → TEST → DEBUG → IMPROVE → REPEAT.**
 
-## Project Structure
+## Tech Stack
 
-The following is a high-level guide to the application structure. Refer
-to the repository for the complete and current file tree.
+| Area | Technologies |
+|---|---|
+| UI | React 19 |
+| Language | TypeScript 5.8 |
+| Build tool | Vite 8 |
+| Styling | Tailwind CSS 3, CSS custom properties |
+| Motion | Motion for React |
+| Icons | Lucide React |
+| 3D / Graphics | Three.js, WebGL, GLSL |
+| Quality | ESLint, TypeScript |
 
-``` text
-Portfolio2307/
-├── public/                 # Static assets, fonts, and icons
-├── src/
-│   ├── assets/             # Images and other imported assets
-│   ├── components/
-│   │   ├── layout/         # Shared layout components
-│   │   └── ui/             # Reusable UI and visual effects
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Shared utilities
-│   ├── sections/           # Main portfolio sections
-│   ├── styles/             # Global styles and design tokens
-│   ├── types/              # Shared TypeScript types
-│   ├── App.tsx             # Root application component
-│   └── main.tsx            # Application entry point
-├── index.html              # HTML entry point and metadata
-├── package.json            # Dependencies and scripts
-├── tailwind.config.js      # Tailwind configuration
-├── tsconfig.json           # TypeScript configuration
-└── vite.config.ts          # Vite configuration
-```
-
-File names and directory contents may evolve as the portfolio develops.
+For exact installed dependency versions and available scripts, see [package.json](./package.json).
 
 ## Getting Started
 
 ### Prerequisites
 
--   Node.js and npm (use versions compatible with the project).
--   Git.
+- Node.js compatible with the project
+- npm
+- Git
 
 ### 1. Clone the repository
 
-``` bash
+```bash
 git clone https://github.com/omjoshi-2307/Portfolio2307.git
 cd Portfolio2307
 ```
 
 ### 2. Install dependencies
 
-``` bash
+```bash
 npm install
 ```
 
 ### 3. Start the development server
 
-``` bash
+```bash
 npm run dev
 ```
 
-Vite will print the local development URL in the terminal (commonly
-`http://localhost:5173/`).
+Vite will display the local development URL in the terminal (typically `http://localhost:5173/`).
 
-### 4. Create a production build
+### Available scripts
 
-``` bash
-npm run build
-```
-
-### 5. Preview the production build
-
-``` bash
-npm run preview
-```
-
-### 6. Run lint checks
-
-``` bash
-npm run lint
-```
-
-## Available Scripts
-
-The following commands are documented for the project:
-
-  Command              Purpose
-  -------------------- ------------------------------------------
-  `npm run dev`        Start the local Vite development server.
-  `npm run build`      Run the production build.
-  `npm run lint`       Run ESLint checks.
-  `npm run lint:fix`   Apply available ESLint automatic fixes.
-  `npm run preview`    Preview the production build locally.
-
-Check `package.json` for the authoritative list of scripts if these
-commands change.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the local development server |
+| `npm run build` | Run TypeScript checks and create a production build |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+| `npm run lint:fix` | Apply available ESLint automatic fixes |
 
 ## Deployment
 
-The public portfolio is available at:
+The production portfolio is hosted on Vercel:
 
-**[portfolio2307.vercel.app](https://portfolio2307.vercel.app/)**
+**[https://portfolio2307.vercel.app/](https://portfolio2307.vercel.app/)**
 
-The project is associated with Vercel deployment. Build and output
-settings should follow the repository's current Vercel project
-configuration; do not assume deployment triggers or branch settings
-without checking that configuration.
-
-## Accessibility & Performance
-
-The implementation includes accessibility-oriented and
-performance-conscious choices such as:
-
--   Semantic page landmarks and labelled interactive elements.
--   Reduced-motion handling for selected animations and effects.
--   Cleanup of animation resources when components unmount.
--   High-contrast monochrome presentation.
--   Responsive layouts for different screen sizes.
-
-Accessibility and performance are ongoing engineering concerns. No
-Lighthouse score or formal conformance claim is made here.
-
-## Roadmap
-
-Potential areas for future refinement:
-
--   Expand project case studies with implementation details and
-    architecture diagrams.
--   Add demonstrations for computer-vision work as they become
-    available.
--   Continue improving keyboard navigation, accessibility, and
-    responsive behavior.
--   Keep project descriptions and credentials current as work
-    progresses.
+The deployment is connected to this GitHub repository. Refer to the Vercel project settings for the authoritative production-branch and build configuration.
 
 ## Connect
 
-For collaboration, technical discussions, or project-related
-conversations:
+- **Portfolio:** [portfolio2307.vercel.app](https://portfolio2307.vercel.app/)
+- **GitHub:** [github.com/omjoshi-2307](https://github.com/omjoshi-2307)
+- **LinkedIn:** [linkedin.com/in/0m-joshi2307](https://www.linkedin.com/in/0m-joshi2307/)
+- **X:** [@omjoshi_2307](https://x.com/omjoshi_2307)
+- **Instagram:** [@0m.a.joshi](https://www.instagram.com/0m.a.joshi/)
+- **Email:** [omjoshi2307@gmail.com](mailto:omjoshi2307@gmail.com)
 
--   **Portfolio:**
-    [portfolio2307.vercel.app](https://portfolio2307.vercel.app/)
--   **GitHub:**
-    [github.com/omjoshi-2307](https://github.com/omjoshi-2307)
--   **LinkedIn:**
-    [linkedin.com/in/0m-joshi2307](https://www.linkedin.com/in/0m-joshi2307/)
--   **X:** [x.com/omjoshi_2307](https://x.com/omjoshi_2307)
--   **Instagram:**
-    [instagram.com/0m.a.joshi](https://www.instagram.com/0m.a.joshi/)
--   **Email:** <omjoshi2307@gmail.com>
+---
 
-------------------------------------------------------------------------
-
-::: {align="center"}
-**Built with curiosity. Refined through iteration.**
-
-© 2026 Om Joshi.
-:::
+<p align="center">
+  <strong>Built with curiosity. Refined through iteration.</strong><br />
+  © 2026 Om Joshi.
+</p>
