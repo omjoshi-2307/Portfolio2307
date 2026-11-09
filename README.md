@@ -26,6 +26,31 @@ The portfolio is built around a minimal monochrome visual identity, editorial ty
 
 Some visual effects depend on browser graphics support. The site is designed to keep its core content accessible when motion is reduced or effects are unavailable.
 
+
+
+<div align="center">
+
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:777777,50:ffffff,100:777777" width="100%" alt="Monochrome divider" />
+
+  <h2>⚡ Technology & Tools</h2>
+
+  <p><strong>Languages · Frameworks · Libraries · Development Tools</strong></p>
+
+  <img src="https://skillicons.dev/icons?i=c,cpp,python,html,css,js,ts,react,vite,tailwind,nodejs,threejs,git,github,vscode,docker&perline=8&theme=light" alt="Technology icons: C, C++, Python, HTML, CSS, JavaScript, TypeScript, React, Vite, Tailwind CSS, Node.js, Three.js, Git, GitHub, VS Code and Docker" />
+
+  <br />
+
+  <img src="https://img.shields.io/badge/Frontend-React%20%7C%20TypeScript-111111?style=for-the-badge&logo=react&logoColor=white" alt="Frontend: React and TypeScript" />
+  <img src="https://img.shields.io/badge/Styling-Tailwind%20CSS-111111?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Styling: Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Graphics-Three.js%20%7C%20WebGL-111111?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Graphics: Three.js and WebGL" />
+  <img src="https://img.shields.io/badge/Version%20Control-Git%20%26%20GitHub-111111?style=for-the-badge&logo=github&logoColor=white" alt="Version control: Git and GitHub" />
+
+  <br /><br />
+
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:777777,50:ffffff,100:777777" width="100%" alt="Monochrome divider" />
+
+</div>
+
 ## Selected Projects
 
 ### SureD — Blockchain-Powered Rental Security Deposit Platform
@@ -103,6 +128,32 @@ Current areas of exploration:
 
 For exact installed dependency versions and available scripts, see [package.json](./package.json).
 
+
+
+## GitHub Analytics
+
+<div align="center">
+  <a href="https://github.com/omjoshi-2307">
+    <img height="170" src="https://github-readme-stats.vercel.app/api?username=omjoshi-2307&show_icons=true&hide_border=true&rank_icon=github&include_all_commits=true&theme=transparent&title_color=111111&text_color=555555&icon_color=111111" alt="GitHub profile statistics for Om Joshi" />
+  </a>
+  <a href="https://github.com/omjoshi-2307">
+    <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=omjoshi-2307&layout=compact&hide_border=true&langs_count=8&theme=transparent&title_color=111111&text_color=555555" alt="Most used programming languages on GitHub" />
+  </a>
+</div>
+
+<div align="center">
+  <img src="https://streak-stats.demolab.com?user=omjoshi-2307&hide_border=true&background=FFFFFF00&ring=555555&fire=111111&currStreakLabel=111111&sideLabels=555555&dates=777777" alt="GitHub contribution streak statistics" />
+</div>
+
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=omjoshi-2307&no-frame=true&no-bg=true&theme=flat&column=4&margin-w=10&margin-h=10" alt="GitHub profile trophies" />
+</div>
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=omjoshi-2307&bg_color=ffffff00&color=555555&line=333333&point=111111&area=true&hide_border=true" width="100%" alt="GitHub contribution activity graph" />
+</div>
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -149,6 +200,20 @@ The production portfolio is hosted on Vercel:
 **[https://portfolio2307.vercel.app/](https://portfolio2307.vercel.app/)**
 
 The deployment is connected to this GitHub repository. Refer to the Vercel project settings for the authoritative production-branch and build configuration.
+
+
+
+## Find Me Around the Web
+
+<div align="center">
+  <a href="https://portfolio2307.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-111111?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://github.com/omjoshi-2307"><img src="https://img.shields.io/badge/GitHub-111111?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="https://www.linkedin.com/in/0m-joshi2307/"><img src="https://img.shields.io/badge/LinkedIn-111111?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://x.com/omjoshi_2307"><img src="https://img.shields.io/badge/X-111111?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
+  <a href="https://www.instagram.com/0m.a.joshi/"><img src="https://img.shields.io/badge/Instagram-111111?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
+  <a href="mailto:omjoshi2307@gmail.com"><img src="https://img.shields.io/badge/Email-111111?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+</div>
+
 
 ## Connect
 
