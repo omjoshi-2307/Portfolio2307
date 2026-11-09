@@ -169,9 +169,11 @@ Participation, selection, and awards are distinct and are described accordingly.
 
 <br/><br/>
 
-<a href="https://github.com/Ashutosh00710/github-readme-activity-graph" target="_blank">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=omjoshi-2307&bg_color=09090b&color=a1a1aa&line=d4d4d8&point=ffffff&area=true&hide_border=true" width="100%" alt="GitHub contribution activity graph — click to view the project" />
+<a href="https://github.com/omjoshi-2307?tab=overview" target="_blank">
+  <img src="https://img.shields.io/badge/CONTRIBUTION%20ACTIVITY-OPEN%20GITHUB%20PROFILE-18181b?style=for-the-badge&logo=github&logoColor=white" alt="Open GitHub contribution activity" />
 </a>
+
+<sub>The public activity-graph image service is currently unavailable. This link opens the native GitHub profile activity view instead of showing a broken image.</sub>
 
 <br/><br/>
 
