@@ -1,80 +1,126 @@
-# Om Joshi — Personal Portfolio
-
-A personal portfolio showcasing my projects, technical interests, and ongoing journey in software engineering.
-
-🌐 **Live Portfolio:** [portfolio2307.vercel.app](https://portfolio2307.vercel.app/)  
-💻 **GitHub:** [omjoshi-2307](https://github.com/omjoshi-2307) · **LinkedIn:** [Om Joshi](https://www.linkedin.com/in/0m-joshi2307/) · **X:** [@omjoshi_2307](https://x.com/omjoshi_2307)
-
----
-
-## About
-
-This repository contains the source code for my personal portfolio. It brings together my background, selected projects, technical interests, and ways to connect.
-
-The portfolio is built around a minimal monochrome visual identity, editorial typography, considered spacing, and purposeful motion. It is intended to evolve alongside the work I build and the skills I develop.
-
-## Highlights
-
-- Responsive portfolio layout and section-based navigation
-- Animated introduction with reduced-motion consideration
-- Interactive 3D lanyard experience
-- Canvas-based cursor effect
-- Project case studies and dedicated section anchors
-- Consolidated Work & Recognition section
-- Contact and social profile links
-- Localized visual effects in the Contact and Footer areas
-
-Some visual effects depend on browser graphics support. The site is designed to keep its core content accessible when motion is reduced or effects are unavailable.
-
-
+<!--
+  OM JOSHI · PORTFOLIO README
+  Visual direction: monochrome developer OS
+  Motifs: macOS window chrome · VS Code terminal · orbital constellation · animated SVG typography
+-->
 
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:777777,50:ffffff,100:777777" width="100%" alt="Monochrome divider" />
+<img src="https://capsule-render.vercel.app/api?type=waving&height=190&section=header&text=OM%20JOSHI&fontSize=58&fontColor=ffffff&fontAlignY=38&desc=BUILDING%20WITH%20CURIOSITY.&descAlignY=60&descSize=14&color=0:09090b,50:27272a,100:52525b" width="100%" alt="Monochrome animated portfolio header" />
 
-  <h2>⚡ Technology & Tools</h2>
+<a href="https://portfolio2307.vercel.app/">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=17&duration=2800&pause=900&color=71717A&center=true&vCenter=true&width=650&lines=IT+STUDENT+%2F+BUILDER+%2F+PROBLEM+SOLVER;SOFTWARE+ENGINEERING+%C2%B7+CYBERSECURITY;LEARN+%E2%86%92+BUILD+%E2%86%92+REFINE" alt="Animated introduction" />
+</a>
 
-  <p><strong>Languages · Frameworks · Libraries · Development Tools</strong></p>
+<br/>
 
-  <img src="https://skillicons.dev/icons?i=c,cpp,python,html,css,js,ts,react,vite,tailwind,nodejs,threejs,git,github,vscode,docker&perline=8&theme=light" alt="Technology icons: C, C++, Python, HTML, CSS, JavaScript, TypeScript, React, Vite, Tailwind CSS, Node.js, Three.js, Git, GitHub, VS Code and Docker" />
-
-  <br />
-
-  <img src="https://img.shields.io/badge/Frontend-React%20%7C%20TypeScript-111111?style=for-the-badge&logo=react&logoColor=white" alt="Frontend: React and TypeScript" />
-  <img src="https://img.shields.io/badge/Styling-Tailwind%20CSS-111111?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Styling: Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Graphics-Three.js%20%7C%20WebGL-111111?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Graphics: Three.js and WebGL" />
-  <img src="https://img.shields.io/badge/Version%20Control-Git%20%26%20GitHub-111111?style=for-the-badge&logo=github&logoColor=white" alt="Version control: Git and GitHub" />
-
-  <br /><br />
-
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:777777,50:ffffff,100:777777" width="100%" alt="Monochrome divider" />
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-09090b?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio2307.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GITHUB-09090b?style=for-the-badge&logo=github&logoColor=white)](https://github.com/omjoshi-2307)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-09090b?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/0m-joshi2307/)
+[![X](https://img.shields.io/badge/X-09090b?style=for-the-badge&logo=x&logoColor=white)](https://x.com/omjoshi_2307)
 
 </div>
 
-## Selected Projects
+---
 
-### SureD — Blockchain-Powered Rental Security Deposit Platform
+## 01 / SYSTEM PROFILE
 
-A rental security-deposit platform exploring transparent tenant–landlord workflows through Stellar and Soroban escrow.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=2&color=0:3f3f46,50:d4d4d8,100:3f3f46" width="100%" alt="Section divider" />
+</div>
+
+> **A curious mind. A terminal open. Something new to build.**
+
+I'm **Om Joshi**, an Information Technology student interested in software engineering, cybersecurity, and the systems that connect them. This repository contains the source code for my personal portfolio — a place to document selected work, experiments, and what I'm learning.
+
+<div align="center">
+
+| CURRENT MODE | INTERESTS | DESIGN LANGUAGE |
+|:---:|:---:|:---:|
+| Learning & building | Software · Security · AI | Monochrome · Minimal · Motion |
+
+</div>
+
+The portfolio uses an editorial monochrome identity, considered spacing, purposeful motion, and interactive visual details. The README borrows from a developer workstation: macOS-style window framing, VS Code terminal panels, and a space-inspired constellation motif.
+
+## 02 / THE WORKSPACE
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=rect&height=34&text=~/om-joshi/portfolio%20%E2%80%94%20zsh&fontSize=14&fontColor=e4e4e7&color=18181b&fontAlign=left&fontAlignY=55" width="100%" alt="Terminal window title bar" />
+
+</div>
+
+```bash
+om@portfolio:~$ whoami
+Om Joshi
+
+om@portfolio:~$ focus --current
+software-engineering  cybersecurity  problem-solving
+
+om@portfolio:~$ status
+learning  |  building  |  testing  |  improving
+
+om@portfolio:~$ _
+```
+
+<details>
+<summary><strong>⌘  Workspace notes — open for the build philosophy</strong></summary>
+
+- Keep interfaces clear and purposeful.
+- Prefer small, maintainable implementation steps.
+- Test assumptions instead of presenting ideas as finished products.
+- Treat accessibility and reduced-motion support as part of the experience.
+- Document what is implemented, what is experimental, and what is still a proposal.
+
+</details>
+
+## 03 / ORBITAL TOOLKIT
+
+A constellation-style map of the tools and technologies I have worked with or explored.
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=c,cpp,python,html,css,js,ts,react,vite,tailwind,nodejs,threejs,git,github,vscode,docker&perline=8&theme=dark" alt="Technology constellation: C, C++, Python, HTML, CSS, JavaScript, TypeScript, React, Vite, Tailwind, Node.js, Three.js, Git, GitHub, VS Code and Docker" />
+
+<br/>
+
+<img src="https://img.shields.io/badge/CORE-Programming%20%26%20Web-27272a?style=flat-square" alt="Core technologies" />
+<img src="https://img.shields.io/badge/EXPLORING-Security%20%26%20Systems-27272a?style=flat-square" alt="Exploring security and systems" />
+<img src="https://img.shields.io/badge/CREATIVE-3D%20%26%20Interactive-27272a?style=flat-square" alt="Creative technologies" />
+
+</div>
+
+## 04 / SELECTED BUILDS
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=2&color=0:3f3f46,50:d4d4d8,100:3f3f46" width="100%" alt="Section divider" />
+</div>
+
+### ◈ SureD — Rental Security Deposit Platform
+
+A blockchain-based concept for transparent tenant–landlord security-deposit workflows using Stellar and Soroban escrow.
 
 - Explores deposit funding, confirmation, release, and refund flows.
-- My work focused on frontend architecture, interface and dashboard development, wallet connection, transaction-status presentation, and user-flow testing.
-- Smart-contract backend work was handled by project collaborator [Khushal Choudhary](https://github.com/Khushal-93).
+- My contribution focused on frontend architecture, interface and dashboard development, wallet connection, transaction-status presentation, and user-flow testing.
+- Smart-contract backend work was handled by collaborator [Khushal Choudhary](https://github.com/Khushal-93).
 
 [Live application](https://sure-d.vercel.app/) · [Source repository](https://github.com/Khushal-93/SureD)
 
-### DepthWizard — Single-View Height Estimation & 3D Flythrough
+### ◈ DepthWizard — Single-View Height Estimation & 3D Flythrough
 
-A team project prepared for Smart India Hackathon 2026 problem statement **SIH26175**, in the ISRO / Department of Space disaster-management context. Team **SochX Horizon** participated in the college internal selection round.
+A team concept prepared for Smart India Hackathon 2026 problem statement **SIH26175**, in the ISRO / Department of Space disaster-management context. Team **SochX Horizon** participated in the college internal selection round.
 
-**Conceptual pipeline:**  
-`RGB Image → AI Depth Estimation → Depth Map → DSM Generation → 3D Flythrough`
+```text
+RGB IMAGE  →  AI DEPTH ESTIMATION  →  DEPTH MAP
+     →  DSM GENERATION  →  3D FLYTHROUGH
+```
 
 The concept explores estimating depth from a single image and generating a digital surface representation. Non-georeferenced inputs support relative depth representations; absolute spatial measurements require suitable georeferencing information.
 
-### WALL-E — Autonomous Obstacle-Avoiding Robot
+### ◈ WALL-E — Autonomous Obstacle-Avoiding Robot
 
-An embedded robotics project based on ultrasonic distance sensing and motor control.
+An embedded robotics project using ultrasonic distance sensing and motor control.
 
 - Arduino Uno (ATmega328P)
 - HC-SR04 ultrasonic sensor
@@ -83,17 +129,18 @@ An embedded robotics project based on ultrasonic distance sensing and motor cont
 
 [Source repository](https://github.com/omjoshi-2307/WALL-E-Autonomous-Obstacle-Avoiding-Robot)
 
-### Jal-Sanchaee-Navachar — Water Management Concept
+### ◈ Jal-Sanchaee-Navachar — Water Management Concept
 
-A concept and UI prototype developed during the **AISSMS Techathon 3.0** 24-hour sprint. The work explored water-level monitoring, overflow alerts, usage insights, and community water-credit ideas. It should be understood as a sprint prototype, not a fully deployed or integrated system.
+A concept and UI prototype developed during the **AISSMS Techathon 3.0** 24-hour sprint. It explored water-level monitoring, overflow alerts, usage insights, and community water-credit ideas. This was a sprint prototype, not a fully deployed or integrated system.
 
-### CivicLoop — Complaints That Don't Disappear
+### ◈ CivicLoop — Complaints That Don't Disappear
 
-An early-stage civic-technology concept associated with **Anveshana 2026–27 Top 60, Pune Region**. The proposed direction includes complaint tracking, duplicate-issue grouping, public status history, evidence-based updates, and ward-level accountability. These are proposed capabilities, not claims of a completed product.
+An early-stage civic-technology concept associated with **Anveshana 2026–27 Top 60, Pune Region**. The proposed direction includes complaint tracking, duplicate-issue grouping, public status history, evidence-based updates, and ward-level accountability. These are proposed capabilities; development has not yet started.
 
-## Activities & Current Focus
+## 05 / ACTIVITY LOG
 
-Selected activities include:
+A few learning, building, and innovation activities:
+
 - **Anveshana 2026–27:** CivicLoop selected among the Top 60 projects in the Pune Region.
 - **Smart India Hackathon 2026:** College internal selection participation with SochX Horizon for SIH26175.
 - **Stellar Build Station Pune:** 21-day builder sprint focused on the Stellar ecosystem and Soroban through SureD.
@@ -103,19 +150,36 @@ Selected activities include:
 
 Participation, selection, and awards are distinct and are described accordingly.
 
-Current areas of exploration:
-- Software engineering and application architecture
-- Full-stack development and API design
-- Cybersecurity and networking fundamentals
-- Artificial intelligence and computer vision
-- Blockchain and smart-contract systems
-- Embedded systems and hardware prototyping
+## 06 / GITHUB TELEMETRY
 
-> **LEARN → BUILD → TEST → DEBUG → IMPROVE → REPEAT.**
+<div align="center">
 
-## Tech Stack
+<a href="https://github.com/omjoshi-2307">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=omjoshi-2307&show_icons=true&hide_border=true&rank_icon=github&include_all_commits=true&theme=transparent&title_color=d4d4d8&text_color=a1a1aa&icon_color=e4e4e7" alt="GitHub statistics" />
+</a>
+<a href="https://github.com/omjoshi-2307">
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=omjoshi-2307&layout=compact&hide_border=true&langs_count=8&theme=transparent&title_color=d4d4d8&text_color=a1a1aa" alt="Most used programming languages" />
+</a>
 
-| Area | Technologies |
+<br/><br/>
+
+<img src="https://streak-stats.demolab.com?user=omjoshi-2307&hide_border=true&background=09090b00&ring=a1a1aa&fire=e4e4e7&currStreakLabel=d4d4d8&sideLabels=a1a1aa&dates=71717a" alt="GitHub contribution streak" />
+
+<br/><br/>
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=omjoshi-2307&bg_color=09090b&color=a1a1aa&line=d4d4d8&point=ffffff&area=true&hide_border=true" width="100%" alt="GitHub contribution activity graph" />
+
+<br/>
+
+<img src="https://github-profile-trophy.vercel.app/?username=omjoshi-2307&no-frame=true&no-bg=true&theme=darkhub&column=4&margin-w=10&margin-h=10" width="90%" alt="GitHub profile trophies" />
+
+</div>
+
+<sub>Analytics are supplied by external services and may be temporarily unavailable or update with a delay.</sub>
+
+## 07 / UNDER THE HOOD
+
+| Layer | Technologies |
 |---|---|
 | UI | React 19 |
 | Language | TypeScript 5.8 |
@@ -126,107 +190,45 @@ Current areas of exploration:
 | 3D / Graphics | Three.js, WebGL, GLSL |
 | Quality | ESLint, TypeScript |
 
-For exact installed dependency versions and available scripts, see [package.json](./package.json).
+For exact installed dependency versions and scripts, see [package.json](./package.json).
 
-
-
-## GitHub Analytics
-
-<div align="center">
-  <a href="https://github.com/omjoshi-2307">
-    <img height="170" src="https://github-readme-stats.vercel.app/api?username=omjoshi-2307&show_icons=true&hide_border=true&rank_icon=github&include_all_commits=true&theme=transparent&title_color=111111&text_color=555555&icon_color=111111" alt="GitHub profile statistics for Om Joshi" />
-  </a>
-  <a href="https://github.com/omjoshi-2307">
-    <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=omjoshi-2307&layout=compact&hide_border=true&langs_count=8&theme=transparent&title_color=111111&text_color=555555" alt="Most used programming languages on GitHub" />
-  </a>
-</div>
-
-<div align="center">
-  <img src="https://streak-stats.demolab.com?user=omjoshi-2307&hide_border=true&background=FFFFFF00&ring=555555&fire=111111&currStreakLabel=111111&sideLabels=555555&dates=777777" alt="GitHub contribution streak statistics" />
-</div>
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=omjoshi-2307&no-frame=true&no-bg=true&theme=flat&column=4&margin-w=10&margin-h=10" alt="GitHub profile trophies" />
-</div>
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=omjoshi-2307&bg_color=ffffff00&color=555555&line=333333&point=111111&area=true&hide_border=true" width="100%" alt="GitHub contribution activity graph" />
-</div>
-
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js compatible with the project
-- npm
-- Git
-
-### 1. Clone the repository
+### Run locally
 
 ```bash
 git clone https://github.com/omjoshi-2307/Portfolio2307.git
 cd Portfolio2307
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
-```
-
-### 3. Start the development server
-
-```bash
 npm run dev
 ```
 
-Vite will display the local development URL in the terminal (typically `http://localhost:5173/`).
-
-### Available scripts
+Vite displays the local development URL in the terminal (typically `http://localhost:5173/`).
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Start the local development server |
+| `npm run dev` | Start the development server |
 | `npm run build` | Run TypeScript checks and create a production build |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint |
 | `npm run lint:fix` | Apply available ESLint automatic fixes |
 
-## Deployment
-
-The production portfolio is hosted on Vercel:
-
-**[https://portfolio2307.vercel.app/](https://portfolio2307.vercel.app/)**
-
-The deployment is connected to this GitHub repository. Refer to the Vercel project settings for the authoritative production-branch and build configuration.
-
-
-
-## Find Me Around the Web
+## 08 / CONNECT
 
 <div align="center">
-  <a href="https://portfolio2307.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-111111?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://github.com/omjoshi-2307"><img src="https://img.shields.io/badge/GitHub-111111?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <a href="https://www.linkedin.com/in/0m-joshi2307/"><img src="https://img.shields.io/badge/LinkedIn-111111?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://x.com/omjoshi_2307"><img src="https://img.shields.io/badge/X-111111?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
-  <a href="https://www.instagram.com/0m.a.joshi/"><img src="https://img.shields.io/badge/Instagram-111111?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
-  <a href="mailto:omjoshi2307@gmail.com"><img src="https://img.shields.io/badge/Email-111111?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+
+<a href="https://portfolio2307.vercel.app/"><img src="https://img.shields.io/badge/PORTFOLIO-18181b?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+<a href="https://github.com/omjoshi-2307"><img src="https://img.shields.io/badge/GITHUB-18181b?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+<a href="https://www.linkedin.com/in/0m-joshi2307/"><img src="https://img.shields.io/badge/LINKEDIN-18181b?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://x.com/omjoshi_2307"><img src="https://img.shields.io/badge/X-18181b?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
+<a href="https://www.instagram.com/0m.a.joshi/"><img src="https://img.shields.io/badge/INSTAGRAM-18181b?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
+<a href="mailto:omjoshi2307@gmail.com"><img src="https://img.shields.io/badge/EMAIL-18181b?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+
+<br/><br/>
+
+<a href="https://portfolio2307.vercel.app/">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=115&section=footer&color=0:52525b,50:27272a,100:09090b" width="100%" alt="Monochrome wave footer" />
+</a>
+
+<strong>BUILT WITH CURIOSITY · REFINED THROUGH ITERATION</strong><br/>
+<sub>© 2026 Om Joshi</sub>
+
 </div>
-
-
-## Connect
-
-- **Portfolio:** [portfolio2307.vercel.app](https://portfolio2307.vercel.app/)
-- **GitHub:** [github.com/omjoshi-2307](https://github.com/omjoshi-2307)
-- **LinkedIn:** [linkedin.com/in/0m-joshi2307](https://www.linkedin.com/in/0m-joshi2307/)
-- **X:** [@omjoshi_2307](https://x.com/omjoshi_2307)
-- **Instagram:** [@0m.a.joshi](https://www.instagram.com/0m.a.joshi/)
-- **Email:** [omjoshi2307@gmail.com](mailto:omjoshi2307@gmail.com)
-
----
-
-<p align="center">
-  <strong>Built with curiosity. Refined through iteration.</strong><br />
-  © 2026 Om Joshi.
-</p>
